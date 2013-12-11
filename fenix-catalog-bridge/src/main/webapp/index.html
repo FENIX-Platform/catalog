@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+
+  Transform JSon Datasource according to a JSon Template
+  <button onclick='go()'>Transform</button>
+  <button onclick='goToGetLocally()'>Get locally and Transform</button>
+  <button onclick='goToGetRemotely()'>Get remotely and Transform</button>
+  
+  <!-- JavaScript imports -->
+  <script type='text/javascript' src='js/jsonutils.js'></script>
+  <script type='text/javascript'>
+  
+    function go() {
+
+      var data = '{ "1" : "Daniele", "2" : "Salvatore", "3" : { "1" : "190", "2" : "maschio", "3" : { "1" : { "1" : "daje"}}} }',
+          tmpl = '{ "nome" : "1", "cognome" : "2", "altezza" : "3.1", "personale" : { "sesso" : "3.2", "tanja" : "1"}, "test" : { "test" : {"test" : "3.3.1.1"}} }';
+      
+      console.log(transform(data, tmpl))
+      
+    }
+
+    function goToGetLocally() {
+
+      var data = '{ "1" : "Daniele", "2" : "Salvatore", "3" : { "1" : "190", "2" : "maschio", "3" : { "1" : { "1" : "daje"}}} }',
+          tmpl = '{ "nome" : "1", "cognome" : "2", "altezza" : "3.1", "personale" : { "sesso" : "3.2", "tanja" : "1"}, "test" : { "test" : {"test" : "3.3.1.1"}} }';
+
+      getJSonsAndTransform({
+          data      : { localdata : data },
+          template  : { localdata : tmpl }
+        }, function print( a ){ console.log(a) }); 
+    }
+
+    function goToGetRemotely() {
+
+      getJSonsAndTransform({
+          data      : { url : 'json/data.json', method : 'GET' },
+          template  : { url : 'json/template.json', method : 'GET' }
+        }, function print( a ){ console.log(a) }); 
+    }
+
+  </script>
+</body>
+</html>
