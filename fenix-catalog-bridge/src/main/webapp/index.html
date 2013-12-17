@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FENIX Catalog Bridge</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=">FENIX Catalog Bridge component">
+    <meta name="author" content="Daniele Salvatore <daniele.salvatore[at]fao.org>">
+    
+    <!-- Bootstrap -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+      
+  </head>
+  <body>
+  
+  	<button id='perform-1'>Perform action 1 </button>
+    <button id='perform-2'>Perform action 2 </button>
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+      
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script src="commons.js"></script>
+    <script src="fenix-catalog-bridge-js.js"></script>
+    <script src="fenix-component-with-catalog-plugin-js.js"></script>
+    
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+    
+      //bridge initialization
+      var factory = new fenix_catalog_bridge_factory();
+      var bridge_id = 'mycustomid';
+      var bridge  = factory.createBridge({ id : bridge_id})
+
+      //Component initialization
+      /*Component will register its self alone */
+      fenix_catalog_component.init({catalog : bridge_id})
+
+      /*
+      Manual implementation of event and event listener
+      */
+      $('#perform-1').on('click', function(){
+        /*
+        Payload is caught as the event payload
+        */
+        var payload = { param : 'payload param'};
+
+        raiseCustomEvent(document.body, 'perform.'+bridge_id+'.catalog.fenix', 
+            { action    : 'action-1',
+              component : fenix_catalog_component,
+              payload   : payload });
+      });
+
+      $('#perform-2').on('click', function(){
+        raiseCustomEvent(document.body, 'perform.'+bridge_id+'.catalog.fenix', 
+            { action    : 'action-2',
+              component : fenix_catalog_component,
+              payload   : {} });
+      })
+
+    })
+
+    </script>
+  </body>
+</html>
