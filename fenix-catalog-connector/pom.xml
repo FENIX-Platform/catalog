@@ -10,9 +10,10 @@
   <name>FENIX 4</name>
   <url>http://fenix.fao.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <resteasy.version>2.3.7.Final</resteasy.version>
+    </properties>
 
   <build>
     <plugins>
@@ -25,20 +26,35 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-          <packagingExcludes>**/.svn</packagingExcludes>
+          <source>1.7</source>
+          <target>1.7</target>
         </configuration>
       </plugin>
     </plugins>
   </build>
   
    <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
+
+       <!-- RestEasy -->
+       <dependency>
+           <groupId>org.jboss.resteasy</groupId>
+           <artifactId>resteasy-jaxrs</artifactId>
+           <version>${resteasy.version}</version>
+           <scope>provided</scope>
+       </dependency>
+       <dependency>
+           <groupId>org.jboss.resteasy</groupId>
+           <artifactId>resteasy-jackson-provider</artifactId>
+           <version>${resteasy.version}</version>
+           <scope>provided</scope>
+       </dependency>
+
+       <!-- Test -->
+       <dependency>
+           <groupId>junit</groupId>
+           <artifactId>junit</artifactId>
+           <version>4.11</version>
+           <scope>test</scope>
+       </dependency>
   </dependencies>
 </project>
