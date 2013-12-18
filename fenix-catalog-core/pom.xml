@@ -24,7 +24,7 @@
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
                     </archive>
-                    <warName>d3sp</warName>
+                    <warName>catalog</warName>
                 </configuration>
             </plugin>
             <plugin>
@@ -71,13 +71,6 @@
 
 
    <dependencies>
-       <!-- J2EE -->
-       <dependency>
-           <groupId>org.jboss.spec</groupId>
-           <artifactId>jboss-javaee-all-6.0</artifactId>
-           <version>3.0.2.Final</version>
-           <scope>provided</scope>
-       </dependency>
 
        <!-- Connector support -->
        <dependency>
@@ -91,6 +84,14 @@
            <groupId>org.fao.fenix</groupId>
            <artifactId>fenix-catalog-processing</artifactId>
            <version>1.0-SNAPSHOT</version>
+       </dependency>
+
+       <!-- J2EE -->
+       <dependency>
+           <groupId>org.jboss.spec</groupId>
+           <artifactId>jboss-javaee-all-6.0</artifactId>
+           <version>3.0.2.Final</version>
+           <scope>provided</scope>
        </dependency>
 
        <!-- JSONP support -->
@@ -121,5 +122,6 @@
           <version>4.11</version>
           <scope>test</scope>
         </dependency>
+
   </dependencies>
 </project>
