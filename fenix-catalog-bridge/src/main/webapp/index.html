@@ -15,7 +15,7 @@
   
   	<button id='perform-1'>Perform action 1 </button>
     <button id='perform-2'>Perform action 2 </button>
-    
+
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -34,39 +34,29 @@
     <script type="text/javascript">
 
     $(document).ready(function(){
+
+      $('#perform-1').on('click', fenix_component_producer.fakeFnOne);
+      $('#perform-2').on('click', fenix_component_producer.fakeFnTwo);
     
       //bridge initialization
-      var factory = new fenix_catalog_bridge_factory();
+      var factory   = new fenix_catalog_bridge_factory();
       var bridge_id = 'mycustomid';
-      var bridge  = factory.createBridge({ id : bridge_id})
+      var bridge    = factory.createBridge({id : bridge_id})
 
       //Component initialization
-      /*Component will register its self alone */
-      fenix_catalog_component.init({catalog : bridge_id})
+      fenix_component_producer.init()
+      fenix_component_consumer.init()
 
-      /*
-      Manual implementation of event and event listener
-      */
-      $('#perform-1').on('click', function(){
-        /*
-        Payload is caught as the event payload
-        */
-        var payload = { param : 'payload param'};
+      //Business Logic implementation
+      document.body.addEventListener("perform.fakefnone.producer.fenix", function(event){
+        bridge.actionOneHandler(fenix_component_producer, fenix_component_consumer)
+      }, false);
 
-        raiseCustomEvent(document.body, 'perform.'+bridge_id+'.catalog.fenix', 
-            { action    : 'action-1',
-              component : fenix_catalog_component,
-              payload   : payload });
-      });
+      document.body.addEventListener("perform.fakefntwo.producer.fenix", function(event){
+        bridge.actionTwoHandler(fenix_component_producer, function( s ){  alert(s); });
+      }, false);
 
-      $('#perform-2').on('click', function(){
-        raiseCustomEvent(document.body, 'perform.'+bridge_id+'.catalog.fenix', 
-            { action    : 'action-2',
-              component : fenix_catalog_component,
-              payload   : {} });
-      })
-
-    })
+    });
 
     </script>
   </body>

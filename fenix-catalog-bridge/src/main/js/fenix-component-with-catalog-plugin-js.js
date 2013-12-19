@@ -1,44 +1,139 @@
-var fenix_catalog_component = (function() {
+/* PRODUCER */
+var fenix_component_producer = (function() {
 
   var o = { },
       //Default Catalog options Options
       defaultOptions = {
-        actions     :  ['action-1', 'action-2'],
-        name        : 'fenix_catalog_component'
+        name        : 'fenix_component_producer',
+        param       : 'You should see me without space',
+        payload     : 'PAYLOAD', 
       };
 
   function init( baseOptions ){
 
-    /*MOVE FROM HERE!!!!*/
-    o['event_plugin_reg_request'] = 'registerme.'+ baseOptions.catalog +'.catalog.fenix';
+    //Merge options
+    extend(o, defaultOptions);
+    extend(o, baseOptions);
+ 
+  };
+
+  function fakeFnOne(){ 
+    raiseCustomEvent(document.body, 'perform.fakefnone.producer.fenix',  { payload   : "this is my custom payload" });
+  };
+
+  function fakeFnTwo(){
+    raiseCustomEvent(document.body, 'perform.fakefntwo.producer.fenix',  { payload   : "this is my custom payload" });
+  };
+
+  /*PLUGINS SECTION*/
+
+  function manualPluginsRegistation(){
+
+      /*    
+      raiseCustomEvent(document.body, o.e_prefix_reg + o.catalog + o.e_suffix, 
+      { actions   : o.actions,
+        component : fenix_catalog_component });
+      */
+
+  };
+
+  //Public methods
+  return { getOption          : function( option ){ return o[option]; },
+           init               : init,
+           fakeFnOne          : fakeFnOne, 
+           fakeFnTwo          : fakeFnTwo
+          }
+
+})();
+
+//FENIX Catalog Producer Plugin registration
+if(!window.fenix_catalog_bridge_plugins) window.fenix_catalog_bridge_plugins = {};
+window.fenix_catalog_bridge_plugins['fenix_component_producer'] =  (function() {
+
+  var o = { },
+      //Default Catalog options Options
+      defaultOptions = {
+        name          : 'fenix_component_producer_plugin',
+        component_name: 'fenix_component_producer',
+      };
+
+  function init( baseOptions ){
 
     //Merge options
     extend(o, defaultOptions);
     extend(o, baseOptions);
-
-    raiseCustomEvent(document.body, o.event_plugin_reg_request, 
-      { actions   : o.actions,
-        component : fenix_catalog_component });
  
   };
 
-  /*  function initEventListeners(){
+  function getOption( option ){  return o.component.getOption(option) };
 
-  };*/
+  return {
+            init      : init,
+            getOption : getOption
+          };
 
-  function standardcallback( payload ){
-    console.log('@@@ callback 1 component with payload '+ payload)
-  }
+})();
 
-  function standardcallbackTwo( payload ){
-    console.log('@@@ callback 2 component with payload '+ payload)
+
+
+
+/* CONSUMER */
+var fenix_component_consumer = (function() {
+
+  var o = { },
+      //Default Catalog options Options
+      defaultOptions = {
+        name        : 'fenix_component_consumer'
+      };
+
+  function init( baseOptions ){
+
+    //Merge options
+    extend(o, defaultOptions);
+    extend(o, baseOptions);
+ 
+  };
+
+  function handler( payload ){
+    console.log('@@@ CONSUMER handler with payload '+ payload)
   }
 
   //Public methods
-  return { name             : 'fenix_catalog_component',
-           init             : init,
-           standardcallback : standardcallback,
-           standardcallbackTwo : standardcallbackTwo
+  return { getOption          : function( option ){return o[option];},
+           init               : init,
+           handler            : handler
           }
+
+})();
+
+//FENIX Catalog Consumer Plugin Registration
+if(!window.fenix_catalog_bridge_plugins) window.fenix_catalog_bridge_plugins = {};
+window.fenix_catalog_bridge_plugins['fenix_component_consumer'] = (function() {
+
+  var o = { },
+      //Default Catalog options Options
+      defaultOptions = {
+        name          : 'fenix_component_consumer_plugin',
+        component_name: 'fenix_component_consumer',
+      };
+
+  function init( baseOptions ){
+
+    //Merge options
+    extend(o, defaultOptions);
+    extend(o, baseOptions);
+ 
+  };
+
+  function handler( payload ){
+
+    return o.component.handler( payload )
+  
+  };
+
+  return {
+            init      : init,
+            handler   : handler
+          };
 
 })();
