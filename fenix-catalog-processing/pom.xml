@@ -32,7 +32,17 @@
             </plugin>
         </plugins>
     </build>
-  
+
+
+    <distributionManagement>
+        <repository>
+            <id>snapshots</id>
+            <name>fenix</name>
+            <url>http://fenixapps.fao.org/artifactory/fenix-developers</url>
+        </repository>
+    </distributionManagement>
+
+
    <dependencies>
     <dependency>
       <groupId>junit</groupId>

@@ -50,27 +50,33 @@
 
             <dependencies>
                 <dependency>
-                    <groupId>org.jboss.resteasy</groupId>
-                    <artifactId>resteasy-jaxrs</artifactId>
-                    <version>${resteasy.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.resteasy</groupId>
-                    <artifactId>resteasy-jackson-provider</artifactId>
-                    <version>${resteasy.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.resteasy</groupId>
-                    <artifactId>resteasy-servlet-initializer</artifactId>
-                    <version>${resteasy.version}</version>
+                    <groupId>org.fao.fenix</groupId>
+                    <artifactId>tomcat-J2EE</artifactId>
+                    <version>1.0-SNAPSHOT</version>
                 </dependency>
             </dependencies>
         </profile>
     </profiles>
 
 
+    <distributionManagement>
+        <repository>
+            <id>snapshots</id>
+            <name>fenix</name>
+            <url>http://fenixapps.fao.org/artifactory/fenix-developers</url>
+        </repository>
+    </distributionManagement>
+
 
    <dependencies>
+
+       <!-- J2EE -->
+       <dependency>
+           <groupId>org.jboss.spec</groupId>
+           <artifactId>jboss-javaee-all-6.0</artifactId>
+           <version>3.0.2.Final</version>
+           <scope>provided</scope>
+       </dependency>
 
        <!-- Connector support -->
        <dependency>
@@ -86,33 +92,11 @@
            <version>1.0-SNAPSHOT</version>
        </dependency>
 
-       <!-- J2EE -->
-       <dependency>
-           <groupId>org.jboss.spec</groupId>
-           <artifactId>jboss-javaee-all-6.0</artifactId>
-           <version>3.0.2.Final</version>
-           <scope>provided</scope>
-       </dependency>
-
        <!-- JSONP support -->
        <dependency>
            <groupId>org.fao.ess.widget</groupId>
            <artifactId>widgetJSONP</artifactId>
            <version>1.0</version>
-       </dependency>
-
-       <!-- RestEasy -->
-       <dependency>
-           <groupId>org.jboss.resteasy</groupId>
-           <artifactId>resteasy-jaxrs</artifactId>
-           <version>${resteasy.version}</version>
-           <scope>provided</scope>
-       </dependency>
-       <dependency>
-           <groupId>org.jboss.resteasy</groupId>
-           <artifactId>resteasy-jackson-provider</artifactId>
-           <version>${resteasy.version}</version>
-           <scope>provided</scope>
        </dependency>
 
        <!-- Test -->
