@@ -12,7 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <resteasy.version>2.3.7.Final</resteasy.version>
+        <resteasy.version>3.0.6.Final</resteasy.version>
     </properties>
 
     <build>
@@ -44,11 +44,35 @@
 
 
    <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
+
+       <!-- CDI -->
+       <dependency>
+           <groupId>javax.enterprise</groupId>
+           <artifactId>cdi-api</artifactId>
+           <version>1.1</version>
+           <scope>provided</scope>
+       </dependency>
+
+       <!-- RestEasy -->
+       <dependency>
+           <groupId>org.jboss.resteasy</groupId>
+           <artifactId>resteasy-jaxrs</artifactId>
+           <version>${resteasy.version}</version>
+           <scope>provided</scope>
+       </dependency>
+       <dependency>
+           <groupId>org.jboss.resteasy</groupId>
+           <artifactId>resteasy-jackson-provider</artifactId>
+           <version>${resteasy.version}</version>
+           <scope>provided</scope>
+       </dependency>
+
+       <!-- Test -->
+       <dependency>
+           <groupId>junit</groupId>
+           <artifactId>junit</artifactId>
+           <version>4.11</version>
+           <scope>test</scope>
+       </dependency>
   </dependencies>
 </project>
