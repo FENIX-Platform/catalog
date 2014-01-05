@@ -13,6 +13,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <resteasy.version>3.0.6.Final</resteasy.version>
+        <orient.version>1.6.3</orient.version>
     </properties>
 
   <build>
@@ -66,6 +67,19 @@
            <version>${resteasy.version}</version>
            <scope>provided</scope>
        </dependency>
+
+       <!-- Orient database -->
+       <dependency>
+           <groupId>com.orientechnologies</groupId>
+           <artifactId>orientdb-client</artifactId>
+           <version>${orient.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>com.orientechnologies</groupId>
+           <artifactId>orientdb-object</artifactId>
+           <version>${orient.version}</version>
+       </dependency>
+
 
        <!-- Test -->
        <dependency>

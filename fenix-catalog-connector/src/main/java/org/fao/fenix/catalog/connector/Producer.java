@@ -1,5 +1,6 @@
 package org.fao.fenix.catalog.connector;
 
+import org.fao.fenix.catalog.connector.dto.Filter;
 import org.fao.fenix.catalog.connector.impl.D3S.D3SDatasetConnector;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -12,8 +13,8 @@ import java.util.Collection;
 public class Producer {
 
     @Produces
-    public Collection<Connector> retrieveConnectors(Selector resourceType) {
-        System.out.println("type: " + resourceType.getResourceType() + " - " + resourceType);
+    public Collection<Connector> retrieveConnectors(Filter filter) {
+        System.out.println("type: " + filter.getResourceType() + " - " + filter);
         return Arrays.asList((Connector)CDI.current().select(D3SDatasetConnector.class).get());
     }
 

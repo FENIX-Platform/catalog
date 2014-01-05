@@ -5,12 +5,13 @@ import org.fao.fenix.catalog.connector.dto.Filter;
 import org.fao.fenix.catalog.connector.dto.Response;
 
 import javax.enterprise.context.ApplicationScoped;
+import java.util.Map;
 import java.util.Properties;
 
 @ApplicationScoped
 public class D3SDatasetConnector implements Connector {
     @Override
-    public void init(Properties parameters) {
+    public void init(Map<String,Object> properties) {
 
     }
 

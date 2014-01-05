@@ -1,6 +1,35 @@
 package org.fao.fenix.catalog.connector.dto;
 
+import org.fao.fenix.catalog.connector.dto.value.ValueFilter;
+
+import java.util.Collection;
+import java.util.Map;
+
 public class Filter {
 
+    private String resourceType;
+    private Map<String,Collection<ValueFilter>> filter;
 
+
+    public String getResourceType() {
+        return resourceType;
+    }
+
+    public void setResourceType(String resourceType) {
+        this.resourceType = resourceType;
+    }
+
+    public Map<String, Collection<ValueFilter>> getFilter() {
+        return filter;
+    }
+
+    public void setFilter(Map<String, Collection<ValueFilter>> filter) {
+        this.filter = filter;
+    }
+
+
+    //Utils
+    public static Filter getInstance(Map<String,Object> source) {
+        return null; //TODO
+    }
 }
