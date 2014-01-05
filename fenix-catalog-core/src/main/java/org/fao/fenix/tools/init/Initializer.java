@@ -1,24 +1,61 @@
 package org.fao.fenix.tools.init;
 
 import org.fao.fenix.catalog.connector.Connector;
+import org.fao.fenix.tools.Orient.OrientClient;
+import org.fao.fenix.tools.utils.StringUtils;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.servlet.*;
+import javax.servlet.annotation.WebListener;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.*;
 
-@WebServlet(urlPatterns = "/", loadOnStartup = 1)
-public class Initializer extends HttpServlet {
+@WebListener
+public class Initializer implements ServletContextListener {
 
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
 //        ClassLoader loader = this.getClass().getClassLoader();
 //        org.apache.catalina.loader.WebappClassLoader tomcatLoader = (org.apache.catalina.loader.WebappClassLoader)loader;
 //        tomcatLoader.addRepository("file:///home/meco/Develop/Progetti/FAO/Fenix/workspace/fenix-catalog-connector-test/target/fenix-catalog-connector-test-1.0-SNAPSHOT.jar");
 
+    @Inject OrientClient orientClient;
+
+
+    @Override
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
+        ServletContext context = servletContextEvent.getServletContext();
+        for (String key : Collections.list(context.getInitParameterNames()))
+            initParameters.setProperty(key,context.getInitParameter(key));
+//        webRootPath = new File(context.getRealPath("./"));
+
+        init();
     }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+        destroy();
+    }
+
+
+    //Init flow
+    private void init() {
+        OrientClient.init(initParameters);
+    }
+    //Destroy flow
+    private void destroy() {
+        OrientClient.destroy();
+    }
+
+
+    //Utils
+    private File webRootPath;
+    private Properties initParameters = new Properties();
+    public File getWebRootPath() { return webRootPath; }
+    public Properties getInitParameters() { return initParameters; }
+    public String getInitParameter(String key) { return initParameters.getProperty(key); }
 }
