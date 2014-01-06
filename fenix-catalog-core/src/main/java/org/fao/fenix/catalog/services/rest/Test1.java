@@ -6,7 +6,6 @@ import org.fao.fenix.catalog.impl.TestImpl;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Instance;
-import javax.enterprise.inject.spi.CDI;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
