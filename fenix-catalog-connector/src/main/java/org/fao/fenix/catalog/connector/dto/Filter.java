@@ -9,6 +9,7 @@ public class Filter {
 
     private String resourceType;
     private Map<String,Collection<ValueFilter>> filter;
+    private boolean dataRequired;
 
 
     public String getResourceType() {
@@ -27,6 +28,13 @@ public class Filter {
         this.filter = filter;
     }
 
+    public boolean isDataRequired() {
+        return dataRequired;
+    }
+
+    public void setDataRequired(boolean dataRequired) {
+        this.dataRequired = dataRequired;
+    }
 
     //Utils
     public static Filter getInstance(Map<String,Object> source) {
