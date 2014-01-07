@@ -1,19 +1,11 @@
 package org.fao.fenix.tools.init;
 
-import org.fao.fenix.catalog.connector.Connector;
-import org.fao.fenix.tools.Orient.OrientClient;
-import org.fao.fenix.tools.utils.StringUtils;
+import org.fao.fenix.tools.orient.OrientClient;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.servlet.*;
 import javax.servlet.annotation.WebListener;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.*;
 
 @WebListener

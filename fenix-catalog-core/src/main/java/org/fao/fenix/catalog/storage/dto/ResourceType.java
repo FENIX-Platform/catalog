@@ -4,7 +4,7 @@ import org.codehaus.jackson.annotate.JsonAutoDetect;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonMethod;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.fao.fenix.tools.Orient.OrientClass;
+import org.fao.fenix.tools.orient.OrientClass;
 
 @OrientClass()
 @JsonIgnoreProperties(ignoreUnknown = true)

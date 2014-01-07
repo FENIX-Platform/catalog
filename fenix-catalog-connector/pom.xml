@@ -68,7 +68,7 @@
            <scope>provided</scope>
        </dependency>
 
-       <!-- Orient database -->
+       <!-- orient database -->
        <dependency>
            <groupId>com.orientechnologies</groupId>
            <artifactId>orientdb-client</artifactId>
