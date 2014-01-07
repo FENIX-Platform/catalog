@@ -1,6 +1,6 @@
 package org.fao.fenix.catalog.connector;
 
-import org.fao.fenix.catalog.connector.dto.Filter;
+import org.fao.fenix.catalog.dto.Filter;
 import org.fao.fenix.catalog.connector.impl.D3S.D3SDatasetConnector;
 
 import javax.enterprise.context.ApplicationScoped;

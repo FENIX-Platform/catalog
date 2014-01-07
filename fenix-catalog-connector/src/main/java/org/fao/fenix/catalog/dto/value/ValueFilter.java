@@ -17,10 +17,12 @@ public abstract class ValueFilter {
 
 
 
-    public ValueFilter getInstance(Object source) {
-        if (source instanceof String)
-            return new TextFilter((String)source);
-        if (source instanceof Map) {
+    public static ValueFilter getInstance(Object source) {
+        ValueFilter filter = null;
+        if (source instanceof String) {
+            filter = new TextFilter((String)source);
+            filter.type = ValueFilterType.text;
+        } if (source instanceof Map) {
             Object from = ((Map)source).get("from");
             if (from!=null && !(from instanceof Number))
                 try {
@@ -38,13 +40,15 @@ public abstract class ValueFilter {
                 }
 
             if (from!=null || to!=null)
-                if ((from==null || from instanceof Date) && (to==null || to instanceof Date))
-                    return new DateValueFilter((Date)from, (Date)to);
-                else if ((from==null || from instanceof Number) && (to==null || to instanceof Number))
-                    return new NumberValueFilter((Number)from, (Number)to);
-
+                if ((from==null || from instanceof Date) && (to==null || to instanceof Date)) {
+                    filter = new DateValueFilter((Date)from, (Date)to);
+                    filter.type = ValueFilterType.date;
+                } else if ((from==null || from instanceof Number) && (to==null || to instanceof Number)) {
+                    filter = new NumberValueFilter((Number)from, (Number)to);
+                    filter.type = ValueFilterType.number;
+                }
         }
-        return null;
+        return filter;
     }
 
 }
