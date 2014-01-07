@@ -1,6 +1,6 @@
-package org.fao.fenix.catalog.connector.dto;
+package org.fao.fenix.catalog.dto;
 
-import org.fao.fenix.catalog.connector.dto.value.ValueFilter;
+import org.fao.fenix.catalog.dto.value.ValueFilter;
 
 import java.util.Collection;
 import java.util.Map;

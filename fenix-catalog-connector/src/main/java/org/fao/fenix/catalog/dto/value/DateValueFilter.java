@@ -1,4 +1,4 @@
-package org.fao.fenix.catalog.connector.dto.value;
+package org.fao.fenix.catalog.dto.value;
 
 import java.util.Date;
 

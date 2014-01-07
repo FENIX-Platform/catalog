@@ -1,7 +1,7 @@
-package org.fao.fenix.catalog.connector.dto.data;
+package org.fao.fenix.catalog.dto.data;
 
-import org.fao.fenix.catalog.connector.dto.data.dsd.ResourceDSD;
-import org.fao.fenix.catalog.connector.dto.data.dsd.TableDSD;
+import org.fao.fenix.catalog.dto.data.dsd.ResourceDSD;
+import org.fao.fenix.catalog.dto.data.dsd.TableDSD;
 
 import java.util.HashMap;
 import java.util.Map;

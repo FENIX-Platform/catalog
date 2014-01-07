@@ -1,4 +1,4 @@
-package org.fao.fenix.catalog.connector.dto.value;
+package org.fao.fenix.catalog.dto.value;
 
 public class NumberValueFilter extends ValueFilter {
 

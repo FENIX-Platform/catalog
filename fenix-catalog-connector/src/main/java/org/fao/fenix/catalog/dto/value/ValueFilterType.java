@@ -1,7 +1,4 @@
-package org.fao.fenix.catalog.connector.dto.value;
+package org.fao.fenix.catalog.dto.value;
 
-/**
- * Created by meco on 03/01/14.
- */
 public enum ValueFilterType {
 }
