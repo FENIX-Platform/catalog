@@ -9,7 +9,7 @@ public class ResourceFilter {
     private String[] types;
     private Map<String,Collection<ValueFilter>> metadata;
     private Map<String,Collection<ValueFilter>> data;
-    private Map<String,Object> business;
+    private RequiredProcess[] business;
 
 
 
@@ -37,11 +37,11 @@ public class ResourceFilter {
         this.data = data;
     }
 
-    public Map<String, Object> getBusiness() {
+    public RequiredProcess[] getBusiness() {
         return business;
     }
 
-    public void setBusiness(Map<String, Object> business) {
+    public void setBusiness(RequiredProcess[] business) {
         this.business = business;
     }
 }

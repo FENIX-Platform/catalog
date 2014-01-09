@@ -6,13 +6,17 @@ import java.util.Map;
 
 public interface Resource {
 
-    public abstract String getName();
-    public abstract String getSourceName();
-    public abstract Map<String,Object> getMetadata();
+    public String getType();
+    public String getName();
+    public String getSource();
 
-    public abstract DataType getDataType();
-    public abstract Object getData();
-    public abstract ResourceDSD getDSD();
-    public abstract Integer getSize();
+    public Index getIndex();
+
+    public Map<String,Object> getMetadata();
+
+    public Object getData();
+    public DataType getDataType();
+    public ResourceDSD getDSD();
+    public Integer getCount();
 
 }
