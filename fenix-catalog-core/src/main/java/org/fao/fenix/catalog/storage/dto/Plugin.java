@@ -13,11 +13,22 @@ import java.util.Set;
 @JsonAutoDetect({JsonMethod.NONE})
 public class Plugin {
 
+    private String name;
     private String className;
     private String component;
     private Set<String> requiredParameters;
     private Set<String> optionalParameters;
 
+
+    @JsonProperty
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @JsonProperty
     public String getClassName() {

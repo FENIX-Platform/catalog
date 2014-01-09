@@ -14,7 +14,6 @@ public class Producer {
 
     @Produces
     public Collection<Connector> retrieveConnectors(Filter filter) {
-        System.out.println("type: " + filter.getResourceType() + " - " + filter);
         return Arrays.asList((Connector)CDI.current().select(D3SDatasetConnector.class).get());
     }
 
