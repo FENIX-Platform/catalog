@@ -31,7 +31,7 @@ public class TableData implements Resource {
     }
 
     @Override
-    public String getType() {
+    public String getResourceType() {
         return resourceType;
     }
 

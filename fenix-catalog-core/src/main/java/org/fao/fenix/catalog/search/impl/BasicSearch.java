@@ -1,10 +1,12 @@
 package org.fao.fenix.catalog.search.impl;
 
 import org.fao.fenix.catalog.connector.Connector;
-import org.fao.fenix.catalog.dto.RequiredPlugin;
+import org.fao.fenix.catalog.dto.*;
+import org.fao.fenix.catalog.processing.Processor;
 import org.fao.fenix.catalog.storage.dao.ConnectorDao;
 
 import javax.enterprise.inject.Instance;
+import javax.enterprise.inject.spi.CDI;
 import javax.inject.Inject;
 import java.util.Collection;
 import java.util.HashMap;
@@ -14,11 +16,30 @@ import java.util.Map;
 public class BasicSearch {
 
     @Inject ConnectorDao connectorDao;
-
     @Inject Instance<Connector> connectorFactory;
-    @Inject Instance<org.fao.fenix.catalog.processing.Process> processorFactory;
     @Inject RequiredPlugin requiredPlugin;
 
+    @Inject Processor resourcesProcessor;
+    @Inject Processor responseProcessor;
+
+
+    //Search flow
+    public Response search (Filter filter) throws Exception {
+        Map<String,Collection<Connector>> connectorsMap = connectorFactory(filter.getFilter().getTypes());
+        resourcesProcessor.init(filter.getFilter().getBusiness());
+        responseProcessor.init(filter.getBusiness());
+
+        Response response = new Response();
+        for (Map.Entry<String,Collection<Connector>> connectorsMapEntry : connectorsMap.entrySet()) {
+            filter.getFilter().setTypes(new String[]{connectorsMapEntry.getKey()});
+            for (Connector connector : connectorsMapEntry.getValue())
+                response.addResources(connector.search(filter).getResources().get(connectorsMapEntry.getKey()));
+        }
+        return response;
+    }
+
+
+    //Utils
     public Map<String,Collection<Connector>> connectorFactory(String[] resourceTypes) throws Exception {
         Map<String,Collection<Connector>> connectorMap = new HashMap<>();
         if (resourceTypes!=null)
@@ -37,18 +58,10 @@ public class BasicSearch {
         return connectorMap;
     }
 
-    public org.fao.fenix.catalog.processing.Process processorFactory(RequiredPlugin requiredPluginInfo) {
-        requiredPlugin.copy(requiredPluginInfo);
-        return processorFactory.get();
+    public void findPluginClass (RequiredPlugin[] requiredPlugins) {
+
     }
 
-    public Collection<org.fao.fenix.catalog.processing.Process> processorFactory(Collection<RequiredPlugin> requiredPlugins) {
-        Collection<org.fao.fenix.catalog.processing.Process> processors = new LinkedList<>();
-        if (requiredPlugins!=null)
-            for (RequiredPlugin requiredPluginInfo : requiredPlugins)
-                processors.add(processorFactory(requiredPluginInfo));
-        return processors;
-    }
 
 
 }

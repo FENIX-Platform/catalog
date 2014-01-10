@@ -11,6 +11,9 @@ public class Producer {
 
     @Produces
     public Process getProcessor(RequiredPlugin requiredPlugin) throws ClassNotFoundException {
-        return CDI.current().select((Class<? extends Process>) Class.forName(requiredPlugin.getClassName())).get();
+        Process process = requiredPlugin==null ? null : CDI.current().select((Class<? extends Process>) Class.forName(requiredPlugin.getClassName())).get();
+        if (process!=null)
+            process.init(requiredPlugin.getProperties());
+        return process;
     }
 }

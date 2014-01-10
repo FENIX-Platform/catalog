@@ -6,7 +6,7 @@ import java.util.Map;
 
 public interface Resource {
 
-    public String getType();
+    public String getResourceType();
     public String getName();
     public String getSource();
 

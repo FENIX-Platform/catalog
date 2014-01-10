@@ -16,7 +16,10 @@ public class Producer {
 
     @Produces
     public Connector retrieveConnectors(RequiredPlugin requiredPlugin) throws ClassNotFoundException {
-        return CDI.current().select((Class<? extends Connector>) Class.forName(requiredPlugin.getClassName())).get();
+        Connector connector = requiredPlugin==null ? null : CDI.current().select((Class<? extends Connector>) Class.forName(requiredPlugin.getClassName())).get();
+        if (connector!=null)
+            connector.init(requiredPlugin.getProperties());
+        return connector;
 //        return (Connector)CDI.current().select(D3SDatasetConnector.class).get();
     }
 

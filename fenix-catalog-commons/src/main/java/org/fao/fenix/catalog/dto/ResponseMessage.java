@@ -2,21 +2,21 @@ package org.fao.fenix.catalog.dto;
 
 public class ResponseMessage {
 
-    private String code;
+    private MessageCode code;
     private String message;
 
     public ResponseMessage() { }
-    public ResponseMessage(String code, String message) {
+    public ResponseMessage(MessageCode code, String message) {
         this.code = code;
         this.message = message;
     }
 
 
-    public String getCode() {
+    public MessageCode getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(MessageCode code) {
         this.code = code;
     }
 
