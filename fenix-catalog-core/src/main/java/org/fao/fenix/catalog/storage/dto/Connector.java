@@ -15,6 +15,7 @@ public class Connector {
     private Source source;
     private Plugin plugin;
 
+
     @JsonProperty
     public ResourceType getResourceType() {
         return resourceType;

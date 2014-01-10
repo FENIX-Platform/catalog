@@ -18,6 +18,7 @@ create index Plugin.key on Plugin (component,name) unique;
 create class Source;
 create property Source.name string;
 alter property Source.name mandatory true;
+create property Source.properties embeddedmap string;
 create index Source.name unique;
 
 create class Connector;

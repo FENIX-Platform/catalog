@@ -2,8 +2,10 @@ package org.fao.fenix.catalog.dto;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+import javax.enterprise.context.RequestScoped;
 import java.util.Map;
 
+@RequestScoped
 public class RequiredPlugin {
 
     private String name;
@@ -27,6 +29,8 @@ public class RequiredPlugin {
         this.properties = properties;
     }
 
+
+    //Utils
     @JsonIgnore
     public String getClassName() {
         return className;
@@ -35,5 +39,11 @@ public class RequiredPlugin {
     @JsonIgnore
     public void setClassName(String className) {
         this.className = className;
+    }
+
+    public void copy(RequiredPlugin source) {
+        this.name = source.name;
+        this.className = source.className;
+        this.properties = source.properties;
     }
 }
