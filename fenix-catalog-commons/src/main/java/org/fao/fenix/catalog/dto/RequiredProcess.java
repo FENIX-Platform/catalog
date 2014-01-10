@@ -1,10 +1,13 @@
 package org.fao.fenix.catalog.dto;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import java.util.Map;
 
 public class RequiredProcess {
 
     private String name;
+    private String className;
     private Map<String,Object> properties;
 
 
@@ -22,5 +25,15 @@ public class RequiredProcess {
 
     public void setProperties(Map<String, Object> properties) {
         this.properties = properties;
+    }
+
+    @JsonIgnore
+    public String getClassName() {
+        return className;
+    }
+
+    @JsonIgnore
+    public void setClassName(String className) {
+        this.className = className;
     }
 }

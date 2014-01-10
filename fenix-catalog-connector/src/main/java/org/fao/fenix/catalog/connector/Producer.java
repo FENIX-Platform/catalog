@@ -13,7 +13,7 @@ import java.util.Collection;
 public class Producer {
 
     @Produces
-    public Collection<Connector> retrieveConnectors(Filter filter) {
+    public Collection<Connector> retrieveConnectors(Plu) {
         return Arrays.asList((Connector)CDI.current().select(D3SDatasetConnector.class).get());
     }
 
