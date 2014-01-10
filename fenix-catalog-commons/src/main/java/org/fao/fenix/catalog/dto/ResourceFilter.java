@@ -1,7 +1,9 @@
 package org.fao.fenix.catalog.dto;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.fao.fenix.catalog.dto.value.ValueFilter;
 
+import javax.annotation.processing.Processor;
 import java.util.Collection;
 import java.util.Map;
 
@@ -9,7 +11,7 @@ public class ResourceFilter {
     private String[] types;
     private Map<String,Collection<ValueFilter>> metadata;
     private Map<String,Collection<ValueFilter>> data;
-    private RequiredProcess[] business;
+    private RequiredPlugin[] business;
 
 
 
@@ -37,11 +39,11 @@ public class ResourceFilter {
         this.data = data;
     }
 
-    public RequiredProcess[] getBusiness() {
+    public RequiredPlugin[] getBusiness() {
         return business;
     }
 
-    public void setBusiness(RequiredProcess[] business) {
+    public void setBusiness(RequiredPlugin[] business) {
         this.business = business;
     }
 }

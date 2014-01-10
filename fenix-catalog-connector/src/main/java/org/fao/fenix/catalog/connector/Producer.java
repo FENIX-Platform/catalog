@@ -2,6 +2,8 @@ package org.fao.fenix.catalog.connector;
 
 import org.fao.fenix.catalog.dto.Filter;
 import org.fao.fenix.catalog.connector.impl.D3S.D3SDatasetConnector;
+import org.fao.fenix.catalog.dto.Require;
+import org.fao.fenix.catalog.dto.RequiredPlugin;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
@@ -13,8 +15,9 @@ import java.util.Collection;
 public class Producer {
 
     @Produces
-    public Collection<Connector> retrieveConnectors(Plu) {
-        return Arrays.asList((Connector)CDI.current().select(D3SDatasetConnector.class).get());
+    public Connector retrieveConnectors(RequiredPlugin requiredPlugin) throws ClassNotFoundException {
+        return CDI.current().select((Class<? extends Connector>) Class.forName(requiredPlugin.getClassName())).get();
+//        return (Connector)CDI.current().select(D3SDatasetConnector.class).get();
     }
 
 }

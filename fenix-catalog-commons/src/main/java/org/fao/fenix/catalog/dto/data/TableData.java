@@ -9,15 +9,20 @@ import java.util.Map;
 public class TableData implements Resource {
 
     private String name;
+    private String resourceType;
     private String sourceName;
     private Map<String, Object> metadata;
     private TableDSD DSD;
     private Integer size;
     private Iterable<Object[]> data;
+    private Index index;
 
-    public TableData(String name, String sourceName, Map<String, Object> metadata, TableDSD DSD, Iterable<Object[]> data, Integer size) {
+    public TableData() { }
+    public TableData(String name, String resourceType, String sourceName, Index index, Map<String, Object> metadata, TableDSD DSD, Iterable<Object[]> data, Integer size) {
         this.name = name;
+        this.resourceType = resourceType;
         this.sourceName = sourceName;
+        this.index = index;
         this.metadata = metadata!=null ? metadata : new HashMap<String,Object>();
         if ((this.data = data)!=null) {
             this.DSD = DSD!=null ? DSD : new TableDSD();
@@ -26,14 +31,25 @@ public class TableData implements Resource {
     }
 
     @Override
+    public String getType() {
+        return resourceType;
+    }
+
+    @Override
     public String getName() {
         return name;
     }
 
     @Override
-    public String getSourceName() {
+    public String getSource() {
         return sourceName;
     }
+
+    @Override
+    public Index getIndex() {
+        return index;
+    }
+
 
     @Override
     public Map<String, Object> getMetadata() {
@@ -57,12 +73,14 @@ public class TableData implements Resource {
     public ResourceDSD getDSD() {
         return DSD;
     }
+
+    @Override
+    public Integer getCount() {
+        return size;
+    }
+
     public void addColumn(String columnName, Map<String,Object> columnMetadata) {
         DSD.put(columnName, columnMetadata);
     }
 
-    @Override
-    public Integer getSize() {
-        return size;
-    }
 }

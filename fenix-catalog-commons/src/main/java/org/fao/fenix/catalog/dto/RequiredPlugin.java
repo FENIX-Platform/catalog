@@ -4,7 +4,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 import java.util.Map;
 
-public class RequiredProcess {
+public class RequiredPlugin {
 
     private String name;
     private String className;

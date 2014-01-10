@@ -1,5 +1,8 @@
 package org.fao.fenix.catalog.dto;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
+import javax.annotation.processing.Processor;
 import java.util.Collection;
 
 public class Filter {
@@ -8,7 +11,7 @@ public class Filter {
     private ResourceFilter filter;
     private int startIndex = 0;
     private int pageSize = 0;
-    private RequiredProcess[] business;
+    private RequiredPlugin[] business;
 
 
     public Require getRequire() {
@@ -43,11 +46,11 @@ public class Filter {
         this.pageSize = pageSize;
     }
 
-    public RequiredProcess[] getBusiness() {
+    public RequiredPlugin[] getBusiness() {
         return business;
     }
 
-    public void setBusiness(RequiredProcess[] business) {
+    public void setBusiness(RequiredPlugin[] business) {
         this.business = business;
     }
 }
