@@ -1,6 +1,6 @@
 package org.fao.fenix.catalog.processing;
 
-import org.fao.fenix.catalog.dto.RequiredPlugin;
+import org.fao.fenix.catalog.search.dto.RequiredPlugin;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;

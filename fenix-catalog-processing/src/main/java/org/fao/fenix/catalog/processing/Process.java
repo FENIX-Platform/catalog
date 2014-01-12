@@ -1,7 +1,7 @@
 package org.fao.fenix.catalog.processing;
 
-import org.fao.fenix.catalog.dto.Response;
-import org.fao.fenix.catalog.dto.data.Resource;
+import org.fao.fenix.catalog.search.dto.Response;
+import org.fao.fenix.catalog.search.dto.data.Resource;
 
 import java.util.Map;
 
