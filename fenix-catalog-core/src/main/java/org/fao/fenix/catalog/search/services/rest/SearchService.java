@@ -16,7 +16,7 @@ public class SearchService {
     @Inject BasicSearch finder;
 
     @POST
-    public Response findResources(@Context HttpServletRequest resuest, Filter filter) {
+    public Response findResources(@Context HttpServletRequest request, Filter filter) {
         try {
             org.fao.fenix.catalog.search.dto.Response result = finder.search(filter);
             return result!=null && result.getCount()>0 ? Response.ok(result).build() : Response.noContent().build();
