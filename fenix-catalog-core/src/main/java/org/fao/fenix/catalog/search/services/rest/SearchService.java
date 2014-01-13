@@ -3,6 +3,8 @@ package org.fao.fenix.catalog.search.services.rest;
 import org.fao.fenix.catalog.search.dto.Filter;
 import org.fao.fenix.catalog.search.impl.BasicSearch;
 
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.spi.CDI;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.POST;
