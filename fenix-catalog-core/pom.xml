@@ -21,7 +21,6 @@
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
-                    <packagingExcludes>**/.svn</packagingExcludes>
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
                     </archive>
