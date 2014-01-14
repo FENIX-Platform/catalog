@@ -106,6 +106,7 @@
        </dependency>
 
 
+
        <!-- Jackson custom configuration support -->
        <dependency>
            <groupId>org.codehaus.jackson</groupId>
