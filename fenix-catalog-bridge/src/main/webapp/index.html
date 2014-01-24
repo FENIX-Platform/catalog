@@ -12,9 +12,11 @@
       
   </head>
   <body>
-  
+
   	<button id='perform-1'>Perform action 1 </button>
     <button id='perform-2'>Perform action 2 </button>
+
+    <div id="catalog-datasets-container"></div>
 
     <!-- Le javascript
     ================================================== -->
@@ -26,26 +28,34 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    
-    <script src="commons.js"></script>
-    <script src="fenix-catalog-bridge-js.js"></script>
-    <script src="fenix-component-with-catalog-plugin-js.js"></script>
-    
+
+    <script src="js/commons.js"></script>
+    <script src="js/fenix-catalog-bridge-js.js"></script>
+    <script src="js/fenix-component-with-catalog-plugin-js.js"></script>
+    <script src="js/fenix-catalog-datasets-js.js"></script>
+
+    <script src="js/fenix-ui-creator-js.js"></script>
+
     <script type="text/javascript">
 
     $(document).ready(function(){
 
       $('#perform-1').on('click', fenix_component_producer.fakeFnOne);
       $('#perform-2').on('click', fenix_component_producer.fakeFnTwo);
-    
+
       //bridge initialization
-      var factory   = new fenix_catalog_bridge_factory();
+      var factory   = new Fenix_catalog_bridge_factory();
       var bridge_id = 'mycustomid';
       var bridge    = factory.createBridge({id : bridge_id})
 
       //Component initialization
-      fenix_component_producer.init()
-      fenix_component_consumer.init()
+      fenix_component_producer.init();
+      fenix_component_consumer.init();
+
+      //Init and Render Catalog Datasets component
+      fenix_catalog_datasets.init({
+          container : "#catalog-datasets-container"
+      });
 
       //Business Logic implementation
       document.body.addEventListener("perform.fakefnone.producer.fenix", function(event){
@@ -53,7 +63,7 @@
       }, false);
 
       document.body.addEventListener("perform.fakefntwo.producer.fenix", function(event){
-        bridge.actionTwoHandler(fenix_component_producer, function( s ){  alert(s); });
+        bridge.actionTwoHandler(fenix_component_producer, function( s ){ alert(s); });
       }, false);
 
     });

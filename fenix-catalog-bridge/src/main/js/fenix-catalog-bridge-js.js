@@ -9,19 +9,19 @@
     var factory   = new fenix_catalog_bridge_factory();
     var myBridge  = factory.create({id : 'mycustomid'})
 */
-function fenix_catalog_bridge_factory(){
+function Fenix_catalog_bridge_factory(){
 
-  console.log('--- NEW Bridge Factory creation')
+  console.log('--- NEW Bridge Factory creation');
 
-  fenix_catalog_bridge_factory.prototype.createBridge = function( options ) {
-    console.log('--- NEW Bridge creation with id: '+ options.id)
-    return new fenix_catalog_bridge( options );
+  Fenix_catalog_bridge_factory.prototype.createBridge = function( options ) {
+    console.log('--- NEW Bridge creation with id: '+ options.id);
+    return new Fenix_catalog_bridge( options );
   
   };
 
-};
+}
 
-function fenix_catalog_bridge( options ) {
+function Fenix_catalog_bridge( options ) {
 
   var o = { };
   //Default Catalog options
@@ -33,31 +33,31 @@ function fenix_catalog_bridge( options ) {
     extend(o, defaultOptions);
     extend(o, options);
     
-  };
+  }
 
   function actionOneHandler(src, target){
     console.log('*** BRIDGE Performing action 1');
 
     var pluginSrc = window.fenix_catalog_bridge_plugins[src.getOption('name')];
-    pluginSrc.init({component : src})
+    pluginSrc.init({component : src});
 
     var pluginTarger = window.fenix_catalog_bridge_plugins[target.getOption('name')];
-    pluginTarger.init({component : target})
+    pluginTarger.init({component : target});
 
     pluginTarger.handler(pluginSrc.getOption("payload"));
   
-  };
+  }
 
   function actionTwoHandler(src, callback){
     console.log('*** BRIDGE Performing action 2');
     
     var plugin = window.fenix_catalog_bridge_plugins[src.getOption('name')];
-    plugin.init({component : src})
+    plugin.init({component : src});
 
-    var str = plugin.getOption('param')
+    var str = plugin.getOption('param');
     callback( str.replace(/\s+/g, '') );
   
-  };
+  }
 
   //Initialize the instance of the Catalog bridge
   init( options );
@@ -67,4 +67,4 @@ function fenix_catalog_bridge( options ) {
     actionTwoHandler : actionTwoHandler
   }
 
-};
+}

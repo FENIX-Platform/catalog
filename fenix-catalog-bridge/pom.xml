@@ -32,7 +32,12 @@
                         <directory>${basedir}/src/main/js</directory>
                         <filtering>true</filtering>
                         <targetPath>js</targetPath>
-                    </resource>                        
+                    </resource>
+                    <resource>
+                        <directory>${basedir}/src/main/resources</directory>
+                        <filtering>true</filtering>
+                        <targetPath></targetPath>
+                    </resource>
                 </webResources>
         </configuration>
       </plugin>
@@ -41,7 +46,6 @@
         <configuration>
           <source>1.6</source>
           <target>1.6</target>
-          <packagingExcludes>**/.svn</packagingExcludes>
         </configuration>
       </plugin>
     </plugins>
