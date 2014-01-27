@@ -6,6 +6,12 @@ public class Index {
     private IndexType type;
     private Map<String,Object> properties;
 
+    public Index() {}
+    public Index(IndexType type, Map<String, Object> properties) {
+        this.type = type;
+        this.properties = properties;
+    }
+
     public IndexType getType() {
         return type;
     }

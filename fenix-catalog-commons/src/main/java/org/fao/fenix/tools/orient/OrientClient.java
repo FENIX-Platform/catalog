@@ -47,21 +47,21 @@ public class OrientClient {
         objectPool = null;
     }
 
-    private static void registerPersistentObjects() {
+    private static boolean registerPersistentObjects() {
         OObjectDatabaseTx connection = null;
         try {
             connection = objectPool.acquire(url, usr, psw);
             OrientClass annotation = null;
-            //for (Class c : ClassUtils.getClasses(OrientClient.class.getClassLoader(), pkg))
             for (Class c : ClassUtils.getClasses(pkg))
                 if ((annotation= (OrientClass) c.getAnnotation(OrientClass.class))!=null)
                     connection.getEntityManager().registerEntityClass(c);
         } catch (Exception e) {
-            e.printStackTrace(); //Ignore
+            return false;
         } finally {
             if (connection!=null)
                 connection.close();
         }
+        return true;
     }
 
     public ODatabaseDocumentTx getConnection() {

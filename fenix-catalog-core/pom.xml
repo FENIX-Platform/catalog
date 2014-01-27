@@ -1,21 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.fao.fenix</groupId>
-  <artifactId>fenix-catalog-core</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
+    <parent>
+        <groupId>org.fao.fenix</groupId>
+        <artifactId>fenix-catalog</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>fenix-catalog-core</artifactId>
+    <packaging>war</packaging>
+    <name>Catalog core</name>
 
-  <name>Catalog core</name>
-  <url>http://fenix.fao.org</url>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <resteasy.version>3.0.6.Final</resteasy.version>
-        <jackson.version>1.9.13</jackson.version>
-    </properties>
-
+    <!-- Packaging preferences -->
     <build>
         <plugins>
             <plugin>
@@ -25,19 +20,6 @@
                         <addMavenDescriptor>false</addMavenDescriptor>
                     </archive>
                     <warName>catalog</warName>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
         </plugins>
@@ -65,62 +47,42 @@
     </profiles>
 
 
-    <distributionManagement>
-        <repository>
-            <id>snapshots</id>
-            <name>fenix</name>
-            <url>http://fenixapps.fao.org/artifactory/fenix-developers</url>
-        </repository>
-    </distributionManagement>
+    <dependencies>
 
-
-   <dependencies>
-
-       <!-- Connector support -->
-       <dependency>
-           <groupId>org.fao.fenix</groupId>
-           <artifactId>fenix-catalog-connector</artifactId>
-           <version>1.0-SNAPSHOT</version>
-       </dependency>
-
-       <!-- Business processes and filters support -->
-       <dependency>
-           <groupId>org.fao.fenix</groupId>
-           <artifactId>fenix-catalog-processing</artifactId>
-           <version>1.0-SNAPSHOT</version>
-       </dependency>
-
-       <!-- Cross domain support -->
-       <dependency>
-           <groupId>org.fao.ess.widget</groupId>
-           <artifactId>widgetJSONP</artifactId>
-           <version>1.0</version>
-       </dependency>
-
-       <!-- J2EE -->
-       <dependency>
-           <groupId>org.jboss.spec</groupId>
-           <artifactId>jboss-javaee-all-6.0</artifactId>
-           <version>3.0.2.Final</version>
-           <scope>provided</scope>
-       </dependency>
-
-
-
-       <!-- Jackson custom configuration support -->
-       <dependency>
-           <groupId>org.codehaus.jackson</groupId>
-           <artifactId>jackson-mapper-asl</artifactId>
-           <version>${jackson.version}</version>
-       </dependency>
-
-       <!-- Test -->
+        <!-- Common components -->
         <dependency>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
-          <version>4.11</version>
-          <scope>test</scope>
+            <groupId>org.fao.fenix</groupId>
+            <artifactId>fenix-catalog-commons</artifactId>
+            <version>${version}</version>
         </dependency>
 
-  </dependencies>
+        <!-- Connector support -->
+        <dependency>
+            <groupId>org.fao.fenix</groupId>
+            <artifactId>fenix-catalog-connector</artifactId>
+            <version>${version}</version>
+        </dependency>
+
+        <!-- Business processes and filters support -->
+        <dependency>
+            <groupId>org.fao.fenix</groupId>
+            <artifactId>fenix-catalog-processing</artifactId>
+            <version>${version}</version>
+        </dependency>
+
+        <!-- Cross domain support -->
+        <dependency>
+            <groupId>org.fao.ess.widget</groupId>
+            <artifactId>widgetJSONP</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <!-- Jackson custom configuration support -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+    </dependencies>
 </project>
