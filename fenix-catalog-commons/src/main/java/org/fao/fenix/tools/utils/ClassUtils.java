@@ -1,5 +1,6 @@
 package org.fao.fenix.tools.utils;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,15 +11,16 @@ import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
+@ApplicationScoped
 public class ClassUtils {
 
 
-    public static Set<Class<?>> getClasses(String packageName) throws Exception {
+    public Set<Class<?>> getClasses(String packageName) throws Exception {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         return getClasses(loader, packageName);
     }
 
-    public static Set<Class<?>> getClasses(ClassLoader loader, String packageName) throws IOException, ClassNotFoundException {
+    public Set<Class<?>> getClasses(ClassLoader loader, String packageName) throws IOException, ClassNotFoundException {
         Set<Class<?>> classes = new HashSet<Class<?>>();
         String path = packageName.replace('.', '/');
         Enumeration<URL> resources = loader.getResources(path);
@@ -45,7 +47,7 @@ public class ClassUtils {
         return classes;
     }
 
-    private static Set<Class<?>> getFromDirectory(File directory, String packageName) throws ClassNotFoundException {
+    private Set<Class<?>> getFromDirectory(File directory, String packageName) throws ClassNotFoundException {
         Set<Class<?>> classes = new HashSet<Class<?>>();
         if (directory.exists()) {
             for (String file : directory.list()) {
@@ -59,7 +61,7 @@ public class ClassUtils {
         return classes;
     }
 
-    private static Set<Class<?>> getFromJARFile(String jar, String packageName) throws IOException, ClassNotFoundException {
+    private Set<Class<?>> getFromJARFile(String jar, String packageName) throws IOException, ClassNotFoundException {
         Set<Class<?>> classes = new HashSet<Class<?>>();
         JarInputStream jarFile = new JarInputStream(new FileInputStream(jar));
         JarEntry jarEntry;
@@ -77,7 +79,7 @@ public class ClassUtils {
         return classes;
     }
 
-    private static String stripFilenameExtension(String className) {
+    private String stripFilenameExtension(String className) {
         return className.substring(0,className.lastIndexOf('.'));
     }
 
