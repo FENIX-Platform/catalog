@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FENIX Catalog Bridge</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=">FENIX Catalog Bridge component">
+    <meta name="author" content="Daniele Salvatore <daniele.salvatore[at]fao.org>">
+    
+    <!-- Bootstrap
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    -->
+
+    <!-- jQWidgets -->
+    <link rel="stylesheet" href='http://fenixapps.fao.org/repository/js/jqwidgets/3.1/styles/jqx.base.css'/>
+      
+  </head>
+  <body>
+
+  <button id="val"> getValues() </button>
+
+    <div id="container"></div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>   -->
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Jqwidgets -->
+    <script type='text/javascript' src='http://fenixapps.fao.org/repository/js/jqwidgets/3.1/jqx-all.js'></script>
+    <script src="js/commons.js"></script>
+    <script src="js/fenix-ui-creator-js.js"></script>
+    <script type="text/javascript">
+
+    var creator;
+
+    $(document).ready(function(){
+
+      var elemSource = 'json/elemSource.json';
+      creator = fenix_ui_creator();
+
+      var   validators = {};
+            validators["listExample"] = { "dummy test" : function( m ){ return m !== "Pinolo";  }}
+
+      $.getJSON(elemSource, function( data ) {
+
+          creator.render({
+              container : "#container",
+              elements  : JSON.stringify(data),
+              validators: validators
+          });
+
+      });
+
+      $("#val").on("click", function(){
+         console.log( creator.getValues() )
+      })
+
+    });
+
+    </script>
+  </body>
+</html>

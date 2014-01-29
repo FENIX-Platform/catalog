@@ -1,0 +1,34 @@
+{"fields" : [
+    {  "id"         : "ds_geographicalarea" ,
+       "component"  : { "type"  : "flatlist",
+                        "url"   : "http://hqlprfenixapp2.hq.un.fao.org:7777/msd/cl/system/GAUL/1.0"
+                        },
+       "labels"     : { "EN" : "Geographical Area",
+                        "ES" : "área geográfica",
+                        "FR" : "Zone Géographique"},
+       "matching"   : {}
+    },
+    {   "id"        : "ds_title" ,
+        "component" : {
+            "type"      : "text",
+            "placeholders" :
+                { "EN" : "Title",
+                "ES" : "Title ES",
+                "FR" : "Title FR"}
+        },
+        "label"     :  { "EN" : "Title",
+                        "ES" : "Title ES",
+                        "FR" : "Title FR" }
+    },
+    { "id" : "ds_element" ,
+        "component" :  {
+            "type"  : "flatlist",
+            "url"   : "http://hqlprfenixapp2.hq.un.fao.org:7777/msd/cl/system/CS_Indicator/1.0"
+        },
+        "label"     :
+            {   "EN" : "Title EN",
+                "ES" : "Title ES",
+                "FR" : "Title FR" }
+    }
+    ]
+}
