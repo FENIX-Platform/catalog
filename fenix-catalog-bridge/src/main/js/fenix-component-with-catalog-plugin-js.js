@@ -1,5 +1,7 @@
+(function(){
+
 /* PRODUCER */
-var fenix_component_producer = (function() {
+window.fenix_component_producer = function(){
 
   var o = { },
       //Default Catalog options Options
@@ -43,7 +45,7 @@ var fenix_component_producer = (function() {
                fakeFnTwo          : fakeFnTwo
               }
 
-})();
+};
 
 //FENIX Catalog Producer Plugin registration
 if(!window.fenix_catalog_bridge_plugins) window.fenix_catalog_bridge_plugins = {};
@@ -77,7 +79,7 @@ window.fenix_catalog_bridge_plugins['fenix_component_producer'] =  (function() {
 
 
 /* CONSUMER */
-var fenix_component_consumer = (function() {
+window.fenix_component_consumer = function() {
 
   var o = { },
       //Default Catalog options Options
@@ -103,7 +105,7 @@ var fenix_component_consumer = (function() {
            handler            : handler
           }
 
-})();
+};
 
 //FENIX Catalog Consumer Plugin Registration
 if(!window.fenix_catalog_bridge_plugins) window.fenix_catalog_bridge_plugins = {};
@@ -134,5 +136,7 @@ window.fenix_catalog_bridge_plugins['fenix_component_consumer'] = (function() {
             init      : init,
             handler   : handler
           };
+
+})();
 
 })();

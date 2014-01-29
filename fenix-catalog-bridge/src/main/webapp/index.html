@@ -40,30 +40,34 @@
 
     $(document).ready(function(){
 
-      $('#perform-1').on('click', fenix_component_producer.fakeFnOne);
-      $('#perform-2').on('click', fenix_component_producer.fakeFnTwo);
+      var producer = fenix_component_producer(),
+          consumer = fenix_component_consumer();
+
+      $('#perform-1').on('click', producer.fakeFnOne);
+      $('#perform-2').on('click', producer.fakeFnTwo);
 
       //bridge initialization
       var factory   = new Fenix_catalog_bridge_factory();
       var bridge_id = 'mycustomid';
       var bridge    = factory.createBridge({id : bridge_id})
 
-      //Component initialization
-      fenix_component_producer.init();
-      fenix_component_consumer.init();
+      //Components initialization
+      producer.init();
+      consumer.init();
 
       //Init and Render Catalog Datasets component
-      fenix_catalog_datasets.init({
+      var dataset_creator =  fenix_catalog_datasets();
+      dataset_creator.init({
           container : "#catalog-datasets-container"
       });
 
       //Business Logic implementation
       document.body.addEventListener("perform.fakefnone.producer.fenix", function(event){
-        bridge.actionOneHandler(fenix_component_producer, fenix_component_consumer)
+        bridge.actionOneHandler(producer, consumer)
       }, false);
 
       document.body.addEventListener("perform.fakefntwo.producer.fenix", function(event){
-        bridge.actionTwoHandler(fenix_component_producer, function( s ){ alert(s); });
+        bridge.actionTwoHandler(producer, function( s ){ alert(s); });
       }, false);
 
     });

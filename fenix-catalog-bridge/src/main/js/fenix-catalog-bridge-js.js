@@ -9,7 +9,9 @@
     var factory   = new fenix_catalog_bridge_factory();
     var myBridge  = factory.create({id : 'mycustomid'})
 */
-function Fenix_catalog_bridge_factory(){
+(function(){
+
+window.Fenix_catalog_bridge_factory = function(){
 
   console.log('--- NEW Bridge Factory creation');
 
@@ -21,7 +23,7 @@ function Fenix_catalog_bridge_factory(){
 
 }
 
-function Fenix_catalog_bridge( options ) {
+window.Fenix_catalog_bridge = function( options ) {
 
   var o = { };
   //Default Catalog options
@@ -68,3 +70,5 @@ function Fenix_catalog_bridge( options ) {
   }
 
 }
+
+})();
