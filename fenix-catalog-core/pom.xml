@@ -72,8 +72,8 @@
 
         <!-- Cross domain support -->
         <dependency>
-            <groupId>org.fao.ess.widget</groupId>
-            <artifactId>widgetJSONP</artifactId>
+            <groupId>org.fao.fenix</groupId>
+            <artifactId>fenix-cross-domain</artifactId>
             <version>1.0</version>
         </dependency>
 

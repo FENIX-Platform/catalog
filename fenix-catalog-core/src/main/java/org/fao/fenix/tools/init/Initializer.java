@@ -21,8 +21,8 @@ public class Initializer implements ServletContextListener, WebContext {
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         context = servletContextEvent.getServletContext();
-        for (String key : Collections.list(context.getInitParameterNames()))
-            initParameters.setProperty(key,context.getInitParameter(key));
+        for (Object key : Collections.list(context.getInitParameterNames()))
+            initParameters.setProperty((String)key, context.getInitParameter((String)key));
     }
 
     @Override

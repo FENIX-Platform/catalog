@@ -11,6 +11,13 @@
 
     <dependencies>
 
+        <!-- D3S client
+        <dependency>
+            <groupId>org.fao.ess</groupId>
+            <artifactId>fenix-D3S-services</artifactId>
+            <version>1.0</version>
+        </dependency> -->
+
         <!-- Rest easy -->
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
@@ -23,6 +30,11 @@
             <artifactId>resteasy-jackson-provider</artifactId>
             <version>${resteasy.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>${resteasy.version}</version>
         </dependency>
 
         <!-- Orient database -->
