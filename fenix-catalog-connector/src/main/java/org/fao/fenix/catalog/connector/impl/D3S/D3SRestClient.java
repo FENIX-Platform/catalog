@@ -16,12 +16,7 @@ public class D3SRestClient extends RestClient {
 
 
     public CodeSystem getCodeList(String baseURL, String system, String version) throws Exception {
-        Response response = getProxy(baseURL+'/'+system+'/'+version,LoadCodeList.class).getCodeList(null,system,version,true);
-        switch (response.getStatus()) {
-            case 200: return response.hasEntity() ? response.readEntity(CodeSystem.class) : null;
-            case 204: return null;
-            default: throw new Exception("HTTP connection error "+response.getStatus()+": "+(response.hasEntity() ? response.readEntity(String.class) : null));
-        }
+        return null;
     }
 
 }

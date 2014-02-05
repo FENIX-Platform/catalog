@@ -14,7 +14,7 @@
         <!-- D3S interface -->
         <dependency>
             <groupId>org.fao.fenix</groupId>
-            <artifactId>fenix-D3S-services</artifactId>
+            <artifactId>fenix-D3S-client</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

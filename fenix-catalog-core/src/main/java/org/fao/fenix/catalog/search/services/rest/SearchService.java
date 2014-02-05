@@ -8,6 +8,7 @@ import org.fao.fenix.catalog.search.dto.data.TableData;
 import org.fao.fenix.catalog.search.dto.data.dsd.TableDSD;
 import org.fao.fenix.catalog.search.impl.BasicSearch;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;

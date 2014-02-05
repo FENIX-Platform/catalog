@@ -2,8 +2,10 @@ package org.fao.fenix.catalog.search.dto;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+import javax.enterprise.context.RequestScoped;
 import java.util.Map;
 
+@RequestScoped
 public class RequiredPlugin {
 
     private String name;

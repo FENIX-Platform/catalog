@@ -7,6 +7,7 @@ import org.fao.fenix.catalog.search.dto.Response;
 import org.fao.fenix.catalog.search.dto.data.Resource;
 import org.fao.fenix.catalog.processing.Processor;
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import java.util.Collection;
 import java.util.Map;
@@ -26,7 +27,7 @@ public class BasicSearch {
         responseProcessor.init(filter.getBusiness());
 
         Response response = new Response();
-        for (Map.Entry<String, Collection<Connector>> connectorsMapEntry : connectors.entrySet()) {
+        for (Map.Entry<String, Collection<Connector>> connectorsMapEntry : connectors.getConnectorMap().entrySet()) {
             filter.getFilter().setTypes(new String[]{connectorsMapEntry.getKey()});
             for (Connector connector : connectorsMapEntry.getValue())
                 for (Resource resource : connector.search(filter))
