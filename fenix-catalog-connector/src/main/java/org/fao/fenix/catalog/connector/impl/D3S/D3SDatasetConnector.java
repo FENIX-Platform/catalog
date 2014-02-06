@@ -24,13 +24,14 @@ public class D3SDatasetConnector extends D3SClient implements Connector {
 
     @Override
     public void init(Map<String,Object> properties) {
-        initRest((String) properties.get("url"));
+        initRest("http://localhost:8081/msd/cl");
+        //initRest((String) properties.get("url"));
     }
 
     @Override
     public Collection<Resource> search(Filter filter) {
         try {
-            CodeSystem cl = getProxy(LoadCodeList.class).getCodeList(httpRequest, "FAO_Languages", "1.0", false);
+            CodeSystem cl = getProxy(LoadCodeList.class).getCodeList("FAO_Languages", "1.0", false);
             System.out.println("Letta la codifica: " + cl.getSystem());
         } catch (Exception e) {
             e.printStackTrace();
