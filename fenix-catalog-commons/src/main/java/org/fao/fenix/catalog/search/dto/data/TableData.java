@@ -11,14 +11,14 @@ public class TableData implements Resource {
     private String name;
     private String resourceType;
     private String sourceName;
-    private Map<String, Object> metadata;
+    private Object metadata;
     private TableDSD DSD;
     private Integer size;
     private Iterable<Object[]> data;
     private Index index;
 
     public TableData() { }
-    public TableData(String name, String resourceType, String sourceName, Index index, Map<String, Object> metadata, TableDSD DSD, Iterable<Object[]> data, Integer size) {
+    public TableData(String name, String resourceType, String sourceName, Index index, Object metadata, TableDSD DSD, Iterable<Object[]> data, Integer size) {
         this.name = name;
         this.resourceType = resourceType;
         this.sourceName = sourceName;
@@ -52,11 +52,8 @@ public class TableData implements Resource {
 
 
     @Override
-    public Map<String, Object> getMetadata() {
+    public Object getMetadata() {
         return metadata;
-    }
-    public void addMetadata(String fieldName, Object fieldValue) {
-        metadata.put(fieldName, fieldValue);
     }
 
     @Override

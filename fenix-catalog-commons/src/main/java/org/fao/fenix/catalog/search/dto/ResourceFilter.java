@@ -1,14 +1,16 @@
 package org.fao.fenix.catalog.search.dto;
 
 import org.fao.fenix.catalog.search.dto.value.ValueFilter;
+import org.fao.fenix.search.dto.valueFilters.ColumnValueFilter;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ResourceFilter {
     private String[] types;
-    private Map<String,Collection<ValueFilter>> metadata;
-    private Map<String,Collection<ValueFilter>> data;
+    private LinkedHashMap<String, Collection<ColumnValueFilter>> metadata;
+    private LinkedHashMap<String, Collection<ColumnValueFilter>> data;
     private RequiredPlugin[] business;
 
 
@@ -21,19 +23,19 @@ public class ResourceFilter {
         this.types = types;
     }
 
-    public Map<String, Collection<ValueFilter>> getMetadata() {
+    public LinkedHashMap<String, Collection<ColumnValueFilter>> getMetadata() {
         return metadata;
     }
 
-    public void setMetadata(Map<String, Collection<ValueFilter>> metadata) {
+    public void setMetadata(LinkedHashMap<String, Collection<ColumnValueFilter>> metadata) {
         this.metadata = metadata;
     }
 
-    public Map<String, Collection<ValueFilter>> getData() {
+    public LinkedHashMap<String, Collection<ColumnValueFilter>> getData() {
         return data;
     }
 
-    public void setData(Map<String, Collection<ValueFilter>> data) {
+    public void setData(LinkedHashMap<String, Collection<ColumnValueFilter>> data) {
         this.data = data;
     }
 

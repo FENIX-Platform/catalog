@@ -29,10 +29,13 @@ public class BasicSearch {
         Response response = new Response();
         for (Map.Entry<String, Collection<Connector>> connectorsMapEntry : connectors.getConnectorMap().entrySet()) {
             filter.getFilter().setTypes(new String[]{connectorsMapEntry.getKey()});
-            for (Connector connector : connectorsMapEntry.getValue())
-                for (Resource resource : connector.search(filter))
-                    if ( (resource = resourcesProcessor!=null?resourcesProcessor.process(resource):resource) != null)
-                        response.addResource(resource);
+            for (Connector connector : connectorsMapEntry.getValue()) {
+                Collection<Resource> resources = connector.search(filter);
+                if (resources != null)
+                    for (Resource resource : resources)
+                        if ( (resource = resourcesProcessor!=null?resourcesProcessor.process(resource):resource) != null)
+                            response.addResource(resource);
+            }
         }
         return responseProcessor!=null ? responseProcessor.process(response) : response;
     }

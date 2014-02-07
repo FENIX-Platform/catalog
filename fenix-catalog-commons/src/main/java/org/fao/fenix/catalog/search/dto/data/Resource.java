@@ -12,7 +12,7 @@ public interface Resource {
 
     public Index getIndex();
 
-    public Map<String,Object> getMetadata();
+    public Object getMetadata();
 
     public Object getData();
     public DataType getDataType();

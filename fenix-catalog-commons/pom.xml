@@ -11,12 +11,12 @@
 
     <dependencies>
 
-        <!-- D3S client
+        <!-- D3S interface -->
         <dependency>
-            <groupId>org.fao.ess</groupId>
+            <groupId>org.fao.fenix</groupId>
             <artifactId>fenix-D3S-services</artifactId>
-            <version>1.0</version>
-        </dependency> -->
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <!-- Rest easy -->
         <dependency>

@@ -53,21 +53,21 @@
         <dependency>
             <groupId>org.fao.fenix</groupId>
             <artifactId>fenix-catalog-commons</artifactId>
-            <version>${version}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- Connector support -->
         <dependency>
             <groupId>org.fao.fenix</groupId>
             <artifactId>fenix-catalog-connector</artifactId>
-            <version>${version}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- Business processes and filters support -->
         <dependency>
             <groupId>org.fao.fenix</groupId>
             <artifactId>fenix-catalog-processing</artifactId>
-            <version>${version}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- Cross domain support -->

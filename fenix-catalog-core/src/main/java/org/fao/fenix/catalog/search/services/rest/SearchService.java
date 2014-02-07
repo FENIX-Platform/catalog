@@ -3,12 +3,10 @@ package org.fao.fenix.catalog.search.services.rest;
 import org.fao.fenix.catalog.search.dto.Filter;
 import org.fao.fenix.catalog.search.dto.data.Index;
 import org.fao.fenix.catalog.search.dto.data.IndexType;
-import org.fao.fenix.catalog.search.dto.data.Resource;
 import org.fao.fenix.catalog.search.dto.data.TableData;
 import org.fao.fenix.catalog.search.dto.data.dsd.TableDSD;
 import org.fao.fenix.catalog.search.impl.BasicSearch;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
