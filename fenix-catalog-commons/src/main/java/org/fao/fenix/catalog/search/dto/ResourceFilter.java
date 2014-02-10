@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class ResourceFilter {
     private String[] types;
-    private LinkedHashMap<String, Collection<ColumnValueFilter>> metadata;
-    private LinkedHashMap<String, Collection<ColumnValueFilter>> data;
+    private LinkedHashMap<String, Collection<ColumnValueFilter>> metadata = new LinkedHashMap<>();
+    private LinkedHashMap<String, Collection<ColumnValueFilter>> data = new LinkedHashMap<>();
     private RequiredPlugin[] business;
 
 
