@@ -9,6 +9,6 @@ import java.util.Map;
 public interface Connector {
 
     public void init(Map<String,Object> properties);
-    public Collection<Resource> search(Filter filter);
+    public Collection<Resource> search(Filter filter) throws Exception;
 
 }

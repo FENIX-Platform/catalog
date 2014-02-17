@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class ResourceFilter {
     private String[] types;
+    private QueryString queryString;
     private LinkedHashMap<String, Collection<ColumnValueFilter>> metadata = new LinkedHashMap<>();
     private LinkedHashMap<String, Collection<ColumnValueFilter>> data = new LinkedHashMap<>();
     private RequiredPlugin[] business;
@@ -46,4 +47,8 @@ public class ResourceFilter {
     public void setBusiness(RequiredPlugin[] business) {
         this.business = business;
     }
+
+    public QueryString getQueryString() { return queryString; }
+
+    public void setQueryString(QueryString queryString) { this.queryString = queryString; }
 }

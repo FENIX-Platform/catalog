@@ -18,26 +18,23 @@ public class Connectors {
     @Inject RequiredPlugin requiredPlugin;
     @Inject Instance<Connector> connectorFactory;
 
-    private Map<String,Collection<Connector>> connectorMap = new HashMap<String,Collection<Connector>>();
+    private Collection<Connector> connectors;
 
     public void init(String[] resourceTypes) throws Exception {
-        if (resourceTypes!=null)
-            for (String resourceType : resourceTypes) {
-                Collection<Connector> connectors = new LinkedList<>();
-                for (org.fao.fenix.catalog.storage.dto.Connector connectorInfo : connectorDao.connectorsByResourceType(resourceType)) {
-                    Map<String,Object> properties = new HashMap<>();
-                    properties.putAll(connectorInfo.getSource().getConnectionProperties());
-                    properties.put("sourceName",connectorInfo.getSource().getName());
-                    //RequiredPlugin requiredPlugin = requiredPluginFactory.get();
-                    requiredPlugin.setClassName(connectorInfo.getPlugin().getClassName());
-                    requiredPlugin.setProperties(properties);
-                    connectors.add(connectorFactory.get());
-                }
-                connectorMap.put(resourceType,connectors);
+        if (resourceTypes!=null) {
+            connectors = new LinkedList<>();
+            for (org.fao.fenix.catalog.storage.dto.Connector connectorInfo : connectorDao.connectorsByResourceType(resourceTypes)) {
+                Map<String,Object> properties = new HashMap<>();
+                properties.putAll(connectorInfo.getSource().getConnectionProperties());
+                properties.put("sourceName",connectorInfo.getSource().getName());
+                requiredPlugin.setClassName(connectorInfo.getPlugin().getClassName());
+                requiredPlugin.setProperties(properties);
+                connectors.add(connectorFactory.get());
             }
+        }
     }
 
-    public Map<String,Collection<Connector>> getConnectorMap() {
-        return connectorMap;
+    public Collection<Connector> getConnectors() {
+        return connectors;
     }
 }

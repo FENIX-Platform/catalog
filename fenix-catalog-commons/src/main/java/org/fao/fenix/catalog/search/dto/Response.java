@@ -10,13 +10,13 @@ import java.util.Map;
 public class Response {
 
     private int count = 0;
-    private Map<String,Collection<Resource>> resources;
+    private Collection<Resource> resources;
 
-    public Map<String,Collection<Resource>> getResources() {
+    public Collection<Resource> getResources() {
         return resources;
     }
 
-    public void setResources(Map<String,Collection<Resource>> resources) {
+    public void setResources(Collection<Resource> resources) {
         this.resources = resources;
     }
 
@@ -35,19 +35,18 @@ public class Response {
             return;
 
         if (resources==null)
-            resources = new HashMap<>();
-
-        Collection<Resource> resourcesByType = resources.get(resource.getResourceType());
-        if (resourcesByType==null)
-            resources.put(resource.getResourceType(),resourcesByType=new LinkedList<>());
-        resourcesByType.add(resource);
-
+            resources = new LinkedList<>();
+        resources.add(resource);
         count++;
     }
 
     public void addResources(Collection<Resource> resources) {
-        if (resources!=null)
-            for (Resource resource : resources)
-                addResource(resource);
+        if (resources==null)
+            return;
+
+        if (this.resources==null)
+            this.resources = new LinkedList<>();
+        this.resources.addAll(resources);
+        count+=resources.size();
     }
 }

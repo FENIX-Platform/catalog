@@ -29,7 +29,6 @@ public class RequiredPlugin {
         this.properties = properties;
     }
 
-
     //Utils
     @JsonIgnore
     public String getClassName() {

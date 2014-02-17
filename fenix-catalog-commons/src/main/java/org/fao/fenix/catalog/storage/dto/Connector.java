@@ -6,23 +6,25 @@ import org.codehaus.jackson.annotate.JsonMethod;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.fao.fenix.tools.orient.OrientClass;
 
+import java.util.Collection;
+
 @OrientClass
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect({JsonMethod.NONE})
 public class Connector {
 
-    private ResourceType resourceType;
+    private Collection<ResourceType> resourceType;
     private Source source;
     private Plugin plugin;
 
 
     @JsonProperty
-    public ResourceType getResourceType() {
+    public Collection<ResourceType> getResourceType() {
         return resourceType;
     }
 
     @JsonProperty
-    public void setResourceType(ResourceType resourceType) {
+    public void setResourceType(Collection<ResourceType> resourceType) {
         this.resourceType = resourceType;
     }
 

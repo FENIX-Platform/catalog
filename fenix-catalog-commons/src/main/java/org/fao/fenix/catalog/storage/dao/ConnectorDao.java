@@ -12,13 +12,13 @@ import java.util.LinkedList;
 
 @ApplicationScoped
 public class ConnectorDao extends OrientDao {
-    private static OQuery<ODocument> queryConnectorsDocByResourceType = createSelect("select from Connector where plugin.component = 'fenix-catalog-connector-1.0' and resourceType.type = ?",ODocument.class);
-    private static OQuery<Connector> queryConnectorsByResourceType = createSelect("select from Connector where plugin.component = 'fenix-catalog-connector-1.0' and resourceType.type = ?", Connector.class);
+    private static OQuery<ODocument> queryConnectorsDocByResourceType = createSelect("select from Connector where plugin.component = 'fenix-catalog-connector-1.0' and resourceType.type in ?",ODocument.class);
+    private static OQuery<Connector> queryConnectorsByResourceType = createSelect("select from Connector where plugin.component = 'fenix-catalog-connector-1.0' and resourceType.type in ?", Connector.class);
 
-    public Collection<ODocument> connectorsDocByResourceType(String resourceType) throws Exception {
+    public Collection<ODocument> connectorsDocByResourceType(String ... resourceType) throws Exception {
         return select(queryConnectorsDocByResourceType, resourceType);
     }
-    public Collection<Connector> connectorsByResourceType(String resourceType) throws Exception {
+    public Collection<Connector> connectorsByResourceType(String ... resourceType) throws Exception {
         return selectObject(queryConnectorsByResourceType, resourceType);
     }
 
