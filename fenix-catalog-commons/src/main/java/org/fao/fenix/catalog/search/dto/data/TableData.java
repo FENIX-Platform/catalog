@@ -6,54 +6,17 @@ import org.fao.fenix.catalog.search.dto.data.dsd.TableDSD;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TableData implements Resource {
+public class TableData extends StandardData {
 
-    private String name;
-    private String resourceType;
-    private String sourceName;
-    private Object metadata;
     private TableDSD DSD;
-    private Integer size;
     private Iterable<Object[]> data;
-    private Index index;
 
     public TableData() { }
     public TableData(String name, String resourceType, String sourceName, Index index, Object metadata, TableDSD DSD, Iterable<Object[]> data, Integer size) {
-        this.name = name;
-        this.resourceType = resourceType;
-        this.sourceName = sourceName;
-        this.index = index;
-        this.metadata = metadata!=null ? metadata : new HashMap<String,Object>();
-        if ((this.data = data)!=null) {
+        super(name,resourceType,sourceName,index,metadata, size);
+
+        if ((this.data = data)!=null)
             this.DSD = DSD!=null ? DSD : new TableDSD();
-            this.size = size;
-        }
-    }
-
-    @Override
-    public String getResourceType() {
-        return resourceType;
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getSource() {
-        return sourceName;
-    }
-
-    @Override
-    public Index getIndex() {
-        return index;
-    }
-
-
-    @Override
-    public Object getMetadata() {
-        return metadata;
     }
 
     @Override
@@ -71,11 +34,7 @@ public class TableData implements Resource {
         return DSD;
     }
 
-    @Override
-    public Integer getCount() {
-        return size;
-    }
-
+    //Utils
     public void addColumn(String columnName, Map<String,Object> columnMetadata) {
         DSD.put(columnName, columnMetadata);
     }
