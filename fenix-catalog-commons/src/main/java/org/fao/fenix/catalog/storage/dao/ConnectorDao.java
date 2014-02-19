@@ -6,20 +6,22 @@ import org.fao.fenix.catalog.storage.dto.Connector;
 import org.fao.fenix.tools.orient.OrientDao;
 
 import javax.enterprise.context.ApplicationScoped;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 @ApplicationScoped
 public class ConnectorDao extends OrientDao {
-    private static OQuery<ODocument> queryConnectorsDocByResourceType = createSelect("select from Connector where plugin.component = 'fenix-catalog-connector-1.0' and resourceType.type in ?",ODocument.class);
-    private static OQuery<Connector> queryConnectorsByResourceType = createSelect("select from Connector where plugin.component = 'fenix-catalog-connector-1.0' and resourceType.type in ?", Connector.class);
+    private static OQuery<ODocument> queryResourceTypeDocByType = createSelect("select from ResourceType where type in ?",ODocument.class);
+    private static OQuery<ODocument> queryConnectorsDocByResourceType = createSelect("select from Connector where plugin.component = 'fenix-catalog-connector-1.0' and resourceType in ?",ODocument.class);
+    private static OQuery<Connector> queryConnectorsByResourceType = createSelect("select from Connector where plugin.component = 'fenix-catalog-connector-1.0' and resourceType in ?", Connector.class);
 
     public Collection<ODocument> connectorsDocByResourceType(String ... resourceType) throws Exception {
-        return select(queryConnectorsDocByResourceType, resourceType);
+        return select(queryConnectorsDocByResourceType, select(queryResourceTypeDocByType,  Arrays.asList(resourceType)) );
     }
     public Collection<Connector> connectorsByResourceType(String ... resourceType) throws Exception {
-        return selectObject(queryConnectorsByResourceType, resourceType);
+        return selectObject(queryConnectorsByResourceType, select(queryResourceTypeDocByType, Arrays.asList(resourceType)) );
     }
 
     public Iterator<ODocument> connectorsDoc() throws Exception {

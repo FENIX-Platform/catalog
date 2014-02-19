@@ -12,11 +12,11 @@ import java.util.Map;
 public class CodeListData extends StandardData {
 
     private CodeListDSD DSD;
-    private Collection<Code> data;
+    private Object data;
 
     public CodeListData() { }
-    public CodeListData(String name, String resourceType, String sourceName, Index index, CodeSystem metadata, CodeListDSD DSD, Collection<Code> data) {
-        super(name,resourceType,sourceName,index,metadata,countCodes(data));
+    public CodeListData(String name, String resourceType, String sourceName, Index index, Object metadata, CodeListDSD DSD, Object data, Integer size) {
+        super(name,resourceType,sourceName,index,metadata,size);
 
         if ((this.data = data)!=null)
             this.DSD = DSD!=null ? DSD : new CodeListDSD();
@@ -39,16 +39,6 @@ public class CodeListData extends StandardData {
 
 
 
-    //Utils
-    private static int countCodes(Collection<Code> codes) {
-        int count = 0;
-        if (codes!=null) {
-            count+=codes.size();
-            for (Code code : codes)
-                count+=countCodes(code.getChilds());
-        }
-        return count;
-    }
 
 
 }

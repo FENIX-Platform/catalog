@@ -3,6 +3,7 @@ package org.fao.fenix.catalog.search.dto.data;
 import org.fao.fenix.catalog.search.dto.data.dsd.LayerDSD;
 import org.fao.fenix.catalog.search.dto.data.dsd.ResourceDSD;
 import org.fao.fenix.msd.dto.dm.DM;
+import org.fao.fenix.msd.dto.dm.type.DMLayerType;
 
 public class LayerData extends StandardData {
 
@@ -11,17 +12,17 @@ public class LayerData extends StandardData {
     DataType dataType;
 
     public LayerData() { }
-    public LayerData(String name, String resourceType, String sourceName, Index index, DM metadata, LayerDSD DSD, Object data, Integer size) {
+    public LayerData(String name, String resourceType, String sourceName, Index index, DataType dataType, Object metadata, LayerDSD DSD, Object data, Integer size) {
         super(name,resourceType,sourceName,index,metadata, size);
+        this.dataType = dataType!=null ? dataType : DataType.vector;
         if ((this.data = data)!=null) {
             this.DSD = DSD!=null ? DSD : new LayerDSD();
-            //TODO create field for layerType
         }
     }
 
     @Override
     public DataType getDataType() {
-        return DataType.vector;
+        return dataType;
     }
 
     @Override

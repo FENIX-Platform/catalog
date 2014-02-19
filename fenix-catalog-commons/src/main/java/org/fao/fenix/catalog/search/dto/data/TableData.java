@@ -2,7 +2,9 @@ package org.fao.fenix.catalog.search.dto.data;
 
 import org.fao.fenix.catalog.search.dto.data.dsd.ResourceDSD;
 import org.fao.fenix.catalog.search.dto.data.dsd.TableDSD;
+import org.fao.fenix.msd.dto.dm.DM;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
