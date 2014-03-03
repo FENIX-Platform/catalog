@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ResourceFilter {
-    private String[] types;
+    private String[] types = new String[] {"dataset","codelist","layer"};
     private QueryString queryString;
     private LinkedHashMap<String, Collection<ColumnValueFilter>> metadata = new LinkedHashMap<>();
     private LinkedHashMap<String, Collection<ColumnValueFilter>> data = new LinkedHashMap<>();
@@ -16,12 +16,11 @@ public class ResourceFilter {
 
 
 
-    public String[] getTypes() {
-        return types;
-    }
+    public String[] getTypes() { return types; }
 
     public void setTypes(String[] types) {
-        this.types = types;
+        if (types!=null && types.length>0)
+            this.types = types;
     }
 
     public LinkedHashMap<String, Collection<ColumnValueFilter>> getMetadata() {

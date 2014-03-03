@@ -21,6 +21,8 @@ public abstract class OrientDao {
         ODatabaseDocumentTx connection = null;
         try {
             query.reset();
+            if (query instanceof OSQLSynchQuery)
+                ((OSQLSynchQuery)query).resetPagination();
             return (Collection<ODocument>)(connection = client.getConnection()).query(query,params);
         } finally {
             if (connection!=null)
@@ -32,6 +34,8 @@ public abstract class OrientDao {
         OObjectDatabaseTx connection = null;
         try {
             query.reset();
+            if (query instanceof OSQLSynchQuery)
+                ((OSQLSynchQuery)query).resetPagination();
             return (Collection<T>)(connection = client.getObjectConnection()).query(query,params);
         } finally {
             if (connection!=null)
