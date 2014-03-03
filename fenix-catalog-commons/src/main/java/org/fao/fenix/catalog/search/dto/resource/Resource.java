@@ -1,8 +1,8 @@
-package org.fao.fenix.catalog.search.dto.data;
+package org.fao.fenix.catalog.search.dto.resource;
 
-import org.fao.fenix.catalog.search.dto.data.dsd.ResourceDSD;
-
-import java.util.Map;
+import org.fao.fenix.catalog.search.dto.resource.data.DataType;
+import org.fao.fenix.catalog.search.dto.resource.dsd.ResourceDSD;
+import org.fao.fenix.catalog.search.dto.resource.index.Index;
 
 public interface Resource {
 

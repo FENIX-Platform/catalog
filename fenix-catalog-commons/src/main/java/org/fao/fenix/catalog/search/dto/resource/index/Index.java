@@ -1,4 +1,4 @@
-package org.fao.fenix.catalog.search.dto.data;
+package org.fao.fenix.catalog.search.dto.resource.index;
 
 import java.util.Map;
 

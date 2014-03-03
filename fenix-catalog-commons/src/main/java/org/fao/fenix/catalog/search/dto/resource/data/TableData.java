@@ -1,11 +1,9 @@
-package org.fao.fenix.catalog.search.dto.data;
+package org.fao.fenix.catalog.search.dto.resource.data;
 
-import org.fao.fenix.catalog.search.dto.data.dsd.ResourceDSD;
-import org.fao.fenix.catalog.search.dto.data.dsd.TableDSD;
-import org.fao.fenix.msd.dto.dm.DM;
+import org.fao.fenix.catalog.search.dto.resource.index.Index;
+import org.fao.fenix.catalog.search.dto.resource.dsd.ResourceDSD;
+import org.fao.fenix.catalog.search.dto.resource.dsd.TableDSD;
 
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 public class TableData extends StandardData {

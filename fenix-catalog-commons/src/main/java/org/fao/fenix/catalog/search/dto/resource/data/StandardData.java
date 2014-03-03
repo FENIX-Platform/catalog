@@ -1,10 +1,9 @@
-package org.fao.fenix.catalog.search.dto.data;
+package org.fao.fenix.catalog.search.dto.resource.data;
 
-import org.fao.fenix.catalog.search.dto.data.dsd.ResourceDSD;
-import org.fao.fenix.catalog.search.dto.data.dsd.TableDSD;
+import org.fao.fenix.catalog.search.dto.resource.index.Index;
+import org.fao.fenix.catalog.search.dto.resource.Resource;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public abstract class StandardData implements Resource {
 

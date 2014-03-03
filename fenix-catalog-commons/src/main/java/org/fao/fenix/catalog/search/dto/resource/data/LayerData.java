@@ -1,9 +1,8 @@
-package org.fao.fenix.catalog.search.dto.data;
+package org.fao.fenix.catalog.search.dto.resource.data;
 
-import org.fao.fenix.catalog.search.dto.data.dsd.LayerDSD;
-import org.fao.fenix.catalog.search.dto.data.dsd.ResourceDSD;
-import org.fao.fenix.msd.dto.dm.DM;
-import org.fao.fenix.msd.dto.dm.type.DMLayerType;
+import org.fao.fenix.catalog.search.dto.resource.index.Index;
+import org.fao.fenix.catalog.search.dto.resource.dsd.LayerDSD;
+import org.fao.fenix.catalog.search.dto.resource.dsd.ResourceDSD;
 
 public class LayerData extends StandardData {
 

@@ -1,11 +1,9 @@
 package org.fao.fenix.catalog.search.dto;
 
-import org.fao.fenix.catalog.search.dto.data.Resource;
+import org.fao.fenix.catalog.search.dto.resource.Resource;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Map;
 
 public class Response {
 

@@ -1,11 +1,9 @@
 package org.fao.fenix.catalog.search.dto;
 
-import org.fao.fenix.catalog.search.dto.value.ValueFilter;
 import org.fao.fenix.search.dto.valueFilters.ColumnValueFilter;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class ResourceFilter {
     private String[] types = new String[] {"dataset","codelist","layer"};

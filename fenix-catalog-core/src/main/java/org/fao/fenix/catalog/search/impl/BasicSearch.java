@@ -4,13 +4,11 @@ import org.fao.fenix.catalog.connector.Connector;
 import org.fao.fenix.catalog.connector.Connectors;
 import org.fao.fenix.catalog.search.dto.Filter;
 import org.fao.fenix.catalog.search.dto.Response;
-import org.fao.fenix.catalog.search.dto.data.Resource;
+import org.fao.fenix.catalog.search.dto.resource.Resource;
 import org.fao.fenix.catalog.processing.Processor;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import java.util.Collection;
-import java.util.Map;
 
 public class BasicSearch {
 

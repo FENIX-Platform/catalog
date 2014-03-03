@@ -1,6 +1,4 @@
-package org.fao.fenix.catalog.search.dto.data.dsd;
-
-import java.util.LinkedHashMap;
+package org.fao.fenix.catalog.search.dto.resource.dsd;
 
 public class CodeListDSD implements ResourceDSD {
 

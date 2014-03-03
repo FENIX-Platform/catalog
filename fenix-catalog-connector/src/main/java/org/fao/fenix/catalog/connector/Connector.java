@@ -1,7 +1,7 @@
 package org.fao.fenix.catalog.connector;
 
 import org.fao.fenix.catalog.search.dto.Filter;
-import org.fao.fenix.catalog.search.dto.data.Resource;
+import org.fao.fenix.catalog.search.dto.resource.Resource;
 
 import java.util.Collection;
 import java.util.Map;

@@ -1,13 +1,8 @@
-package org.fao.fenix.catalog.search.dto.data;
+package org.fao.fenix.catalog.search.dto.resource.data;
 
-import org.fao.fenix.catalog.search.dto.data.dsd.CodeListDSD;
-import org.fao.fenix.catalog.search.dto.data.dsd.ResourceDSD;
-import org.fao.fenix.catalog.search.dto.data.dsd.TableDSD;
-import org.fao.fenix.msd.dto.cl.Code;
-import org.fao.fenix.msd.dto.cl.CodeSystem;
-
-import java.util.Collection;
-import java.util.Map;
+import org.fao.fenix.catalog.search.dto.resource.index.Index;
+import org.fao.fenix.catalog.search.dto.resource.dsd.CodeListDSD;
+import org.fao.fenix.catalog.search.dto.resource.dsd.ResourceDSD;
 
 public class CodeListData extends StandardData {
 
