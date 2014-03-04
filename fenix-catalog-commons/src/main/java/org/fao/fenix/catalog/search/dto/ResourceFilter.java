@@ -1,6 +1,6 @@
 package org.fao.fenix.catalog.search.dto;
 
-import org.fao.fenix.search.dto.valueFilters.ColumnValueFilter;
+import org.fao.fenix.d3s.search.dto.valueFilters.ColumnValueFilter;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
