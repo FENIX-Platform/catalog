@@ -1,6 +1,6 @@
 package org.fao.fenix.catalog.processing;
 
-import org.fao.fenix.catalog.search.dto.RequiredPlugin;
+import org.fao.fenix.catalog.search.dto.filter.RequiredPlugin;
 import org.fao.fenix.catalog.search.dto.Response;
 import org.fao.fenix.catalog.search.dto.resource.Resource;
 

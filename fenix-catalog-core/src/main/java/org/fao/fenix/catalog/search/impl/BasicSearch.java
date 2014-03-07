@@ -2,7 +2,7 @@ package org.fao.fenix.catalog.search.impl;
 
 import org.fao.fenix.catalog.connector.Connector;
 import org.fao.fenix.catalog.connector.Connectors;
-import org.fao.fenix.catalog.search.dto.Filter;
+import org.fao.fenix.catalog.search.dto.filter.Filter;
 import org.fao.fenix.catalog.search.dto.Response;
 import org.fao.fenix.catalog.search.dto.resource.Resource;
 import org.fao.fenix.catalog.processing.Processor;

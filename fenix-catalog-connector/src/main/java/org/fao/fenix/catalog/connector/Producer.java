@@ -1,9 +1,8 @@
 package org.fao.fenix.catalog.connector;
 
-import org.fao.fenix.catalog.search.dto.RequiredPlugin;
+import org.fao.fenix.catalog.search.dto.filter.RequiredPlugin;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.CDI;
 import java.lang.annotation.Annotation;

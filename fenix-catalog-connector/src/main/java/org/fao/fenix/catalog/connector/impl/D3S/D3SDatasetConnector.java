@@ -2,9 +2,9 @@ package org.fao.fenix.catalog.connector.impl.D3S;
 
 import org.fao.fenix.catalog.connector.Connector;
 import org.fao.fenix.catalog.connector.ConnectorImplementation;
-import org.fao.fenix.catalog.search.dto.Filter;
-import org.fao.fenix.catalog.search.dto.QueryString;
-import org.fao.fenix.catalog.search.dto.ResourceFilter;
+import org.fao.fenix.catalog.search.dto.filter.Filter;
+import org.fao.fenix.catalog.search.dto.filter.QueryString;
+import org.fao.fenix.catalog.search.dto.filter.ResourceFilter;
 import org.fao.fenix.catalog.search.dto.resource.*;
 import org.fao.fenix.catalog.search.dto.resource.data.CodeListData;
 import org.fao.fenix.catalog.search.dto.resource.data.DataType;

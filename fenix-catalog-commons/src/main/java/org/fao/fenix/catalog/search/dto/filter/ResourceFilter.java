@@ -1,4 +1,4 @@
-package org.fao.fenix.catalog.search.dto;
+package org.fao.fenix.catalog.search.dto.filter;
 
 import org.fao.fenix.d3s.search.dto.valueFilters.ColumnValueFilter;
 

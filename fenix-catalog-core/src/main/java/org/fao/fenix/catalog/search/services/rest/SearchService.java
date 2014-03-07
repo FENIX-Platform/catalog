@@ -1,6 +1,6 @@
 package org.fao.fenix.catalog.search.services.rest;
 
-import org.fao.fenix.catalog.search.dto.Filter;
+import org.fao.fenix.catalog.search.dto.filter.Filter;
 import org.fao.fenix.catalog.search.dto.resource.index.Index;
 import org.fao.fenix.catalog.search.dto.resource.index.IndexType;
 import org.fao.fenix.catalog.search.dto.resource.data.TableData;

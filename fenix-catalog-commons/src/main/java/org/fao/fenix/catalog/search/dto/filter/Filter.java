@@ -1,4 +1,4 @@
-package org.fao.fenix.catalog.search.dto;
+package org.fao.fenix.catalog.search.dto.filter;
 
 public class Filter {
 
