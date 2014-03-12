@@ -1,0 +1,112 @@
+{"fields" :[
+    {
+        "id":"geographicExtent",
+        "container" : "geographicExtent-container",
+        "type":"DYNAMICTREE",
+        "url":"http://168.202.28.230:8081/msd/cl/code/GAUL/1.0/",
+        "cssclass":"col-lg-4",
+        "maxlevels":3,
+        "label":{
+            "EN":"Geographical Area",
+            "ES":"Area Geográfica",
+            "DE":"Geographischer Bereich",
+            "FR":"Zone Géographique"
+        },
+        "component":{
+            "source":{
+
+            },
+            "rendering":{
+                "width":300,
+                "height":150
+            }
+        }
+    },
+    {
+        "id":"owner",
+        "type":"list",
+        "container" : "owner-container",
+        "cssclass":"col-lg-4",
+        "label":{
+            "EN" : "Sources",
+            "DE" : "Ursache",
+            "ES" : "Fuentes",
+            "FR" : "Fontes"
+        },
+        "component":{
+            "source":{
+                "datafields":[
+                    {
+                        "name":"title",
+                        "map": "title>EN"
+                    },
+                    {
+                        "name":"id"
+                    }
+                ],
+                "url" : "http://168.202.28.230:8081/msd/cm/contact/byFields?context=Demo1"
+            },
+            "rendering":{
+                "displayMember":"title",
+                "valueMember":"id",
+                "multiple": true,
+                "width":300,
+                "height":150
+            }
+        }
+    },
+    {
+        "id":"basePeriod",
+        "type":"simplerange",
+        "container" : "basePeriod-container",
+        "cssclass":"col-lg-4",
+        "label":{
+            "EN":"Time Range",
+            "ES":"Intervalo de tiempo",
+            "DE" : "Zeitbereich",
+            "FR": "Intervalle de temps"
+        },
+        "component":{
+            "source":{
+                "step": 1,
+                "bounds" : {
+                    "min" : 1980,
+                    "max" : 2014
+                }
+            },
+            "rendering":{
+                "arrows" : true,
+                "defaultValues" : {
+                    "min" : 1980,
+                    "max" : 2014
+                }
+            }
+        }
+    },
+    {
+        "id":"querystring",
+        "type":"freetext",
+        "container" : "basePeriod-container",
+        "class":"freetextclass",
+        "label":{
+            "EN" : "Search",
+            "DE" : "Suche",
+            "ES" : "Búsqueda",
+            "FR":"Recherchet"
+        },
+        "component":{
+            "rendering":{
+                "placeholder": {
+                    "EN" : "Search",
+                    "DE" : "Suche",
+                    "ES" : "Búsqueda",
+                    "FR" : "Recherchet"
+                },
+                "htmlattributes" : {
+                    "className" :  "form-control"
+                }
+            }
+        }
+    }
+    ]
+}

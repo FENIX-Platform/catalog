@@ -32,7 +32,7 @@
     <script src="js/commons.js"></script>
     <script src="js/fenix-catalog-bridge-js.js"></script>
     <script src="js/fenix-component-with-catalog-plugin-js.js"></script>
-    <script src="js/fenix-catalog-datasets-js.js"></script>
+    <script src="../js/fenix-catalog-demo-js.js"></script>
 
     <script src="js/fenix-ui-creator-js.js"></script>
 
@@ -40,8 +40,8 @@
 
     $(document).ready(function(){
 
-      var producer = fenix_component_producer(),
-          consumer = fenix_component_consumer();
+      var producer = Fenix_component_producer(),
+          consumer = Fenix_component_consumer();
 
       $('#perform-1').on('click', producer.fakeFnOne);
       $('#perform-2').on('click', producer.fakeFnTwo);
@@ -56,7 +56,7 @@
       consumer.init();
 
       //Init and Render Catalog Datasets component
-      var dataset_creator =  fenix_catalog_datasets();
+      var dataset_creator =  Fenix_catalog_datasets();
       dataset_creator.init({
           container : "#catalog-datasets-container"
       });

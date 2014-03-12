@@ -6,28 +6,26 @@
   please define as option the 'id' parameter.
 
   e.g.
-    var factory   = new fenix_catalog_bridge_factory();
-    var myBridge  = factory.create({id : 'mycustomid'})
+    var factory   = new Fenix_catalog_bridge_factory();
+    var myBridge  = factory.createBridge({id : 'mycustomid', ...})
 */
 (function(){
+"use strict";
 
 window.Fenix_catalog_bridge_factory = function(){
 
-  console.log('--- NEW Bridge Factory creation');
-
   Fenix_catalog_bridge_factory.prototype.createBridge = function( options ) {
-    console.log('--- NEW Bridge creation with id: '+ options.id);
     return new Fenix_catalog_bridge( options );
-  
   };
 
 }
 
 window.Fenix_catalog_bridge = function( options ) {
 
-  var o = { };
-  //Default Catalog options
-  var defaultOptions = { };
+  var   o = { },
+        defaultOptions = {
+            error_prefix : "Fenix_catalog_bridge ERROR: "
+        };
 
   function init( options ){
 
@@ -37,36 +35,41 @@ window.Fenix_catalog_bridge = function( options ) {
     
   }
 
-  function actionOneHandler(src, target){
-    console.log('*** BRIDGE Performing action 1');
+  function query(src, callback){
 
-    var pluginSrc = window.fenix_catalog_bridge_plugins[src.getOption('name')];
-    pluginSrc.init({component : src});
+      var plugin;
 
-    var pluginTarger = window.fenix_catalog_bridge_plugins[target.getOption('name')];
-    pluginTarger.init({component : target});
+      if (!src || typeof src.getOption !== "function"){
+          throw new Error(o.error_prefix + " query() first parameter has to be a valid FENIX Catalog component.")
+      }
 
-    pluginTarger.handler(pluginSrc.getOption("payload"));
-  
-  }
+      if ( !window.Fenix_catalog_bridge_plugins || typeof window.Fenix_catalog_bridge_plugins !== "object"){
+          throw new Error(o.error_prefix + " Fenix_catalog_bridge_plugins plugins repository not valid.");
+      } else {
+          plugin = window.Fenix_catalog_bridge_plugins[src.getOption('name')];
+      }
 
-  function actionTwoHandler(src, callback){
-    console.log('*** BRIDGE Performing action 2');
-    
-    var plugin = window.fenix_catalog_bridge_plugins[src.getOption('name')];
-    plugin.init({component : src});
+      if (!plugin) { throw new Error(o.error_prefix + " plugin not found.") };
 
-    var str = plugin.getOption('param');
-    callback( str.replace(/\s+/g, '') );
-  
+      if (typeof plugin.init !== "function") {
+          throw new Error(o.error_prefix + " plugin for "+src.getOption('name')+" does now a public init method.");
+      } else {
+          plugin.init( {component : src} );
+      }
+
+      if (typeof callback !== "function") {
+          throw new Error(o.error_prefix + " callback param is not a function");
+      } else {
+          callback( plugin.getFilter() );
+      }
+
   }
 
   //Initialize the instance of the Catalog bridge
   init( options );
 
-  return { 
-    actionOneHandler : actionOneHandler,
-    actionTwoHandler : actionTwoHandler
+  return {
+    query  : query
   }
 
 }

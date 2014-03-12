@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FENIX Catalog Bridge for Datasets</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=">FENIX Catalog Bridge Datasets component">
+    <meta name="author" content="Daniele Salvatore <daniele.salvatore[at]fao.org>">
+
+    <!-- jQWidgets -->
+    <link rel="stylesheet" href='http://fenixapps.fao.org/repository/js/jqwidgets/3.1/styles/jqx.base.css'/>
+      
+  </head>
+  <body>
+
+  <button id="val"> Ask to Catalog! </button>
+
+    <div id="container"></div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Jqwidgets -->
+    <script type='text/javascript' src='http://fenixapps.fao.org/repository/js/jqwidgets/3.1/jqx-all.js'></script>
+    <script src="js/commons.js"></script>
+    <script src="js/fenix-catalog-bridge-js.js"></script>
+    <script src="js/fenix-ui-creator-js.js"></script>
+    <script src="../js/fenix-catalog-demo-js.js"></script>
+
+    <script type="text/javascript">
+
+    var component   = null,
+        bridge_id   = 'mycustomid';
+
+    $(document).ready(function(){
+
+        //Init values for component
+        var config = 'json/fenix-catalog-datasets-config.json';
+        var validators = { listExample : { "dummy test" : function( m ){ return m !== "Pinolo";  }}};
+
+        //bridge initialization
+        var factory   = new Fenix_catalog_bridge_factory();
+        var bridge    = factory.createBridge({id : bridge_id})
+
+        //datasets component initialization
+        component = Fenix_catalog_datasets();
+        component.init({
+            container : "#container",
+            config    : config,
+            validators: validators
+        });
+
+        document.body.addEventListener("getdatasets.fenix_catalog_datasets.catalog.fenix", function(event){
+            bridge.query(component, function( s ){
+                console.log("IF ERRORS you don't see me if there is an error ")
+                alert(s); });
+        }, false);
+
+        //Callback on btn
+        $("#val").on("click", function(){ component.getDataSets(); });
+
+    });
+
+    </script>
+  </body>
+</html>

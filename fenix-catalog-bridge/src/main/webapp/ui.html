@@ -11,6 +11,7 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
     -->
 
+
     <!-- jQWidgets -->
     <link rel="stylesheet" href='http://fenixapps.fao.org/repository/js/jqwidgets/3.1/styles/jqx.base.css'/>
       
@@ -42,7 +43,7 @@
     $(document).ready(function(){
 
       var elemSource = 'json/elemSource.json';
-      creator = fenix_ui_creator();
+      creator = Fenix_ui_creator();
 
       var   validators = {};
             validators["listExample"] = { "dummy test" : function( m ){ return m !== "Pinolo";  }}

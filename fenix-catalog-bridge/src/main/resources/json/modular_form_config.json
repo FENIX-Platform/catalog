@@ -1,0 +1,25 @@
+{
+    "items": [
+        {   "id" : "id1",
+            "semantic": "semantic 1",
+            "style": {
+                "label": "css 1",
+                "icon": "glyphicon glyphicon-asterisk"
+            },
+            "label": {
+                "EN": "1 en"
+            }
+        },
+        {
+            "id" : "id2",
+            "semantic": "semantic 2",
+            "style": {
+                "label": "css 1",
+                "icon": "glyphicon glyphicon-cloud"
+            },
+            "label": {
+                "EN": "1 en"
+            }
+        }
+    ]
+}
