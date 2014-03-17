@@ -1,6 +1,6 @@
-package org.fao.fenix.tools.rest;
+package org.fao.fenix.catalog.tools.rest;
 
-import org.fao.fenix.tools.utils.FileUtils;
+import org.fao.fenix.commons.utils.FileUtils;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;

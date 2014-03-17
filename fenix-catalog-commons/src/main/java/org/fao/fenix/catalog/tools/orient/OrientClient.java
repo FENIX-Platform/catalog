@@ -1,11 +1,11 @@
-package org.fao.fenix.tools.orient;
+package org.fao.fenix.catalog.tools.orient;
 
 import com.orientechnologies.orient.core.db.document.ODatabaseDocumentPool;
 import com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx;
 import com.orientechnologies.orient.object.db.OObjectDatabasePool;
 import com.orientechnologies.orient.object.db.OObjectDatabaseTx;
-import org.fao.fenix.tools.utils.ClassUtils;
-import org.fao.fenix.tools.utils.WebContext;
+import org.fao.fenix.commons.utils.ClassUtils;
+import org.fao.fenix.commons.utils.WebContext;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

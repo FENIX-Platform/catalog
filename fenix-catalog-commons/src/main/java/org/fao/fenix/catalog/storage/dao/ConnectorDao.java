@@ -3,7 +3,7 @@ package org.fao.fenix.catalog.storage.dao;
 import com.orientechnologies.orient.core.query.OQuery;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import org.fao.fenix.catalog.storage.dto.Connector;
-import org.fao.fenix.tools.orient.OrientDao;
+import org.fao.fenix.catalog.tools.orient.OrientDao;
 
 import javax.enterprise.context.ApplicationScoped;
 import java.util.Arrays;

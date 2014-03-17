@@ -1,4 +1,4 @@
-package org.fao.fenix.tools.rest;
+package org.fao.fenix.catalog.tools.rest;
 
 import java.util.Map;
 

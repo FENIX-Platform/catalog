@@ -1,4 +1,4 @@
-package org.fao.fenix.tools.orient;
+package org.fao.fenix.catalog.tools.orient;
 
 import java.lang.annotation.*;
 

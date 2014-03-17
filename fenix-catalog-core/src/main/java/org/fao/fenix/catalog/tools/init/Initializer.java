@@ -1,7 +1,7 @@
-package org.fao.fenix.tools.init;
+package org.fao.fenix.catalog.tools.init;
 
-import org.fao.fenix.tools.utils.FileUtils;
-import org.fao.fenix.tools.utils.WebContext;
+import org.fao.fenix.commons.utils.FileUtils;
+import org.fao.fenix.commons.utils.WebContext;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.servlet.*;

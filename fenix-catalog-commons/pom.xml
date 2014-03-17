@@ -11,10 +11,10 @@
 
     <dependencies>
 
-        <!-- D3S interface -->
+        <!-- FENIX search commons components -->
         <dependency>
             <groupId>org.fao.fenix</groupId>
-            <artifactId>fenix-D3S-services</artifactId>
+            <artifactId>fenix-commons-search</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 

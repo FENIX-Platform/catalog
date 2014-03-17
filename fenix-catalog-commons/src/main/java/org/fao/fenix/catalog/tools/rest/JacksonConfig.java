@@ -1,4 +1,4 @@
-package org.fao.fenix.tools.rest;
+package org.fao.fenix.catalog.tools.rest;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;

@@ -1,4 +1,4 @@
-package org.fao.fenix.tools.orient;
+package org.fao.fenix.catalog.tools.orient;
 
 import com.orientechnologies.orient.core.db.document.ODatabaseDocumentTx;
 import com.orientechnologies.orient.core.query.OQuery;

@@ -1,6 +1,6 @@
 package org.fao.fenix.catalog.connector;
 
-import org.fao.fenix.catalog.search.dto.filter.RequiredPlugin;
+import org.fao.fenix.commons.search.dto.filter.RequiredPlugin;
 import org.fao.fenix.catalog.storage.dao.ConnectorDao;
 
 import javax.enterprise.inject.Instance;

@@ -1,8 +1,8 @@
 package org.fao.fenix.catalog.processing;
 
-import org.fao.fenix.catalog.search.dto.filter.RequiredPlugin;
-import org.fao.fenix.catalog.search.dto.Response;
-import org.fao.fenix.catalog.search.dto.resource.Resource;
+import org.fao.fenix.commons.search.dto.filter.RequiredPlugin;
+import org.fao.fenix.commons.search.dto.Response;
+import org.fao.fenix.commons.search.dto.resource.Resource;
 
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
