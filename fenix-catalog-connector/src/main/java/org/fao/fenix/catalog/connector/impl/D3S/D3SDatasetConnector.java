@@ -4,6 +4,7 @@ import org.fao.fenix.catalog.connector.Connector;
 import org.fao.fenix.catalog.connector.ConnectorImplementation;
 import org.fao.fenix.commons.msd.dto.cl.Code;
 import org.fao.fenix.commons.msd.dto.cl.CodeSystem;
+import org.fao.fenix.commons.msd.dto.cl.type.DuplicateCodeException;
 import org.fao.fenix.commons.msd.dto.dm.DM;
 import org.fao.fenix.commons.msd.dto.dm.type.DMDataType;
 import org.fao.fenix.commons.msd.dto.dm.type.DMLayerType;
@@ -123,10 +124,11 @@ public class D3SDatasetConnector extends D3SClient implements Connector {
         indexReferences.put("Accept", "application/json");
         Index index = new Index(IndexType.http,indexReferences);
 
-        int levelsNumber = codeList.getLevelsNumber()!=null?codeList.getLevelsNumber():0;
         Collection<Code> data = codeList.getRootCodes();
-        codeList.setRootCodes(null);
-        codeList.setLevelsNumber(levelsNumber);
+        try { codeList.setRootCodes(null);
+        } catch (DuplicateCodeException e) {
+            throw new RuntimeException("Malformed code list data into database", e);
+        }
 
         return new CodeListData(codeList.getSystem()+"-"+codeList.getVersion(), "codelist", "D3S", index, codeList, data, countCodes(data));
 
