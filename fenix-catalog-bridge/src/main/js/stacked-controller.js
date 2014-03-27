@@ -58,7 +58,7 @@
             form = Fenix_catalog_bridge_modular_filter();
             form.init({
                 container: "#" + html_ids.MODULARFORM,
-                url: "json/modular_form_config.json"
+                config: "json/modular_filter_config.json"
             });
 
         }
@@ -71,25 +71,32 @@
                 MODULARFORM: "fx-catalog-modular-form"
             };
 
-
             preValidation();
 
             initListeners();
 
             initComponents();
+
+            //TODO remove it
+            $("#val").on("click", function(){
+                console.log( form.getValues() )
+            })
         }
 
-        function initListeners(){
+        function initListeners() {
 
-            document.body.addEventListener("button_select", function(e){
-                var payload = e.detail.semantic;
-                console.log(payload)
-                form.addItem();
+            document.body.addEventListener("button_select", function (e) {
+                console.log("SELECTED: "+e.detail.semantic);
+                form.addItem(e.detail.semantic);
+            }, false);
+
+            document.body.addEventListener("remove_module", function (e) {
+                plus_btn.activate(e.detail.semantic);
             }, false);
 
         }
 
-        return { init : init }
+        return { init: init }
     }
 
 }())

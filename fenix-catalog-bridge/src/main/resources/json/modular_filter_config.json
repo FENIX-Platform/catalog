@@ -1,0 +1,80 @@
+{
+    "TIME_SERIES": {
+        "id": "time-series",
+        "type": "simplerange",
+        "cssclass" : "daniele",
+        "container": "time-series-container",
+        "label": {
+            "EN": "Time Range",
+            "ES": "Intervalo de tiempo",
+            "DE": "Zeitbereich",
+            "FR": "Intervalle de temps"
+        },
+        "component": {
+            "source": {
+                "step": 1,
+                "bounds": {
+                    "min": 1980,
+                    "max": 2014
+                }
+            },
+            "rendering": {
+                "arrows": true,
+                "defaultValues": {
+                    "min": 1980,
+                    "max": 2014
+                }
+            }
+        }
+    },
+    "GEOGRAPHICAL_AREA": {
+        "id": "querystring",
+        "type": "freetext",
+        "container": "geo-container",
+        "cssclass": "geocss",
+        "label": {
+            "EN": "Search",
+            "DE": "Suche",
+            "ES": "Búsqueda",
+            "FR": "Recherchet"
+        },
+        "component": {
+            "rendering": {
+                "placeholder": {
+                    "EN": "Search",
+                    "DE": "Suche",
+                    "ES": "Búsqueda",
+                    "FR": "Recherchet"
+                },
+                "htmlattributes": {
+                    "className": "form-control"
+                }
+            }
+        }
+    },
+    "FREE_FORM": {
+        "id": "querystring",
+        "type": "freetext",
+        "container": "free-form-container",
+        "cssclass": "freetextclass",
+        "label": {
+            "EN": "Search",
+            "DE": "Suche",
+            "ES": "Búsqueda",
+            "FR": "Recherchet"
+        },
+        "component": {
+            "rendering": {
+                "placeholder": {
+                    "EN": "Search",
+                    "DE": "Suche",
+                    "ES": "Búsqueda",
+                    "FR": "Recherchet"
+                },
+                "htmlattributes": {
+                    "className": "form-control"
+                }
+            }
+        }
+    }
+}

@@ -4,26 +4,6 @@ body {
     padding-bottom: 50px;
 }
 
-/* Filter form */
-#form-container > div {
-    position:relative;
-    float:left;
-}
-
-#form-container label{
-    font-size: 12px;
-    font-weight: normal;
-    text-transform: uppercase;
-}
-
-#basePeriod{
-    margin-top: 28px;
-}
-
-#basePeriod-container label:nth-child(3){
-    margin-top: 20px;
-}
-
 /*Modular filter form*/
 .fx-modular-fitler-form {
     -webkit-touch-callout: none;

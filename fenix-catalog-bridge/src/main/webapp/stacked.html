@@ -16,47 +16,26 @@
     <!-- JQuery Pines Framework -->
     <link rel="stylesheet" href='css/jquery.pnotify.default.css'/>
     <!-- FENIX CSS -->
-    <link rel="stylesheet" href='css/catalog.css'/>
+    <link rel="stylesheet" href='css/modular-catalog.css'/>
     <!-- Ad-hoc Component CSS -->
     <link rel="stylesheet" href='css/iThing-min.css'/>
       
   </head>
   <body>
 
-    <!-- Results grid container-->
+  <button id="val">Values</button>
+
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-1">
                 <div id="plus-btn-container"></div>
+            </div>
+            <div class="col-lg-11">
+                <ul id="fx-catalog-modular-form" class="fx-modular-fitler-form">
+                </ul>
             </div>
         </div>
     </div>
-
-    <ul id="fx-catalog-modular-form" class="fx-modular-fitler-form">
-        <li><span>::</span> Item 1</li>
-        <li><span>::</span> Item 2</li>
-        <li><span>::</span> Item 3</li>
-        <li><span>::</span> Item 4</li>
-        <li><span>::</span> Item 5</li>
-        <li><span>::</span> Item 6</li>
-    </ul>
-
-
-
-<!--    <div class="dropdown">
-
-        <span id="dLabel" role="button" data-toggle="dropdown" class="glyphicon glyphicon-plus" data-target="#"></span>
-
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-            <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-            <li role="presentation" class="divider"></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-        </ul>
-    </div>-->
-
-
 
     <!-- Le javascript
     ================================================== -->
@@ -78,12 +57,11 @@
     <script src="js/jquery.pnotify.min.js"></script>
     <script src="js/jquery.sortable.min.js"></script>
 
-    <!-- FENIX js
-    <script src="js/commons.js"></script> -->
+    <!-- FENIX js -->
+    <script src="js/commons.js"></script>
     <script src="js/fenix-ui-creator-js.js"></script>
     <script src="js/fenix-catalog-bridge-stacked-filter-js.js"></script>
     <script src="js/stacked-controller.js"></script>
-    <script src="js/commons.js"></script>
 
   </body>
 </html>

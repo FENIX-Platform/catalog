@@ -332,19 +332,30 @@
         }
 
         //Get Values
-        function getValues( validate ){
+        function getValues( validate, externalElements ){
 
             var result = {}, i;
 
-            if (elems === undefined) { handleError( "VALUES_NOT_READY" ); }
+            if (externalElements){
 
-            //Loop on source elements to get value
-            for (i = 0; i < elems.length; i++){
-                result[elems[i].id] = types[elems[i].type.toUpperCase()].getValue( elems[i] );
+                //Loop on external elements to get values
+                for (i = 0; i < externalElements.length; i++){
+                    result[externalElements[i].id] = types[externalElements[i].type.toUpperCase()].getValue( externalElements[i] );
+                }
+
+            } else {
+                //Looping on initial elements
+                if (elems === undefined) { handleError( "VALUES_NOT_READY" ); }
+
+                //Loop on source elements to get values
+                for (i = 0; i < elems.length; i++){
+                    result[elems[i].id] = types[elems[i].type.toUpperCase()].getValue( elems[i] );
+                }
+
             }
 
             v = validate === undefined || validate === false ? null : getValidation( result );
-            if (v) { throw v; }
+            if (v) { throw new Error(v); }
 
             return result;
         }
@@ -354,6 +365,8 @@
         //Rendering fns
         function createElement(e, container ){
 
+            console.log("Element container "+container)
+
             var div, label, c;
 
             c = document.getElementById(e.container);
@@ -362,6 +375,7 @@
 
                 c = document.createElement("DIV");
                 c.setAttribute("id", e.container);
+                console.log("Container doesn't exist. id: "+e.container)
                 if (e.cssclass) { c.setAttribute( "class", e.cssclass ); }
 
             }
@@ -444,12 +458,19 @@
             $.extend(o, options);
             valid = true;
 
+            console.log("prima vali")
             if ( inputValidation() ){
+
+                console.log("validation successful")
 
                 elems = JSON.parse(o.elements);
 
                 //Loop on source elements. If valid Element -> render it
                 for (i = 0; i < elems.length; i++){
+
+                    console.log("UI Elements Loop")
+                    console.log(elems[i])
+
                     if ( validateElement(elems[i]) ){ createElement(elems[i], o.container); }
                 }
             }

@@ -126,3 +126,8 @@ function extend(a, b){
             a[key] = b[key];
     return a;
 }
+
+function getFenixUniqueId(){
+    window.fx_dynamic_id_counter > -1 ? window.fx_dynamic_id_counter ++ : window.fx_dynamic_id_counter = 0;
+    return window.fx_dynamic_id_counter;
+}

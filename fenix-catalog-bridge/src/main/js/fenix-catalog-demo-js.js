@@ -39,6 +39,7 @@ window.Fenix_catalog_demo = function(){
 
             //Init FENIX UI creator
             if ( window.Fenix_ui_creator && typeof window.Fenix_ui_creator === "function"){
+
                 uiCreator = Fenix_ui_creator();
                 uiCreator.render({
                     cssClass  : "form-elements",
