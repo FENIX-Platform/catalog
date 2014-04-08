@@ -1,0 +1,84 @@
+{
+    "panels": [
+        {
+            "title": {
+                "EN": "Title #1"
+            },
+            "modules": [
+                {
+                    "id": "id1",
+                    "semantic": "TIME_SERIES",
+                    "style": {
+                        "label": "css 1",
+                        "icon": "glyphicon glyphicon-asterisk"
+                    },
+                    "label": {
+                        "EN": "TIME_SERIES"
+                    }
+                },
+                {
+                    "id": "id2",
+                    "semantic": "GEOGRAPHICAL_AREA",
+                    "style": {
+                        "label": "css 1",
+                        "icon": "glyphicon glyphicon-cloud"
+                    },
+                    "label": {
+                        "EN": "GEOGRAPHICAL_AREA"
+                    }
+                }
+            ]
+        },
+        {
+            "title": {
+                "EN": "Title #2"
+            },
+            "modules": [
+                {
+                    "id": "id3",
+                    "semantic": "FREE_FORM",
+                    "style": {
+                        "label": "css 1",
+                        "icon": "glyphicon glyphicon-asterisk"
+                    },
+                    "label": {
+                        "EN": "FREE_FORM"
+                    }
+                },
+                {
+                    "id": "id4",
+                    "semantic": "LIST",
+                    "style": {
+                        "label": "css 1",
+                        "icon": "glyphicon glyphicon-asterisk"
+                    },
+                    "label": {
+                        "EN": "LIST"
+                    }
+                },
+                {
+                    "id": "id5",
+                    "semantic": "TREE",
+                    "style": {
+                        "label": "css 1",
+                        "icon": "glyphicon glyphicon-asterisk"
+                    },
+                    "label": {
+                        "EN": "TREE"
+                    }
+                },
+                {
+                    "id": "id6",
+                    "semantic": "DROPDOWN",
+                    "style": {
+                        "label": "css 1",
+                        "icon": "glyphicon glyphicon-asterisk"
+                    },
+                    "label": {
+                        "EN": "DROPDOWN"
+                    }
+                }
+            ]
+        }
+    ]
+}

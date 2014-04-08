@@ -58,7 +58,7 @@
             form = Fenix_catalog_bridge_modular_filter();
             form.init({
                 container: "#" + html_ids.MODULARFORM,
-                config: "json/modular_filter_config.json"
+                config: "json/fx-catalog-modular-form-config.json"
             });
 
         }

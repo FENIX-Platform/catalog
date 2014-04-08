@@ -51,8 +51,6 @@
 
                 bridge.query(form, function( s ){
 
-                    console.log( s )
-
                     $.ajax({
 /*                        url     : "http://hqlprfenixapp2.hq.un.fao.org:4242/catalog/search/test",*/
                         url         : "http://168.202.28.230:8001/search",

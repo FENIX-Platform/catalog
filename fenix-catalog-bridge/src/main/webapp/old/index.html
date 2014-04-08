@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FENIX Catalog Bridge</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=">FENIX Catalog Bridge component">
+    <meta name="author" content="Daniele Salvatore <daniele.salvatore[at]fao.org>">
+    
+    <!-- Bootstrap -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+      
+  </head>
+  <body>
+
+  	<button id='perform-1'>Perform action 1 </button>
+    <button id='perform-2'>Perform action 2 </button>
+
+    <div id="catalog-datasets-container"></div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+      
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script src="../../js/commons.js"></script>
+    <script src="../../js/fenix-catalog-bridge-js.js"></script>
+    <script src="../../js/fenix-component-with-catalog-plugin-js.js"></script>
+    <script src="../../js/NOT%20USED/fenix-catalog-demo-js.js"></script>
+
+    <script src="../../js/fenix-ui-creator-js.js"></script>
+
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+
+      var producer = Fenix_component_producer(),
+          consumer = Fenix_component_consumer();
+
+      $('#perform-1').on('click', producer.fakeFnOne);
+      $('#perform-2').on('click', producer.fakeFnTwo);
+
+      //bridge initialization
+      var factory   = new Fenix_catalog_bridge_factory();
+      var bridge_id = 'mycustomid';
+      var bridge    = factory.createBridge({id : bridge_id})
+
+      //Components initialization
+      producer.init();
+      consumer.init();
+
+      //Init and Render Catalog Datasets component
+      var dataset_creator =  Fenix_catalog_datasets();
+      dataset_creator.init({
+          container : "#catalog-datasets-container"
+      });
+
+      //Business Logic implementation
+      document.body.addEventListener("perform.fakefnone.producer.fenix", function(event){
+        bridge.actionOneHandler(producer, consumer)
+      }, false);
+
+      document.body.addEventListener("perform.fakefntwo.producer.fenix", function(event){
+        bridge.actionTwoHandler(producer, function( s ){ alert(s); });
+      }, false);
+
+    });
+
+    </script>
+  </body>
+</html>
