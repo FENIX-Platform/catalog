@@ -3,11 +3,11 @@
 
     <context-param>
         <param-name>database.url</param-name>
-        <param-value>remote:localhost:2430/fenix_catalog_1.0</param-value>
+        <param-value>remote:faostat3.fao.org/fenix_catalog_1.0</param-value>
     </context-param>
     <context-param>
         <param-name>database.connections</param-name>
-        <param-value>7</param-value>
+        <param-value>400</param-value>
     </context-param>
 
 </web-app>
