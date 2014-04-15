@@ -2,13 +2,13 @@ define(["jquery"], function($) {
 
     var o = { };
 
-    function FilterPlugin(options ){
+    function FilterPlugin(options){
         $.extend(o, options);
     };
 
     FilterPlugin.prototype.preValidation = function(){
 
-        if (!o.filter){
+        if (!o.component){
             throw new Error("FILTER PLUGIN: no valid filter component during inti()");
         };
 
@@ -27,7 +27,7 @@ define(["jquery"], function($) {
 
         var self = this;
 
-        try { return self.createJsonFilter( o.filter.getValues( true ) ) }
+        try { return self.createJsonFilter( o.component.getValues( true ) ) }
         catch(e) {  throw new Error(e); }
 
     };

@@ -29,6 +29,7 @@ define(["jquery", "fenix-ui-creator-js", "widgets/Fx-widgets-commons"], function
     function Fx_catalog_modular_form() {
 
         uiCreator = new UiCreator();
+        uiCreator.init();
         w_Commons = new W_Commons();
 
     }

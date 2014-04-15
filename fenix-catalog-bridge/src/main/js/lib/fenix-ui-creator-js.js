@@ -388,7 +388,8 @@ define(["jquery", "jqwidgets", "jqrangeslider"], function($) {
     }
 
     //Public Component
-    function Fenix_ui_creator(){ };
+    function Fenix_ui_creator(){
+    };
 
     Fenix_ui_creator.prototype.getValidation = function(values) {
 
@@ -432,12 +433,12 @@ define(["jquery", "jqwidgets", "jqrangeslider"], function($) {
         }
 
         return Object.keys(result).length === 0 ? null : result;
-    }
+    };
 
     //Get Values
     Fenix_ui_creator.prototype.getValues = function(validate, externalElements) {
 
-        var result = {}, i;
+        var result = {}, i, self = this;
 
         if (externalElements) {
 
@@ -459,17 +460,18 @@ define(["jquery", "jqwidgets", "jqrangeslider"], function($) {
 
         }
 
-        v = validate === undefined || validate === false ? null : getValidation(result);
+        v = validate === undefined || validate === false ? null : self.getValidation(result);
         if (v) {
             throw new Error(v);
         }
 
         return result;
-    }
+    };
 
     Fenix_ui_creator.prototype.validate = function() {
-        return getValidation(getValues());
-    }
+        var self = this;
+        return self.getValidation(self.getValues());
+    };
 
     Fenix_ui_creator.prototype.render = function(options) {
 
@@ -493,7 +495,7 @@ define(["jquery", "jqwidgets", "jqrangeslider"], function($) {
                 }
             }
         }
-    }
+    };
 
     Fenix_ui_creator.prototype.init = function() {
 
@@ -536,7 +538,7 @@ define(["jquery", "jqwidgets", "jqrangeslider"], function($) {
         langs = ["EN", "FR", "ES"];
         //Component options
         o = { };
-    }
+    };
 
     //Public API
     return Fenix_ui_creator;
