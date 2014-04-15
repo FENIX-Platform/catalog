@@ -1,5 +1,5 @@
-define(["jquery", "fenix-ui-creator-js", "widgets/fx_w_commons",
-    'widgets/filter/fx-fluid-grid'], function ($, UiCreator, W_Commons, Grid) {
+define(["jquery", "fenix-ui-creator-js", "widgets/Fx-widgets-commons",
+    'structures/Fx-fluid-grid'], function ($, UiCreator, W_Commons, Grid) {
 
     var o = { },
         defaultOptions = {
@@ -10,7 +10,8 @@ define(["jquery", "fenix-ui-creator-js", "widgets/fx_w_commons",
                 HANDLER: "fx-catalog-modular-form-handler",
                 CONTENT: "fx-catalog-modular-form-content",
                 CLOSE_BTN: "fx-catalog-modular-form-close-btn",
-                MODULE: 'fx-catalog-form-module'
+                MODULE: 'fx-catalog-form-module',
+                RESIZE: "fx-catalog-modular-form-resize-btn"
             },
             events: {
                 REMOVE_MODULE: "fx.catalog.menu.remove"
@@ -166,6 +167,15 @@ define(["jquery", "fenix-ui-creator-js", "widgets/fx_w_commons",
         });
 
         $module.append($close_btn);
+
+        var $resize = $("<div class='" + o.css_classes.RESIZE + "'>RESIZE</div>")
+            .on("click", { module: $module.get(0) }, function (e) {
+
+                grid.resize(e.data.module);
+            });
+
+        $module.append($resize);
+
         $(o.container).append($module);
 
         modules.push({id: cache.json[kind].id, type: cache.json[kind].type, kind: kind})
@@ -178,7 +188,7 @@ define(["jquery", "fenix-ui-creator-js", "widgets/fx_w_commons",
         grid.init({
             container: o.container,
             config: o.grid.config,
-            handle: o.grid.handle
+            drag: o.grid.drag
         });
         grid.render();
 
@@ -222,8 +232,8 @@ define(["jquery", "fenix-ui-creator-js", "widgets/fx_w_commons",
 
     }
 
-    Fx_catalog_modular_form.prototype.getValues = function () {
-        return uiCreator.getValues(false, modules);
+    Fx_catalog_modular_form.prototype.getValues = function(boolean) {
+        return uiCreator.getValues(boolean, modules);
     }
 
     return Fx_catalog_modular_form;

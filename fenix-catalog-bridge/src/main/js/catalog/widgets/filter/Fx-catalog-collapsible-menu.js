@@ -1,4 +1,4 @@
-define(["jquery", "widgets/fx_w_commons", "bootstrap"], function ($, W_Commons) {
+define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Commons) {
 
     var o = { },
         defaultOptions = {
@@ -147,6 +147,18 @@ define(["jquery", "widgets/fx_w_commons", "bootstrap"], function ($, W_Commons) 
 
                 if (modules[j].hasOwnProperty("label")){
                     $btn.html(modules[j].label[o.widget.lang]);
+                }
+
+                if (modules[j].hasOwnProperty("popover")){
+
+/*                    console.log(modules[j]["popover"])
+                    var keys = Object.keys(modules[j]["popover"]);
+
+                    for (var k = 0; k < keys.length; k++ ){
+
+                        $btn.attr(keys[k], modules[j]["popover"][keys[k]])
+                    }*/
+
                 }
 
                 $module.append($btn);
