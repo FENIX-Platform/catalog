@@ -1,4 +1,4 @@
-define(["jquery"], function ($) {
+define(["jquery", "isotope"], function ($) {
 
     var o = { },
     //Default Catalog Results Grid options Options
@@ -10,10 +10,10 @@ define(["jquery"], function ($) {
 
     var $container;
 
-    function Fx_catalog_results_grid() {
+    function Fx_Filterable_grid() {
     };
 
-    Fx_catalog_results_grid.prototype.initBtns = function () {
+    Fx_Filterable_grid.prototype.initBtns = function () {
 
         // filter items on button click
         $(o.filters).on('click', 'button', function (event) {
@@ -26,23 +26,23 @@ define(["jquery"], function ($) {
 
     };
 
-    Fx_catalog_results_grid.prototype.filter = function (filterValue) {
+    Fx_Filterable_grid.prototype.filter = function (filterValue) {
 
         $("button").removeClass(o.css_filter_active);
         $("button[" + o.data_filter_value + "='" + filterValue + "']").addClass(o.css_filter_active);
         $container.isotope({ filter: filterValue });
     };
 
-    Fx_catalog_results_grid.prototype.clear = function () {
+    Fx_Filterable_grid.prototype.clear = function () {
         $container.isotope('remove', $container.isotope('getItemElements'));
-        filter("*");
+        this.filter("*");
     };
 
-    Fx_catalog_results_grid.prototype.addItems = function (items) {
+    Fx_Filterable_grid.prototype.addItems = function (items) {
         $container.isotope('insert', items);
     };
 
-    Fx_catalog_results_grid.prototype.validateOptions = function () {
+    Fx_Filterable_grid.prototype.validateOptions = function () {
 
         //Validate HTML Container
         if ($(o.container).length === 0) {
@@ -56,32 +56,27 @@ define(["jquery"], function ($) {
 
     };
 
-    Fx_catalog_results_grid.prototype.render = function (options) {
+    Fx_Filterable_grid.prototype.render = function (options) {
 
-        if (options) {
-            extend(o, options);
-        }
+        $.extend(o, options);
 
-        validateOptions();
+        this.validateOptions();
 
         //Safe because after validateOptions()
         $container = $(o.container);
         $container.isotope(o.isotope);
 
-        initBtns();
+        this.initBtns();
     };
 
-    Fx_catalog_results_grid.prototype.init = function (baseOptions) {
+    Fx_Filterable_grid.prototype.init = function (baseOptions) {
 
         //Merge options
-        extend(o, defaultOptions);
-        extend(o, baseOptions);
+        $.extend(o, defaultOptions);
+        $.extend(o, baseOptions);
 
-        if (o.autorender) {
-            render();
-        }
     };
 
     //Public API
-    return Fx_catalog_results_grid
+    return Fx_Filterable_grid
 });

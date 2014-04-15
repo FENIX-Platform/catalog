@@ -2,6 +2,7 @@
 requirejs.config({
     "baseUrl": "js/lib",
     "paths": {
+        js : "../../js",
         catalog: "../catalog",
         controller: "../catalog/controller",
         widgets: "../catalog/widgets",
@@ -21,7 +22,7 @@ requirejs.config({
     }
 });
 
-require(["catalog/IndexContext", "domReady!"], function (IndexContext) {
+require(["js/IndexContext", "domReady!"], function(IndexContext) {
 
     var indexContext = new IndexContext();
     indexContext.init();

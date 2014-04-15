@@ -2,7 +2,8 @@
 
 define([], function() {
 
-    function ResultsController(){ }
+    function ResultsController(){
+    }
 
     //(injected)
     ResultsController.prototype.grid = undefined;
@@ -34,6 +35,11 @@ define([], function() {
 
         self.renderComponents();
 
+    };
+
+    ResultsController.prototype.addItems = function(items){
+        console.log("ResultsController")
+        console.log(items)
     };
 
     return ResultsController;

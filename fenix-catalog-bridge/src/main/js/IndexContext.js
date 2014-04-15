@@ -1,18 +1,20 @@
 /*global define */
 
-define(["controller/Fx-catalog-index",
+define(["catalog/controller/Fx-catalog-page",
         "controller/Fx-catalog-filter",
         "widgets/filter/Fx-catalog-collapsible-menu",
         "widgets/filter/Fx-catalog-modular-form",
         "structures/Fx-fluid-grid",
         "widgets/bridge/Fx-catalog-bridge",
         "controller/Fx-catalog-results",
-        "widgets/results/Fx-catalog-results-generator"],
-    function(Controller, FilterController, Menu, Form, FluidForm, Bridge, ResultController, ResultsRenderer) {
+        "widgets/results/Fx-catalog-results-generator",
+        "structures/Fx-filterable-grid"],
+    function(Controller, FilterController, Menu, Form, FluidForm, Bridge, ResultController, ResultsRenderer, FilterableGrid) {
 
     var html_ids = {
         MENU: "fx-catalog-modular-menu",
-        FORM: "fx-catalog-modular-form"
+        FORM: "fx-catalog-modular-form",
+        SUBMIT: "submit"
         },
         //Components
         //Page level
@@ -22,7 +24,7 @@ define(["controller/Fx-catalog-index",
         //Bridge level
         bridge,
         //Result level
-        resultsController, render, grid;
+        resultsController;
 
     function IndexContext(){}
 
@@ -69,12 +71,13 @@ define(["controller/Fx-catalog-index",
 
         $.extend(form, {
             grid: new FluidForm()
-        })
+        });
 
         // Perform dependency injection by extending objects
         $.extend(filterController, {
             menu: menu,
-            form: form
+            form: form,
+            submit: document.querySelector("#" +html_ids.SUBMIT)
         });
 
         return filterController;
@@ -88,9 +91,12 @@ define(["controller/Fx-catalog-index",
 
     IndexContext.prototype.initResults = function(){
 
-        resultsController = ResultController();
-        render = ResultsRenderer();
-        grid =  true
+        resultsController = new ResultController();
+
+        $.extend(resultsController, {
+            resultsRenderer : new ResultsRenderer(),
+            grid: new FilterableGrid()
+        });
 
         return resultsController;
     };
