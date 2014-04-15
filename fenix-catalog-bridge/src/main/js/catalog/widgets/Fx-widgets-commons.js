@@ -13,7 +13,7 @@ define([], function () {
     function Fx_Commons() {
     }
 
-    //Dispatch an event for Chrome, Fireofox e IE
+    //Dispatch an event for Chrome, Firefox e IE
     Fx_Commons.prototype.raiseCustomEvent = function (item, type, data) {
 
         var self = this;
