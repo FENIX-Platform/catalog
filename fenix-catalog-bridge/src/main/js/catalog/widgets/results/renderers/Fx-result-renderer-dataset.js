@@ -1,4 +1,4 @@
-function Fenix_catalog_result_dataset( options ) {
+define(["jquery", "text!html/fx_result_fragments.html"], function($, template){
 
     var o = { };
     //Default Result options
@@ -13,7 +13,11 @@ function Fenix_catalog_result_dataset( options ) {
     };
     var $result;
 
-    function initText(){
+    function Fx_catalog_result_render_dataset(options){
+        $.extend(o, options);
+    }
+
+    Fx_catalog_result_render_dataset.prototype.initText = function(){
 
         $result.find( o.s_desc_title ).html(o.source.name);
         $result.find( o.s_desc_source ).html(o.source.source);
@@ -22,30 +26,31 @@ function Fenix_catalog_result_dataset( options ) {
 
     };
 
-    function initModal(){
+    Fx_catalog_result_render_dataset.prototype.initModal = function(){
 
         $result.find( "#myModalLabel").html(o.source.name);
 
-    }
+    };
 
-    function getHtml( callback ){
+    Fx_catalog_result_render_dataset.prototype.getHtml = function( callback ){
+
+        var self = this;
 
         //Merge options
-        extend(o, defaultOptions);
-        extend(o, options);
+        $.extend(o, defaultOptions);
 
-        $result = $(fragments).find( o.s_result );
+        $result = $(template).find( o.s_result );
         if ( $result.length === 0){ throw new Error( o.error_prefix + "HTML fragment not found"); }
         $result.addClass("dataset");
 
-        initText();
-        initModal();
+        self.initText();
+        self.initModal();
 
         //Check callback is a function
         if ( callback && typeof callback === "function" ){ callback( $result ); }
         else { throw new Error( o.error_prefix + "getHtml() #1 param is not a function");}
-    }
+    };
 
-    return { getHtml : getHtml }
+    return Fx_catalog_result_render_dataset;
 
-}
+});

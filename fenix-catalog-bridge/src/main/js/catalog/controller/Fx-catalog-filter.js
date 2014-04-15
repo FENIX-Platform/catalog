@@ -5,7 +5,7 @@ define(["plugins/Fx-catalog-brigde-filter-plugin"], function( Plugin ) {
     function FilterController(){
       var self = this;
       self.publishFxCatalogBridgePlugin();
-    };
+    }
 
     //(injected)
     FilterController.prototype.menu = undefined;
@@ -30,7 +30,7 @@ define(["plugins/Fx-catalog-brigde-filter-plugin"], function( Plugin ) {
         }, false);
 
         document.body.addEventListener("fx.catalog.menu.remove", function (e) {
-            self.menu.activate(e.detail.semantic)
+            self.menu.activate(e.detail.semantic);
             self.form.removeItem(e.detail.module);
         }, false);
     };
@@ -40,7 +40,7 @@ define(["plugins/Fx-catalog-brigde-filter-plugin"], function( Plugin ) {
 
         if (!self.menu) {throw new Error("CONTROLLER: INVALID MENU ITEM.")}
         if (!self.form) {throw new Error("CONTROLLER: INVALID FORM ITEM.")}
-    }
+    };
 
     FilterController.prototype.render = function() {
         var self = this;
@@ -58,11 +58,10 @@ define(["plugins/Fx-catalog-brigde-filter-plugin"], function( Plugin ) {
         var plugin = new Plugin();
         plugin.init({filter : self});
 
-        console.log(plugin)
 
         //FENIX Catalog Plugin Registration
         if(!window.Fenix_catalog_bridge_plugins) window.Fenix_catalog_bridge_plugins = {};
-        window.Fenix_catalog_bridge_plugins['Fenix_catalog_bridge_modular_filter']
+        window.Fenix_catalog_bridge_plugins['Fenix_catalog_bridge_modular_filter'] = true;
 
     };
 

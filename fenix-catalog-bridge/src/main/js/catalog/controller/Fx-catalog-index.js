@@ -7,6 +7,11 @@ define(function( ) {
     //(injected)
     PageController.prototype.filter = undefined;
 
+    //(injected)
+    PageController.prototype.bridge = undefined;
+
+    //(injected)
+    PageController.prototype.results = undefined;
 
     PageController.prototype.renderComponents = function(){
         var self = this;

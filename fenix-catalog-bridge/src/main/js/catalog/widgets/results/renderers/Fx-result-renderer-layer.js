@@ -1,5 +1,4 @@
-
-function Fenix_catalog_result_layer( options ) {
+define(["jquery", "text!html/fx_result_fragments.html"], function($, template){
 
     var o = { };
     //Default Result options
@@ -14,7 +13,11 @@ function Fenix_catalog_result_layer( options ) {
     };
     var $result;
 
-    function initText(){
+    function Fx_catalog_result_renderer_layer(options){
+        $.extend(o, options);
+    }
+
+    Fx_catalog_result_renderer_layer.prototype.initText = function(){
 
         $result.find( o.s_desc_title ).html(o.source.name);
         $result.find( o.s_desc_source ).html(o.source.source);
@@ -24,33 +27,32 @@ function Fenix_catalog_result_layer( options ) {
 
     };
 
-    function initModal(){
+    Fx_catalog_result_renderer_layer.prototype.initModal = function(){
 
         $result.find( "#myModalLabel").html(o.source.name);
 
-    }
+    };
 
-    function getHtml( callback ){
+    Fx_catalog_result_renderer_layer.prototype.getHtml = function( callback ){
 
         //Merge options
         extend(o, defaultOptions);
-        extend(o, options);
 
-        $result = $(fragments).find( o.s_result );
+        $result = $(template).find( o.s_result );
         if ( $result.length === 0){ throw new Error( o.error_prefix + "HTML fragment not found"); }
 
         $result.addClass("layer");
         $result.find( o.s_icon ).attr("src","css/img/mind_map60.png");
 
-        initText();
-        initModal();
+        $.initText();
+        $.initModal();
 
         //Check callback is a function
         if (  callback && typeof callback === "function" ){ callback( $result ); }
         else { throw new Error( o.error_prefix + "getHtml() #1 param is not a function");}
 
-    }
+    };
 
-    return { getHtml : getHtml }
+    return Fx_catalog_result_renderer_layer;
 
-}
+});

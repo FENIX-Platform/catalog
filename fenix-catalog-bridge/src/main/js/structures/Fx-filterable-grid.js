@@ -13,15 +13,33 @@ define(["jquery"], function ($) {
     function Fx_catalog_results_grid() {
     };
 
-    Fx_catalog_results_grid.prototype.init = function (baseOptions) {
+    Fx_catalog_results_grid.prototype.initBtns = function () {
 
-        //Merge options
-        extend(o, defaultOptions);
-        extend(o, baseOptions);
+        // filter items on button click
+        $(o.filters).on('click', 'button', function (event) {
+            $container.isotope({ filter: $(this).attr(o.data_filter_value) });
+            $(o.filters).find(" button").removeClass(o.css_filter_active);
+            $(this).addClass(o.css_filter_active);
+        });
 
-        if (o.autorender) {
-            render();
-        }
+        $(o.filters).find("button[" + o.data_filter_value + "='*']").addClass(o.css_filter_active);
+
+    };
+
+    Fx_catalog_results_grid.prototype.filter = function (filterValue) {
+
+        $("button").removeClass(o.css_filter_active);
+        $("button[" + o.data_filter_value + "='" + filterValue + "']").addClass(o.css_filter_active);
+        $container.isotope({ filter: filterValue });
+    };
+
+    Fx_catalog_results_grid.prototype.clear = function () {
+        $container.isotope('remove', $container.isotope('getItemElements'));
+        filter("*");
+    };
+
+    Fx_catalog_results_grid.prototype.addItems = function (items) {
+        $container.isotope('insert', items);
     };
 
     Fx_catalog_results_grid.prototype.validateOptions = function () {
@@ -53,33 +71,15 @@ define(["jquery"], function ($) {
         initBtns();
     };
 
-    Fx_catalog_results_grid.prototype.initBtns = function () {
+    Fx_catalog_results_grid.prototype.init = function (baseOptions) {
 
-        // filter items on button click
-        $(o.filters).on('click', 'button', function (event) {
-            $container.isotope({ filter: $(this).attr(o.data_filter_value) });
-            $(o.filters).find(" button").removeClass(o.css_filter_active);
-            $(this).addClass(o.css_filter_active);
-        });
+        //Merge options
+        extend(o, defaultOptions);
+        extend(o, baseOptions);
 
-        $(o.filters).find("button[" + o.data_filter_value + "='*']").addClass(o.css_filter_active);
-
-    };
-
-    Fx_catalog_results_grid.prototype.add = function (items) {
-        $container.isotope('insert', items);
-    };
-
-    Fx_catalog_results_grid.prototype.clear = function () {
-        $container.isotope('remove', $container.isotope('getItemElements'));
-        filter("*");
-    };
-
-    Fx_catalog_results_grid.prototype.filter = function (filterValue) {
-
-        $("button").removeClass(o.css_filter_active);
-        $("button[" + o.data_filter_value + "='" + filterValue + "']").addClass(o.css_filter_active);
-        $container.isotope({ filter: filterValue });
+        if (o.autorender) {
+            render();
+        }
     };
 
     //Public API
