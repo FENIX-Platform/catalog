@@ -97,8 +97,10 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
 
         //Init header
         var $header = $('<div class="panel-heading"></div>'),
-            $title = $('<h4 class="panel-title"></h4>'),
-            $a = $('<a data-toggle="collapse"></a>');
+            $title = $('<h4 class="panel-title fx-menu-category-title"></h4>'),
+            $a = $('<a data-toggle="collapse"></a>'),
+            $info = $('<div class="fx-catalog-modular-menu-category-info"></div>'),
+            $plus = $('<div class="fx-catalog-modular-menu-category-plus"></div>');
 
         $a.attr("data-parent", "#"+o.collapseId);
         $a.attr("href", "#"+id);
@@ -107,7 +109,7 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
             $a.html(panel["title"][o.widget.lang]);
         }
 
-        return $header.append($title.append($a));
+        return $header.append($title.append($a.append($plus)).append($info));
 
     };
 
@@ -125,7 +127,7 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
             for (var j=0; j< modules.length; j++){
 
                 var $module = $("<div></div>"),
-                    $btn = $('<button type="button" class="btn btn-default"></button>');
+                    $btn = $('<button type="button" class="btn btn-default btn-block"></button>');
 
                 $btn.on('click', {semantic : modules[j].semantic },function(e){
                     var $btn = $(this);
@@ -145,8 +147,14 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
                     $btn.attr("data-semantic", modules[j].semantic);
                 }
 
+                //Keep it before the label to have the icon in its the left side
+                if (modules[j].hasOwnProperty("icon")){
+                    $btn.append($('<span class="'+ modules[j].icon+'"></span>'));
+                }
+
                 if (modules[j].hasOwnProperty("label")){
-                    $btn.html(modules[j].label[o.widget.lang]);
+
+                    $btn.append(modules[j].label[o.widget.lang]);
                 }
 
                 if (modules[j].hasOwnProperty("popover")){
@@ -160,6 +168,10 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
                     }*/
 
                 }
+
+
+
+
 
                 $module.append($btn);
                 $body.append($module)

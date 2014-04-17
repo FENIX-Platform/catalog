@@ -6,11 +6,13 @@ define(["jquery", "fenix-ui-creator-js", "widgets/Fx-widgets-commons"], function
                 lang: 'EN'
             },
             css_classes: {
+                HEADER: "fx-catalog-modular-form-header",
                 HANDLER: "fx-catalog-modular-form-handler",
                 CONTENT: "fx-catalog-modular-form-content",
                 CLOSE_BTN: "fx-catalog-modular-form-close-btn",
                 MODULE: 'fx-catalog-form-module',
-                RESIZE: "fx-catalog-modular-form-resize-btn"
+                RESIZE: "fx-catalog-modular-form-resize-btn",
+                LABEL: "fx-catalog-modular-form-label"
             },
             events: {
                 REMOVE_MODULE: "fx.catalog.menu.remove"
@@ -44,7 +46,6 @@ define(["jquery", "fenix-ui-creator-js", "widgets/Fx-widgets-commons"], function
         var id = "fx-free-form-mod-" + w_Commons.getFenixUniqueId();
         c.attr("id", id);
 
-
         uiCreator.render({
             cssClass: "form-elements",
             container: "#" + id,
@@ -59,6 +60,7 @@ define(["jquery", "fenix-ui-creator-js", "widgets/Fx-widgets-commons"], function
 
         var id = "fx-time-series-mod-" + w_Commons.getFenixUniqueId();
         c.attr("id", id);
+        c.addClass("fx-catalog-mod-timerseries");
 
         uiCreator.render({
             cssClass: "form-elements",
@@ -80,7 +82,7 @@ define(["jquery", "fenix-ui-creator-js", "widgets/Fx-widgets-commons"], function
         });
     };
 
-    //TODO cancellare perche' le functioni devono essere sulla semantica del modulo e non sul tipo di windget
+    //TODO cancellare perche' le funzioni devono essere sulla semantica del modulo e non sul tipo di windget
     Fx_catalog_modular_form.prototype.renderList = function ($blank) {
         var c = $blank.find("." + o.css_classes.CONTENT);
         var id = "fx-geo-mod-" + w_Commons.getFenixUniqueId();
@@ -152,13 +154,35 @@ define(["jquery", "fenix-ui-creator-js", "widgets/Fx-widgets-commons"], function
 
         var self = this;
 
-        var $module = $("<div class='"+o.css_classes.MODULE+"'></div>");
+        var $module = $("<div class='"+o.css_classes.MODULE+"'></div>"),
+            $header = $("<div class='"+o.css_classes.HEADER+"'></div>");
 
         $module.attr("data-semantic", kind);
-        $module.append("<div class='" + o.css_classes.HANDLER + "'>::::::</div>");
-        $module.append("<div class='" + o.css_classes.CONTENT + "'></div>");
+        $module.attr("data-size", "half");
+        $header.append("<div class='" + o.css_classes.HANDLER + "'></div>");
+        $header.append("<div class='"+o.css_classes.LABEL+"'>"+cache.json[kind]["label"][o.widget.lang]+"</div>");
 
-        var $close_btn = $("<div class='" + o.css_classes.CLOSE_BTN + "'>XxX</div>")
+        var $resize = $("<div class='" + o.css_classes.RESIZE + "'></div>");
+            $resize.on("click", { module: $module.get(0), btn: $resize}, function (e) {
+
+                if ($(e.data.module).attr("data-size") === 'half'){
+                    $(e.data.module).attr("data-size", "full");
+                    $(e.data.btn).css({
+                        "background-position" : "-30px -15px"
+                    });
+
+                } else {
+                    $(e.data.module).attr("data-size", "half");
+                    $(e.data.btn).css({
+                        "background-position" : "-30px 0"
+                    });
+                }
+
+                self.grid.resize(e.data.module);
+            });
+        $header.append($resize);
+
+        var $close_btn = $("<div class='" + o.css_classes.CLOSE_BTN + "'></div>")
             .on("click", { o: o }, function () {
             w_Commons.raiseCustomEvent(document.body, o.events.REMOVE_MODULE, { semantic: kind, module: $module.get(0)});
 
@@ -171,15 +195,9 @@ define(["jquery", "fenix-ui-creator-js", "widgets/Fx-widgets-commons"], function
 
         });
 
-        $module.append($close_btn);
-
-        var $resize = $("<div class='" + o.css_classes.RESIZE + "'>RESIZE</div>")
-            .on("click", { module: $module.get(0) }, function (e) {
-
-                self.grid.resize(e.data.module);
-            });
-
-        $module.append($resize);
+        $header.append($close_btn);
+        $module.append($header);
+        $module.append("<div class='" + o.css_classes.CONTENT + "'></div>");
 
         $(o.container).append($module);
 

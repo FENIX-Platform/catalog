@@ -14,7 +14,7 @@ define(["catalog/controller/Fx-catalog-page",
     var html_ids = {
         MENU: "fx-catalog-modular-menu",
         FORM: "fx-catalog-modular-form",
-        SUBMIT: "submit"
+        SUBMIT: "fx-catalog-submit-btn"
         },
         //Components
         //Page level
@@ -64,7 +64,8 @@ define(["catalog/controller/Fx-catalog-page",
                 },
                 config : {
                     itemSelector: '.fx-catalog-form-module',
-                    columnWidth: '.fx-catalog-form-module'
+                    columnWidth: '.fx-catalog-form-module',
+                    rowHeight: '.fx-catalog-form-module'
                 }
             }
         });

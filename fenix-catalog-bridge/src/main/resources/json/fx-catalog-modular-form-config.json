@@ -110,14 +110,15 @@
                         "label":"Salted Caramel Hot Chocolate",
                         "value":"Pinolo"
                     }
+
                 ]
             },
             "rendering":{
                 "displayMember":"label",
                 "valueMember":"value",
                 "multiple": true,
-                "width":300,
-                "height":250
+                "width":"100%",
+                "autoHeight" : true
             }
         }
     },
@@ -255,8 +256,7 @@
             "rendering":{
                 "allowDrag": false,
                 "allowDrop" : false,
-                "width":300,
-                "height":250
+                "width":"100%"
             }
         }
     },
@@ -388,8 +388,7 @@
             "rendering":{
                 "displayMember":"text",
                 "valueMember":"value",
-                "width":200,
-                "height":25
+                "width":"100%"
             }
         }
     }

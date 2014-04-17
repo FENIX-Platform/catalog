@@ -2,89 +2,150 @@
     "panels": [
         {
             "title": {
-                "EN": "Title #1"
+                "EN": "Geographical Area"
+            },
+            "popover": {
+                "data-container": "body",
+                "data-toggle": "popover",
+                "data-placement": "left",
+                "data-content": "Vivamus sagittis lacus vel augue laoreet rutrum faucibus.",
+                "data-trigger": "hover"
+
             },
             "modules": [
                 {
                     "id": "id1",
                     "semantic": "TIME_SERIES",
-                    "style": {
-                        "label": "css 1",
-                        "icon": "glyphicon glyphicon-asterisk"
-                    },
                     "label": {
-                        "EN": "TIME_SERIES"
+                        "EN": "Time Series"
                     },
-                    "popover" : {
-                      "data-container" : "body",
-                      "data-toggle" : "popover",
-                      "data-placement" : "left",
-                      "data-content" : "Vivamus sagittis lacus vel augue laoreet rutrum faucibus.",
-                      "data-trigger" : "hover"
-
-                    }
+                    "icon" : "fa fa-clock-o fa-lg fa-fw"
                 },
                 {
                     "id": "id2",
                     "semantic": "GEOGRAPHICAL_AREA",
-                    "style": {
-                        "label": "css 1",
-                        "icon": "glyphicon glyphicon-cloud"
-                    },
                     "label": {
-                        "EN": "GEOGRAPHICAL_AREA"
-                    }
+                        "EN": "Geographical Area"
+                    },
+                    "icon" : "fa fa-globe fa-lg fa-fw"
                 }
             ]
         },
         {
             "title": {
-                "EN": "Title #2"
+                "EN": "Sources"
             },
             "modules": [
                 {
                     "id": "id3",
                     "semantic": "FREE_FORM",
-                    "style": {
-                        "label": "css 1",
-                        "icon": "glyphicon glyphicon-asterisk"
-                    },
                     "label": {
-                        "EN": "FREE_FORM"
-                    }
+                        "EN": "Free text"
+                    },
+                    "icon" : "fa fa-search fa-lg fa-fw"
+
                 },
                 {
                     "id": "id4",
                     "semantic": "LIST",
-                    "style": {
-                        "label": "css 1",
-                        "icon": "glyphicon glyphicon-asterisk"
-                    },
                     "label": {
-                        "EN": "LIST"
-                    }
+                        "EN": "List"
+                    },
+                    "icon" : "fa fa-list-alt fa-lg fa-fw"
                 },
                 {
                     "id": "id5",
                     "semantic": "TREE",
-                    "style": {
-                        "label": "css 1",
-                        "icon": "glyphicon glyphicon-asterisk"
-                    },
                     "label": {
-                        "EN": "TREE"
-                    }
+                        "EN": "Tree"
+                    },
+                    "icon" : "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
                     "id": "id6",
                     "semantic": "DROPDOWN",
-                    "style": {
-                        "label": "css 1",
-                        "icon": "glyphicon glyphicon-asterisk"
+                    "label": {
+                        "EN": "Dropdown"
                     },
+                    "icon" : "fa fa-chevron-circle-down fa-lg fa-fw"
+                }
+            ]
+        },
+        {
+            "title": {
+                "EN": "Resources Type"
+            },
+            "modules": [
+                {
+                    "id": "id3",
+                    "semantic": "FREE_FORM",
+                    "label": {
+                        "EN": "FREE_FORM"
+                    },
+                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                },
+                {
+                    "id": "id4",
+                    "semantic": "LIST",
+                    "label": {
+                        "EN": "LIST"
+                    } ,
+                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                },
+                {
+                    "id": "id5",
+                    "semantic": "TREE",
+                    "label": {
+                        "EN": "TREE"
+                    } ,
+                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                },
+                {
+                    "id": "id6",
+                    "semantic": "DROPDOWN",
                     "label": {
                         "EN": "DROPDOWN"
-                    }
+                    },
+                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                }
+            ]
+        },
+        {
+            "title": {
+                "EN": "Presets"
+            },
+            "modules": [
+                {
+                    "id": "id3",
+                    "semantic": "FREE_FORM",
+                    "label": {
+                        "EN": "FREE_FORM"
+                    } ,
+                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                },
+                {
+                    "id": "id4",
+                    "semantic": "LIST",
+                    "label": {
+                        "EN": "LIST"
+                    },
+                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                },
+                {
+                    "id": "id5",
+                    "semantic": "TREE",
+                    "label": {
+                        "EN": "TREE"
+                    },
+                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                },
+                {
+                    "id": "id6",
+                    "semantic": "DROPDOWN",
+                    "label": {
+                        "EN": "DROPDOWN"
+                    },
+                    "icon" : "fa fa-code-fork fa-lg fa-fw"
                 }
             ]
         }

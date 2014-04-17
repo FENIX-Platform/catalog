@@ -359,7 +359,7 @@ define(["jquery", "jqwidgets", "jqrangeslider"], function($) {
 
         }
 
-        if (e.label[lang]) {
+        if (e.label[lang] && o.labels) {
 
             label = document.createElement("label");
             label.setAttribute("for", e.id);
