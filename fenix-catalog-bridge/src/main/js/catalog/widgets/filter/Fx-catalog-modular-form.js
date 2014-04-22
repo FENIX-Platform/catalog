@@ -1,4 +1,4 @@
-define(["jquery", "fenix-ui-creator-js", "widgets/Fx-widgets-commons"], function ($, UiCreator, W_Commons) {
+define(["jquery", "fenix-ui-creator", "widgets/Fx-widgets-commons"], function ($, UiCreator, W_Commons) {
 
     var o = { },
         defaultOptions = {
