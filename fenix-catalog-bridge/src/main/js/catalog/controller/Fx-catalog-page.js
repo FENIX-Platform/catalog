@@ -1,8 +1,9 @@
 /*global define */
 
-define([], function( ) {
+define([], function () {
 
-    function PageController(){ }
+    function PageController() {
+    }
 
     //(injected)
     PageController.prototype.filter = undefined;
@@ -13,31 +14,33 @@ define([], function( ) {
     //(injected)
     PageController.prototype.results = undefined;
 
-    PageController.prototype.renderComponents = function(){
+    PageController.prototype.renderComponents = function () {
         var self = this;
 
         self.filter.render();
         self.results.render();
     };
 
-    PageController.prototype.initEventListeners = function(){
+    PageController.prototype.initEventListeners = function () {
 
         var self = this;
 
-        document.body.addEventListener("submit.catalog.fx", function() {
+        document.body.addEventListener("submit.catalog.fx", function () {
             console.log("LISTENING submit.catalog.fx");
             self.bridge.query(self.filter, self.results.addItems, self.results);
         }, false);
 
     };
 
-    PageController.prototype.preValidation = function(){
+    PageController.prototype.preValidation = function () {
         var self = this;
 
-        if (!self.filter) {throw new Error("PAGE CONTROLLER: INVALID FILTER ITEM.")}
+        if (!self.filter) {
+            throw new Error("PAGE CONTROLLER: INVALID FILTER ITEM.")
+        }
     };
 
-    PageController.prototype.render = function(){
+    PageController.prototype.render = function () {
         var self = this;
 
         self.preValidation();

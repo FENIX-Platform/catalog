@@ -2,12 +2,12 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
 
     var o = { },
         defaultOptions = {
-        widget : {
-            lang :'EN'
+            widget: {
+                lang: 'EN'
             },
-        events : {
-            SELECT : 'fx.catalog.menu.select'
-        }
+            events: {
+                SELECT: 'fx.catalog.menu.select'
+            }
         };
 
     var cache = {},
@@ -29,11 +29,11 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
         var self = this;
         $.extend(o, options);
 
-        if (!cache.json){
+        if (!cache.json) {
 
             if (o.hasOwnProperty("config")) {
 
-                $.getJSON(o.config, function(data) {
+                $.getJSON(o.config, function (data) {
                     cache.json = data;
                     self.initStructure();
                     self.renderMenu(data);
@@ -58,7 +58,7 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
 
     };
 
-    Fx_Catalog_Collapsible_Menu.prototype.renderMenu = function(json) {
+    Fx_Catalog_Collapsible_Menu.prototype.renderMenu = function (json) {
 
         var self = this;
 
@@ -72,14 +72,14 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
 
             }
 
-            $(o.container).append( $collapse )
+            $(o.container).append($collapse)
 
         } else {
             throw new Error("Fx_Catalog_Collapsible_Menu: no 'panels' attribute in config JSON.")
         }
     };
 
-    Fx_Catalog_Collapsible_Menu.prototype.buildPanel = function(panel){
+    Fx_Catalog_Collapsible_Menu.prototype.buildPanel = function (panel) {
         var self = this,
             id = "fx-collapse-panel-" + w_Commons.getFenixUniqueId();
 
@@ -93,7 +93,7 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
         return $p;
     };
 
-    Fx_Catalog_Collapsible_Menu.prototype.buildPanelHeader = function(panel, id){
+    Fx_Catalog_Collapsible_Menu.prototype.buildPanelHeader = function (panel, id) {
 
         //Init header
         var $header = $('<div class="panel-heading"></div>'),
@@ -102,8 +102,8 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
             $info = $('<div class="fx-catalog-modular-menu-category-info"></div>'),
             $plus = $('<div class="fx-catalog-modular-menu-category-plus"></div>');
 
-        $a.attr("data-parent", "#"+o.collapseId);
-        $a.attr("href", "#"+id);
+        $a.attr("data-parent", "#" + o.collapseId);
+        $a.attr("href", "#" + id);
 
         if (panel.hasOwnProperty("title")) {
             $a.html(panel["title"][o.widget.lang]);
@@ -113,7 +113,7 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
 
     };
 
-    Fx_Catalog_Collapsible_Menu.prototype.buildPanelBody = function(panel, id){
+    Fx_Catalog_Collapsible_Menu.prototype.buildPanelBody = function (panel, id) {
 
         //Init panel body
         var $bodyContainer = $("<div class='panel-collapse collapse'></div>");
@@ -121,51 +121,51 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
 
         var $body = $('<div class="panel-body"></div>');
 
-        if (panel.hasOwnProperty("modules")){
+        if (panel.hasOwnProperty("modules")) {
             var modules = panel["modules"];
 
-            for (var j=0; j< modules.length; j++){
+            for (var j = 0; j < modules.length; j++) {
 
                 var $module = $("<div></div>"),
                     $btn = $('<button type="button" class="btn btn-default btn-block"></button>');
 
-                $btn.on('click', {module : modules[j] }, function(e){
+                $btn.on('click', {module: modules[j] }, function (e) {
                     var $btn = $(this);
 
                     if ($btn.is(':disabled') === false) {
                         $btn.attr("disabled", "disabled");
-                        w_Commons.raiseCustomEvent(o.container, o.events.SELECT , e.data.module)
+                        w_Commons.raiseCustomEvent(o.container, o.events.SELECT, e.data.module)
                     }
 
                 });
 
-                if (modules[j].hasOwnProperty("id")){
+                if (modules[j].hasOwnProperty("id")) {
                     $btn.attr("id", modules[j].id);
                 }
 
-                if (modules[j].hasOwnProperty("module")){
+                if (modules[j].hasOwnProperty("module")) {
                     $btn.attr("data-module", modules[j].module);
                 }
 
                 //Keep it before the label to have the icon in its the left side
-                if (modules[j].hasOwnProperty("icon")){
-                    $btn.append($('<span class="'+ modules[j].icon+'"></span>'));
+                if (modules[j].hasOwnProperty("icon")) {
+                    $btn.append($('<span class="' + modules[j].icon + '"></span>'));
                 }
 
-                if (modules[j].hasOwnProperty("label")){
+                if (modules[j].hasOwnProperty("label")) {
 
                     $btn.append(modules[j].label[o.widget.lang]);
                 }
 
-                if (modules[j].hasOwnProperty("popover")){
+                if (modules[j].hasOwnProperty("popover")) {
 
-/*                    console.log(modules[j]["popover"])
-                    var keys = Object.keys(modules[j]["popover"]);
+                    /*                    console.log(modules[j]["popover"])
+                     var keys = Object.keys(modules[j]["popover"]);
 
-                    for (var k = 0; k < keys.length; k++ ){
+                     for (var k = 0; k < keys.length; k++ ){
 
-                        $btn.attr(keys[k], modules[j]["popover"][keys[k]])
-                    }*/
+                     $btn.attr(keys[k], modules[j]["popover"][keys[k]])
+                     }*/
 
                 }
 
@@ -186,7 +186,7 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
 
         $(o.container).find("[data-module='" + module + "']").removeAttr("disabled");
 
-    } ;
+    };
 
     return Fx_Catalog_Collapsible_Menu;
 

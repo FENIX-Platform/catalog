@@ -19,7 +19,7 @@
                     "label": {
                         "EN": "Time Series"
                     },
-                    "icon" : "fa fa-clock-o fa-lg fa-fw"
+                    "icon": "fa fa-clock-o fa-lg fa-fw"
                 },
                 {
                     "filterField": "filterField2",
@@ -27,7 +27,7 @@
                     "label": {
                         "EN": "Geographical Area"
                     },
-                    "icon" : "fa fa-globe fa-lg fa-fw"
+                    "icon": "fa fa-globe fa-lg fa-fw"
                 }
             ]
         },
@@ -42,7 +42,7 @@
                     "label": {
                         "EN": "Free text"
                     },
-                    "icon" : "fa fa-search fa-lg fa-fw"
+                    "icon": "fa fa-search fa-lg fa-fw"
 
                 },
                 {
@@ -51,7 +51,7 @@
                     "label": {
                         "EN": "List"
                     },
-                    "icon" : "fa fa-list-alt fa-lg fa-fw"
+                    "icon": "fa fa-list-alt fa-lg fa-fw"
                 },
                 {
                     "filterField": "filterField5",
@@ -59,7 +59,7 @@
                     "label": {
                         "EN": "Tree"
                     },
-                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                    "icon": "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
                     "filterField": "filterField6",
@@ -67,7 +67,7 @@
                     "label": {
                         "EN": "Dropdown"
                     },
-                    "icon" : "fa fa-chevron-circle-down fa-lg fa-fw"
+                    "icon": "fa fa-chevron-circle-down fa-lg fa-fw"
                 }
             ]
         },
@@ -82,23 +82,23 @@
                     "label": {
                         "EN": "FREE_FORM"
                     },
-                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                    "icon": "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
                     "filterField": "filterField4",
                     "module": "LIST",
                     "label": {
                         "EN": "LIST"
-                    } ,
-                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                    },
+                    "icon": "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
                     "filterField": "filterField5",
                     "module": "TREE",
                     "label": {
                         "EN": "TREE"
-                    } ,
-                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                    },
+                    "icon": "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
                     "filterField": "filterField6",
@@ -106,7 +106,7 @@
                     "label": {
                         "EN": "DROPDOWN"
                     },
-                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                    "icon": "fa fa-code-fork fa-lg fa-fw"
                 }
             ]
         },
@@ -120,8 +120,8 @@
                     "module": "FREE_FORM",
                     "label": {
                         "EN": "FREE_FORM"
-                    } ,
-                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                    },
+                    "icon": "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
                     "filterField": "filterField4",
@@ -129,7 +129,7 @@
                     "label": {
                         "EN": "LIST"
                     },
-                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                    "icon": "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
                     "filterField": "filterField5",
@@ -137,7 +137,7 @@
                     "label": {
                         "EN": "TREE"
                     },
-                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                    "icon": "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
                     "filterField": "filterField6",
@@ -145,7 +145,7 @@
                     "label": {
                         "EN": "DROPDOWN"
                     },
-                    "icon" : "fa fa-code-fork fa-lg fa-fw"
+                    "icon": "fa fa-code-fork fa-lg fa-fw"
                 }
             ]
         }

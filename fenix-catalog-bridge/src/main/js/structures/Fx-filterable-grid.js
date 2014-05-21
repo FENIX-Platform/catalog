@@ -1,3 +1,5 @@
+/*global define*/
+
 define([
     'jquery',
     'widgets/Fx-widgets-commons',
@@ -5,7 +7,6 @@ define([
 ], function ($, W_Commons, Isotope) {
 
     var o = { },
-    //Default Catalog Results Grid options Options
         defaultOptions = {
             data_filter_value: "data-filter-value",
             css_filter_active: "catalog-filter-active"
@@ -13,7 +14,7 @@ define([
 
     var isotope, w_Commons;
 
-    function Fx_Filterable_grid(){
+    function Fx_Filterable_grid() {
         w_Commons = new W_Commons();
     }
 
@@ -37,7 +38,7 @@ define([
         this.filterIsotope({ filter: filterValue });
     };
 
-    Fx_Filterable_grid.prototype.filterIsotope= function (filters){
+    Fx_Filterable_grid.prototype.filterIsotope = function (filters) {
         isotope.arrange(filters);
     };
 
@@ -48,15 +49,15 @@ define([
 
     Fx_Filterable_grid.prototype.addItems = function (items) {
 
-        o.container.appendChild( items );
-        isotope.appended( items );
+        o.container.appendChild(items);
+        isotope.appended(items);
         isotope.layout();
     };
 
     Fx_Filterable_grid.prototype.validateOptions = function () {
 
         //Validate HTML Container
-        if (!w_Commons.isElement(o.container)){
+        if (!w_Commons.isElement(o.container)) {
             throw new Error("Filterable Grid: INVALID_CONTAINER.")
         }
     };
@@ -69,7 +70,9 @@ define([
 
         isotope = new Isotope(o.container, o.isotope);
 
-        if (o.filters){  this.initBtns(); }
+        if (o.filters) {
+            this.initBtns();
+        }
     };
 
     Fx_Filterable_grid.prototype.init = function (baseOptions) {
@@ -84,7 +87,7 @@ define([
 
         var elements = isotope.getItemElements();
 
-        for (var i=0; i<elements.length; i++){
+        for (var i = 0; i < elements.length; i++) {
             isotope.remove(elements[i])
         }
 

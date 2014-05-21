@@ -1,29 +1,35 @@
-define(['jquery', 'widgets/Fx-widgets-commons',
-        'packery', 'draggabilly'], function ($, W_Commons, Packery, Draggabilly) {
+/*global define*/
+
+define([
+    'jquery',
+    'widgets/Fx-widgets-commons',
+    'packery',
+    'draggabilly'
+], function ($, W_Commons, Packery, Draggabilly) {
 
     var o = { },
         defaultOptions = {
-        css : {
-            FIT: "fit"
-        }};
+            css: {
+                FIT: "fit"
+            }};
 
     var pckry, w_Commons;
 
     function Fx_Fluid_Grid() {
         w_Commons = new W_Commons();
-    };
+    }
 
-    Fx_Fluid_Grid.prototype.resize = function(item){
+    Fx_Fluid_Grid.prototype.resize = function (item) {
 
         var $item = $(item);
 
-       if ($item.hasClass(o.css.FIT)){
-           $item.removeClass(o.css.FIT);
-           pckry.layout();
-       }else {
-           $item.addClass(o.css.FIT);
-           pckry.fit( $item.get(0) );
-       };
+        if ($item.hasClass(o.css.FIT)) {
+            $item.removeClass(o.css.FIT);
+            pckry.layout();
+        } else {
+            $item.addClass(o.css.FIT);
+            pckry.fit($item.get(0));
+        }
 
         return $item.get(0);
 
@@ -43,16 +49,16 @@ define(['jquery', 'widgets/Fx-widgets-commons',
 
         pckry.layout();
 
-        setTimeout(function(){
+        setTimeout(function () {
             pckry.layout();
-        },100);
+        }, 100);
 
     };
 
     Fx_Fluid_Grid.prototype.removeItem = function (item) {
 
         // remove clicked element
-        pckry.remove( item );
+        pckry.remove(item);
         // layout remaining item elements
         pckry.layout();
     };
@@ -74,15 +80,15 @@ define(['jquery', 'widgets/Fx-widgets-commons',
 
     Fx_Fluid_Grid.prototype.preValidation = function () {
 
-        if (!w_Commons.isElement(o.container)){
+        if (!w_Commons.isElement(o.container)) {
             throw new Error("Fluid Grid: IVALID_CONTAINER.")
         }
 
-        if (!o.hasOwnProperty("config")){
+        if (!o.hasOwnProperty("config")) {
             throw new Error("Fluid Grid: NO CONFIG")
         }
 
-        if (!o.drag.hasOwnProperty("handle")){
+        if (!o.drag.hasOwnProperty("handle")) {
             throw new Error("Fluid Grid: NO HANDLER SELECTOR")
         }
 
@@ -105,4 +111,4 @@ define(['jquery', 'widgets/Fx-widgets-commons',
 
     return Fx_Fluid_Grid;
 
-})
+});

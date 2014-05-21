@@ -2,9 +2,9 @@
 
 define([
     'widgets/results/Fx-catalog-results-generator'
-], function(ResultGenerator) {
+], function (ResultGenerator) {
 
-    function ResultsController(){
+    function ResultsController() {
 
         this.resultGenerator = new ResultGenerator();
     }
@@ -15,20 +15,25 @@ define([
     //(injected)
     ResultsController.prototype.resultsRenderer = undefined;
 
-    ResultsController.prototype.renderComponents = function(){
+    ResultsController.prototype.renderComponents = function () {
         this.grid.render();
     };
 
-    ResultsController.prototype.initEventListeners = function(){};
-
-    ResultsController.prototype.preValidation = function(){
-        var self = this;
-
-        if (!self.grid) {throw new Error("ResultsController: INVALID GRID ITEM.")}
-        if (!self.resultsRenderer) {throw new Error("ResultsController: INVALID RENDER ITEM.")}
+    ResultsController.prototype.initEventListeners = function () {
     };
 
-    ResultsController.prototype.render = function() {
+    ResultsController.prototype.preValidation = function () {
+        var self = this;
+
+        if (!self.grid) {
+            throw new Error("ResultsController: INVALID GRID ITEM.")
+        }
+        if (!self.resultsRenderer) {
+            throw new Error("ResultsController: INVALID RENDER ITEM.")
+        }
+    };
+
+    ResultsController.prototype.render = function () {
         var self = this;
 
         self.preValidation();
@@ -36,12 +41,12 @@ define([
         self.renderComponents();
     };
 
-    ResultsController.prototype.addItems = function( response ){
+    ResultsController.prototype.addItems = function (response) {
 
         this.grid.clear();
         var items = response.resources;
 
-        for (var i=0; i< items.length; i++) {
+        for (var i = 0; i < items.length; i++) {
             this.grid.addItems(this.resultGenerator.getInstance(items[i]));
         }
 

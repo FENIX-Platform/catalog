@@ -1,3 +1,5 @@
 [
-    { "simplerange":  "field-name" }
+    {
+        "simplerange": "field-name"
+    }
 ]
