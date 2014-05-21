@@ -3,6 +3,7 @@ requirejs.config({
     "baseUrl": "js/lib",
     "paths": {
         js : "../../js",
+        json: "../../json",
         catalog: "../catalog",
         controller: "../catalog/controller",
         widgets: "../catalog/widgets",

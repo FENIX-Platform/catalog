@@ -12,26 +12,17 @@ define(["catalog/controller/Fx-catalog-page",
     function(Controller, FilterController, Menu, Form, FluidForm, Bridge, ResultController, ResultsRenderer, FilterableGrid) {
 
     var html_ids = {
-        MENU: "fx-catalog-modular-menu",
-        FORM: "fx-catalog-modular-form",
-        SUBMIT: "fx-catalog-submit-btn"
-        },
-        //Components
-        //Page level
-        pageController,
-        //Filter level
-        filterController, menu, form,
-        //Bridge level
-        bridge,
-        //Result level
-        resultsController;
+            MENU: "fx-catalog-modular-menu",
+            FORM: "fx-catalog-modular-form",
+            SUBMIT: "fx-catalog-submit-btn",
+            RESULT : "fx-catalog-results"
+        };
 
     function IndexContext(){}
 
     IndexContext.prototype.init = function() {
-        var self = this;
-
-        pageController = new Controller();
+        var self = this,
+            pageController = new Controller();
 
         // Perform dependency injection by extending objects
         $.extend(pageController, {
@@ -44,11 +35,11 @@ define(["catalog/controller/Fx-catalog-page",
 
     };
 
-    IndexContext.prototype.initFilter = function(){
+    IndexContext.prototype.initFilter = function() {
 
-        filterController = new FilterController();
-        menu = new Menu();
-        form = new Form();
+        var filterController = new FilterController(),
+            menu = new Menu(),
+            form = new Form();
 
         menu.init({
             container: document.querySelector("#" + html_ids.MENU),
@@ -85,18 +76,29 @@ define(["catalog/controller/Fx-catalog-page",
 
     };
 
-    IndexContext.prototype.initBridge = function(){
-        bridge = new Bridge();
+    IndexContext.prototype.initBridge = function() {
+        var bridge = new Bridge();
+        bridge.init();
         return bridge;
     };
 
     IndexContext.prototype.initResults = function(){
 
-        resultsController = new ResultController();
+        var resultsController = new ResultController(),
+            grid = new FilterableGrid(),
+            renderer =  new ResultsRenderer();
+
+        grid.init({
+            container : document.querySelector("#" +html_ids.RESULT),
+            isotope: {
+                itemSelector: '.fenix-result',
+                layoutMode: 'fitRows'
+            }
+        })
 
         $.extend(resultsController, {
-            resultsRenderer : new ResultsRenderer(),
-            grid: new FilterableGrid()
+            resultsRenderer : renderer,
+            grid: grid
         });
 
         return resultsController;
