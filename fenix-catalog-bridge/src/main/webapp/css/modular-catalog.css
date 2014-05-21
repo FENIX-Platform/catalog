@@ -43,6 +43,17 @@ body {
     font-size: 10px;
 }
 
+.fenix-result{
+    width: 100%;
+    background-color: white;
+    border: 1px solid #E3E3E3;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    min-height: 20px;
+    padding: 19px;
+
+}
+
 /* ====== NEW*/
 /*========= HEADER =========*/
 
