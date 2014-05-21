@@ -1,8 +1,9 @@
-define(["jquery", "jqwidgets"], function($) {
+define(["jquery", "jqwidgets"], function ($) {
 
-    function Fx_ui_w_Dropdown(){};
+    function Fx_ui_w_Dropdown() {
+    };
 
-    Fx_ui_w_Dropdown.prototype.validate = function(e){
+    Fx_ui_w_Dropdown.prototype.validate = function (e) {
 
         if (!e.hasOwnProperty("source")) {
             throw new Error("ELEM_NOT_SOURCE");
@@ -14,10 +15,10 @@ define(["jquery", "jqwidgets"], function($) {
         }
 
         return true;
-        
+
     };
 
-    Fx_ui_w_Dropdown.prototype.render = function(e, container) {
+    Fx_ui_w_Dropdown.prototype.render = function (e, container) {
 
         var source, dataAdapter;
 
@@ -29,7 +30,7 @@ define(["jquery", "jqwidgets"], function($) {
 
     };
 
-    Fx_ui_w_Dropdown.prototype.getValue = function(e) {
+    Fx_ui_w_Dropdown.prototype.getValue = function (e) {
         return $("#" + e.id).jqxDropDownList('val');
     };
 

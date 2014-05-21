@@ -1,19 +1,20 @@
-define(["jquery", "jqrangeslider"], function($) {
+define(["jquery", "jqrangeslider"], function ($) {
 
-    function Fx_ui_w_SimpleRange(){};
+    function Fx_ui_w_SimpleRange() {
+    };
 
-    Fx_ui_w_SimpleRange.prototype.validate = function(e){
+    Fx_ui_w_SimpleRange.prototype.validate = function (e) {
 
         return true;
     };
 
-    Fx_ui_w_SimpleRange.prototype.render = function(e, container) {
+    Fx_ui_w_SimpleRange.prototype.render = function (e, container) {
 
         // create rangeSlider.
         $(container).rangeSlider($.extend(e.component.rendering, e.component.source));
     };
 
-    Fx_ui_w_SimpleRange.prototype.getValue = function(e) {
+    Fx_ui_w_SimpleRange.prototype.getValue = function (e) {
 
         return $("#" + e.id).rangeSlider("values");
     };

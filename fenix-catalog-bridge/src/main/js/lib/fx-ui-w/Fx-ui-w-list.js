@@ -1,8 +1,9 @@
-define(["jquery", "jqwidgets"], function($) {
+define(["jquery", "jqwidgets"], function ($) {
 
-    function Fx_ui_w_List(){};
+    function Fx_ui_w_List() {
+    };
 
-    Fx_ui_w_List.prototype.validate = function(e){
+    Fx_ui_w_List.prototype.validate = function (e) {
         if (!e.hasOwnProperty("source")) {
             throw new Error("ELEM_NOT_SOURCE");
         } else {
@@ -14,7 +15,7 @@ define(["jquery", "jqwidgets"], function($) {
         return true;
     };
 
-    Fx_ui_w_List.prototype.render = function(e, container) {
+    Fx_ui_w_List.prototype.render = function (e, container) {
 
         var source, dataAdapter;
 
@@ -29,7 +30,7 @@ define(["jquery", "jqwidgets"], function($) {
         $(container).jqxListBox($.extend({ source: dataAdapter}, e.component.rendering));
     };
 
-    Fx_ui_w_List.prototype.getValue = function(e) {
+    Fx_ui_w_List.prototype.getValue = function (e) {
         return $("#" + e.id).jqxListBox('val');
     };
 

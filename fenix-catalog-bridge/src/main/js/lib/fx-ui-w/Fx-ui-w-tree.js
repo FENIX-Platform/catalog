@@ -1,8 +1,9 @@
-define(["jquery", "jqwidgets"], function($) {
+define(["jquery", "jqwidgets"], function ($) {
 
-    function Fx_ui_w_Tree(){};
+    function Fx_ui_w_Tree() {
+    };
 
-    Fx_ui_w_Tree.prototype.validate = function(e){
+    Fx_ui_w_Tree.prototype.validate = function (e) {
         if (!e.hasOwnProperty("source")) {
             throw new Error("ELEM_NOT_SOURCE");
         } else {
@@ -14,7 +15,7 @@ define(["jquery", "jqwidgets"], function($) {
         return true;
     };
 
-    Fx_ui_w_Tree.prototype.render = function(e, container) {
+    Fx_ui_w_Tree.prototype.render = function (e, container) {
 
         var source, dataAdapter, records;
 
@@ -33,7 +34,7 @@ define(["jquery", "jqwidgets"], function($) {
         $(container).jqxTree($.extend({source: records}, e.component.rendering));
     };
 
-    Fx_ui_w_Tree.prototype.getValue = function(e) {
+    Fx_ui_w_Tree.prototype.getValue = function (e) {
         return $("#" + e.id).jqxTree('val') ? $("#" + e.id).jqxTree('val').value : null;
     };
 

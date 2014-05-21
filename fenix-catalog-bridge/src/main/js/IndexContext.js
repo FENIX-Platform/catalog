@@ -9,101 +9,102 @@ define(["catalog/controller/Fx-catalog-page",
         "controller/Fx-catalog-results",
         "widgets/results/Fx-catalog-results-generator",
         "structures/Fx-filterable-grid"],
-    function(Controller, FilterController, Menu, Form, FluidForm, Bridge, ResultController, ResultsRenderer, FilterableGrid) {
+    function (Controller, FilterController, Menu, Form, FluidForm, Bridge, ResultController, ResultsRenderer, FilterableGrid) {
 
-    var html_ids = {
+        var html_ids = {
             MENU: "fx-catalog-modular-menu",
             FORM: "fx-catalog-modular-form",
             SUBMIT: "fx-catalog-submit-btn",
-            RESULT : "fx-catalog-results"
+            RESULT: "fx-catalog-results"
         };
 
-    function IndexContext(){}
+        function IndexContext() {
+        }
 
-    IndexContext.prototype.init = function() {
-        var self = this,
-            pageController = new Controller();
+        IndexContext.prototype.init = function () {
+            var self = this,
+                pageController = new Controller();
 
-        // Perform dependency injection by extending objects
-        $.extend(pageController, {
-            filter: self.initFilter(),
-            bridge: self.initBridge(),
-            results: self.initResults()
-        });
+            // Perform dependency injection by extending objects
+            $.extend(pageController, {
+                filter: self.initFilter(),
+                bridge: self.initBridge(),
+                results: self.initResults()
+            });
 
-        pageController.render();
+            pageController.render();
 
-    };
+        };
 
-    IndexContext.prototype.initFilter = function() {
+        IndexContext.prototype.initFilter = function () {
 
-        var filterController = new FilterController(),
-            menu = new Menu(),
-            form = new Form();
+            var filterController = new FilterController(),
+                menu = new Menu(),
+                form = new Form();
 
-        menu.init({
-            container: document.querySelector("#" + html_ids.MENU),
-            config: "json/fx-catalog-collapsible-menu-config.json"
-        });
-        form.init({
-            container: document.querySelector("#" + html_ids.FORM),
-            config: "json/fx-catalog-modular-form-config.json",
-            grid : {
-                drag: {
-                    handle: '.fx-catalog-modular-form-handler',
-                    containment: "#" +  html_ids.FORM
-                },
-                config : {
-                    itemSelector: '.fx-catalog-form-module',
-                    columnWidth: '.fx-catalog-form-module',
-                    rowHeight: '.fx-catalog-form-module'
+            menu.init({
+                container: document.querySelector("#" + html_ids.MENU),
+                config: "json/fx-catalog-collapsible-menu-config.json"
+            });
+            form.init({
+                container: document.querySelector("#" + html_ids.FORM),
+                config: "json/fx-catalog-modular-form-config.json",
+                grid: {
+                    drag: {
+                        handle: '.fx-catalog-modular-form-handler',
+                        containment: "#" + html_ids.FORM
+                    },
+                    config: {
+                        itemSelector: '.fx-catalog-form-module',
+                        columnWidth: '.fx-catalog-form-module',
+                        rowHeight: '.fx-catalog-form-module'
+                    }
                 }
-            }
-        });
+            });
 
-        $.extend(form, {
-            grid: new FluidForm()
-        });
+            $.extend(form, {
+                grid: new FluidForm()
+            });
 
-        // Perform dependency injection by extending objects
-        $.extend(filterController, {
-            menu: menu,
-            form: form,
-            submit: document.querySelector("#" +html_ids.SUBMIT)
-        });
+            // Perform dependency injection by extending objects
+            $.extend(filterController, {
+                menu: menu,
+                form: form,
+                submit: document.querySelector("#" + html_ids.SUBMIT)
+            });
 
-        return filterController;
+            return filterController;
 
-    };
+        };
 
-    IndexContext.prototype.initBridge = function() {
-        var bridge = new Bridge();
-        bridge.init();
-        return bridge;
-    };
+        IndexContext.prototype.initBridge = function () {
+            var bridge = new Bridge();
+            bridge.init();
+            return bridge;
+        };
 
-    IndexContext.prototype.initResults = function(){
+        IndexContext.prototype.initResults = function () {
 
-        var resultsController = new ResultController(),
-            grid = new FilterableGrid(),
-            renderer =  new ResultsRenderer();
+            var resultsController = new ResultController(),
+                grid = new FilterableGrid(),
+                renderer = new ResultsRenderer();
 
-        grid.init({
-            container : document.querySelector("#" +html_ids.RESULT),
-            isotope: {
-                itemSelector: '.fenix-result',
-                layoutMode: 'fitRows'
-            }
-        })
+            grid.init({
+                container: document.querySelector("#" + html_ids.RESULT),
+                isotope: {
+                    itemSelector: '.fenix-result',
+                    layoutMode: 'fitRows'
+                }
+            })
 
-        $.extend(resultsController, {
-            resultsRenderer : renderer,
-            grid: grid
-        });
+            $.extend(resultsController, {
+                resultsRenderer: renderer,
+                grid: grid
+            });
 
-        return resultsController;
-    };
+            return resultsController;
+        };
 
-    return IndexContext;
+        return IndexContext;
 
-});
+    });

@@ -1,14 +1,15 @@
-define(["jquery", "jqwidgets"], function($) {
+define(["jquery", "jqwidgets"], function ($) {
 
-    function Fx_ui_w_DynamicTree(){};
+    function Fx_ui_w_DynamicTree() {
+    };
 
-    Fx_ui_w_DynamicTree.prototype.validate = function(e){
+    Fx_ui_w_DynamicTree.prototype.validate = function (e) {
         return true;
 
 
     };
 
-    Fx_ui_w_DynamicTree.prototype.render = function(e, container) {
+    Fx_ui_w_DynamicTree.prototype.render = function (e, container) {
 
         var tree, source;
 
@@ -99,7 +100,7 @@ define(["jquery", "jqwidgets"], function($) {
 
     };
 
-    Fx_ui_w_DynamicTree.prototype.getValue = function(e) {
+    Fx_ui_w_DynamicTree.prototype.getValue = function (e) {
         return $("#" + e.id).jqxTree('val') ? $("#" + e.id).jqxTree('val').value : null;
     };
 

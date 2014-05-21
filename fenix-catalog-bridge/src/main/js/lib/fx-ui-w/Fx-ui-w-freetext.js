@@ -1,14 +1,15 @@
-define(["jquery"], function($) {
+define(["jquery"], function ($) {
 
     var lang = 'EN';
 
-    function Fx_ui_w_FreeText(){};
+    function Fx_ui_w_FreeText() {
+    };
 
-    Fx_ui_w_FreeText.prototype.validate = function(e){
+    Fx_ui_w_FreeText.prototype.validate = function (e) {
         return true;
     };
 
-    Fx_ui_w_FreeText.prototype.render = function(e, container) {
+    Fx_ui_w_FreeText.prototype.render = function (e, container) {
 
         var text = document.createElement('INPUT');
         text.setAttribute("type", "TEXT");
@@ -35,7 +36,7 @@ define(["jquery"], function($) {
         $(container).append(text);
     };
 
-    Fx_ui_w_FreeText.prototype.getValue = function(e) {
+    Fx_ui_w_FreeText.prototype.getValue = function (e) {
         return $("#" + e.id + " > input").val();
     };
 
