@@ -19,9 +19,6 @@ define([
         this.grid.render();
     };
 
-    ResultsController.prototype.initEventListeners = function () {
-    };
-
     ResultsController.prototype.preValidation = function () {
         var self = this;
 
@@ -37,7 +34,6 @@ define([
         var self = this;
 
         self.preValidation();
-        self.initEventListeners();
         self.renderComponents();
     };
 

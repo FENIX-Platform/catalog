@@ -75,7 +75,7 @@ define([
         $module.attr("data-module", module.module);
         $module.attr("data-size", "half");
         $header.append("<div class='" + o.css_classes.HANDLER + "'></div>");
-        $header.append("<div class='" + o.css_classes.LABEL + "'>" + module["label"][o.widget.lang] + "</div>");
+        $header.append("<div class='" + o.css_classes.LABEL + "'>" + cache.json[module.module]["label"][o.widget.lang] + "</div>");
 
         var $resize = $("<div class='" + o.css_classes.RESIZE + "'></div>");
         $resize.on("click", { module: $module.get(0), btn: $resize}, function (e) {
@@ -138,6 +138,7 @@ define([
     };
 
     Fx_catalog_modular_form.prototype.render = function (options) {
+        var self = this;
 
         $.extend(o, options);
 
@@ -146,7 +147,7 @@ define([
             if (o.hasOwnProperty("config")) {
                 $.getJSON(o.config, function (json) {
                     cache.json = json;
-                    this.initStructure();
+                    self.initStructure();
                 }).error(function () {
                     throw new Error("fx-modular-form: impossible to load config JSON.");
                 });

@@ -3,7 +3,7 @@ define([
     "text!json/fx-catalog-filter-mapping.json",
     "text!json/fx-catalog-blank-filter.json",
     "text!json/request.json"
-], function ($, mapping, blank, req) {
+], function ($, map, blank, req) {
 
     var o = { };
 
@@ -44,27 +44,45 @@ define([
 
     FilterPlugin.prototype.createJsonFilter = function (values) {
 
-        var result = JSON.parse(blank);
+        var request = JSON.parse(blank),
+            keys = Object.keys(values),
+            mapping = JSON.parse(map),
+            position = request;
 
-        var m = result.filter.metadata;
+        for (var i = 0; i < keys.length; i++) {
+            if (values.hasOwnProperty(keys[i])) {
+                if (mapping.hasOwnProperty(keys[i])){
 
-        if (values["simplerange"]) {
-            m[this.getFilterField("simplerange")] = values["simplerange"];
-        }
-        return  JSON.parse(req);
-        //return JSON.stringify( result );
-    };
+                    if (mapping[keys[i]].conversion) { values[keys[i]] = this.convertValue(values[keys[i]], mapping[keys[i]].conversion); };
 
-    FilterPlugin.prototype.getFilterField = function (type) {
+                    var path = mapping[keys[i]].path.split(".");
 
-        var m = JSON.parse(mapping);
+                    for (var j = 0; j < path.length - 1; j++) { position = position[path[j]]; }
 
-        for (var i = 0; i < m.length; i++) {
-            var k = Object.keys(m[i]);
-            if (k[0] === type) {
-                return m[i][type];
+                    position[path[ path.length - 1 ]] = values[keys[i]];
+                }
             }
         }
+        console.log(request)
+        return  JSON.parse(req);
+        //return JSON.stringify( request );
+    };
+
+    FilterPlugin.prototype.convertValue = function(value, rules ){
+
+        var rulesKeys = Object.keys(rules);
+
+        for (var i = 0; i < rulesKeys.length; i++){
+            if (rules.hasOwnProperty(rulesKeys[i])){
+                if (value.hasOwnProperty(rulesKeys[i])){
+                    value[rules[rulesKeys[i]]] =  value[rulesKeys[i]];
+                    delete value[rulesKeys[i]];
+                }
+            }
+        }
+
+        return value;
+
     };
 
     return FilterPlugin;

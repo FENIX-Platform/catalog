@@ -14,7 +14,6 @@
             },
             "modules": [
                 {
-                    "filterField": "resourceType",
                     "module": "simplerange",
                     "label": {
                         "EN": "Time Series"
@@ -37,7 +36,6 @@
             },
             "modules": [
                 {
-                    "filterField": "filterField3",
                     "module": "FREE_FORM",
                     "label": {
                         "EN": "Free text"
@@ -46,7 +44,6 @@
 
                 },
                 {
-                    "filterField": "filterField4",
                     "module": "LIST",
                     "label": {
                         "EN": "List"
@@ -54,7 +51,6 @@
                     "icon": "fa fa-list-alt fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField5",
                     "module": "TREE",
                     "label": {
                         "EN": "Tree"
@@ -62,7 +58,6 @@
                     "icon": "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField6",
                     "module": "DROPDOWN",
                     "label": {
                         "EN": "Dropdown"
@@ -77,7 +72,6 @@
             },
             "modules": [
                 {
-                    "filterField": "filterField3",
                     "module": "FREE_FORM",
                     "label": {
                         "EN": "FREE_FORM"
@@ -85,7 +79,6 @@
                     "icon": "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField4",
                     "module": "LIST",
                     "label": {
                         "EN": "LIST"
@@ -93,7 +86,6 @@
                     "icon": "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField5",
                     "module": "TREE",
                     "label": {
                         "EN": "TREE"
@@ -101,7 +93,6 @@
                     "icon": "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField6",
                     "module": "DROPDOWN",
                     "label": {
                         "EN": "DROPDOWN"
@@ -116,7 +107,6 @@
             },
             "modules": [
                 {
-                    "filterField": "filterField3",
                     "module": "FREE_FORM",
                     "label": {
                         "EN": "FREE_FORM"
@@ -124,7 +114,6 @@
                     "icon": "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField4",
                     "module": "LIST",
                     "label": {
                         "EN": "LIST"
@@ -132,7 +121,6 @@
                     "icon": "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField5",
                     "module": "TREE",
                     "label": {
                         "EN": "TREE"
@@ -140,7 +128,6 @@
                     "icon": "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField6",
                     "module": "DROPDOWN",
                     "label": {
                         "EN": "DROPDOWN"

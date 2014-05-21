@@ -1,5 +1,9 @@
-[
-    {
-        "simplerange": "field-name"
+{
+    "simplerange": {
+        "path" : "filter.metadata.testfield",
+        "conversion" : {
+            "min" : "from",
+            "max" : "to"
+        }
     }
-]
+}
