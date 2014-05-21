@@ -1,16 +1,22 @@
-define(["jquery"], function($) {
+define([
+    "jquery",
+    "text!json/fx-catalog-filter-mapping.json",
+    "text!json/fx-catalog-blank-filter.json",
+    "text!json/request.json"
+], function($, mapping, blank, req) {
 
     var o = { };
 
     function FilterPlugin(options){
         $.extend(o, options);
-    };
+
+    }
 
     FilterPlugin.prototype.preValidation = function(){
 
         if (!o.component){
             throw new Error("FILTER PLUGIN: no valid filter component during inti()");
-        };
+        }
 
     };
 
@@ -34,31 +40,25 @@ define(["jquery"], function($) {
 
     FilterPlugin.prototype.createJsonFilter= function( values ) {
 
-
-        var r = '{ "filter": { "types": [], "metadata":{ }, "data" : { }, "business" : [] }, "require" : { "index" : true, "metadata" : true  } }';
-        var result = JSON.parse ( r );
-
-        if (values["querystring"]){
-            result.filter.queryString = {}
-            result.filter.queryString.language = "EN";
-            result.filter.queryString.query = values["querystring"];
-        }
+        var result = JSON.parse ( blank );
 
         var m = result.filter.metadata;
 
-        if ( values["geographicExtent"] ){
-            m.region = [{"code":{"systemKey":"GAUL", "systemVersion":"1.0", "code": values["geographicExtent"]}}];
+        if (values["simplerange"]){
+            m[this.getFilterField("simplerange")] = values["simplerange"];
         }
+          return  JSON.parse( req );
+        //return JSON.stringify( result );
+    };
 
-        if (values["owner"]){ m.source = [ {id : values["owner"]} ]; }
+    FilterPlugin.prototype.getFilterField = function( type ){
 
-        /*
-         m.basePeriod = [{  }];
-         m.basePeriod[0].fromDate = new Date(values.basePeriod.min, 0, 0);
-         m.basePeriod[0].toDate = new Date(values.basePeriod.max, 0, 0);
-         */
+        var m = JSON.parse ( mapping );
 
-        return JSON.stringify( result );
+        for (var i = 0; i < m.length; i ++){
+            var k = Object.keys(m[i]);
+            if (k[0] === type) {return m[i][type]; }
+        }
     };
 
     return FilterPlugin;

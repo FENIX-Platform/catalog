@@ -69,13 +69,6 @@ define(["require", "jquery"], function (require, $) {
 
     function validateElement(e, widget) {
 
-        console.log(widget)
-
-        //ID
-        if (!e.hasOwnProperty("id")) {
-            handleError("ELEM_NOT_ID");
-        }
-
         //Valid component
         if (!e.hasOwnProperty("component")) {
             handleError("ELEM_NOT_COMP");
@@ -121,8 +114,9 @@ define(["require", "jquery"], function (require, $) {
         } else {
 
             div = document.createElement("DIV");
-            div.setAttribute("id", e.id);
             if (e.cssclass) {
+
+                div.setAttribute("id", e.id);
                 div.setAttribute("class", e.cssclass);
             }
 
@@ -188,10 +182,20 @@ define(["require", "jquery"], function (require, $) {
 
         if (externalElements) {
 
-            //Loop on external elements to get values
-            for (i = 0; i < externalElements.length; i++) {
-                result[externalElements[i].id] = types[externalElements[i].type.toUpperCase()].getValue(externalElements[i]);
-            }
+            $(externalElements).each(function (index, element) {
+
+                //Synch call of require
+                try {
+                    var module = require("fx-ui-w/Fx-ui-w-" + element.type),
+                        widget = new module();
+                    result[element.type] = widget.getValue(element);
+
+                } catch (e) {
+                    console.log(e)
+                }
+
+
+            });
 
         } else {
             //Looping on initial elements
@@ -199,11 +203,19 @@ define(["require", "jquery"], function (require, $) {
                 handleError("VALUES_NOT_READY");
             }
 
-            //Loop on source elements to get values
-            for (i = 0; i < elems.length; i++) {
-                result[elems[i].id] = types[elems[i].type.toUpperCase()].getValue(elems[i]);
-            }
 
+            $(elems).each(function (index, element) {
+
+                //Synch call of require
+                try {
+                    var module = require("fx-ui-w/Fx-ui-w-" + element.type),
+                        widget = new module();
+                    result[element.id] = widget.getValue(element);
+                } catch (e) {
+                    console.log(e)
+                }
+
+            });
         }
 
         v = validate === undefined || validate === false ? null : self.getValidation(result);
@@ -231,13 +243,11 @@ define(["require", "jquery"], function (require, $) {
 
             $(elems).each(function (index, element) {
 
-                var widgetCreator = "fx-ui-w/fx-ui-w-" + element.type;
+                var widgetCreator = "fx-ui-w/Fx-ui-w-" + element.type;
 
                 require([widgetCreator], function (Widget) {
                     valid = true;
                     var widget = new Widget();
-
-                    console.log(widget)
 
                     if (validateElement(element, widget)) {
                         createElement(element, o.container, widget);

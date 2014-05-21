@@ -2,7 +2,7 @@
     "panels": [
         {
             "title": {
-                "EN": "DEMO"
+                "EN": "Geographical Area"
             },
             "popover": {
                 "data-container": "body",
@@ -14,16 +14,16 @@
             },
             "modules": [
                 {
-                    "filterField": "resourceType",
-                    "module": "simplerange",
+                    "id": "id1",
+                    "semantic": "TIME_SERIES",
                     "label": {
                         "EN": "Time Series"
                     },
                     "icon" : "fa fa-clock-o fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField2",
-                    "module": "GEOGRAPHICAL_AREA",
+                    "id": "id2",
+                    "semantic": "GEOGRAPHICAL_AREA",
                     "label": {
                         "EN": "Geographical Area"
                     },
@@ -37,8 +37,8 @@
             },
             "modules": [
                 {
-                    "filterField": "filterField3",
-                    "module": "FREE_FORM",
+                    "id": "id3",
+                    "semantic": "FREE_FORM",
                     "label": {
                         "EN": "Free text"
                     },
@@ -46,24 +46,24 @@
 
                 },
                 {
-                    "filterField": "filterField4",
-                    "module": "LIST",
+                    "id": "id4",
+                    "semantic": "LIST",
                     "label": {
                         "EN": "List"
                     },
                     "icon" : "fa fa-list-alt fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField5",
-                    "module": "TREE",
+                    "id": "id5",
+                    "semantic": "TREE",
                     "label": {
                         "EN": "Tree"
                     },
                     "icon" : "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField6",
-                    "module": "DROPDOWN",
+                    "id": "id6",
+                    "semantic": "DROPDOWN",
                     "label": {
                         "EN": "Dropdown"
                     },
@@ -77,32 +77,32 @@
             },
             "modules": [
                 {
-                    "filterField": "filterField3",
-                    "module": "FREE_FORM",
+                    "id": "id3",
+                    "semantic": "FREE_FORM",
                     "label": {
                         "EN": "FREE_FORM"
                     },
                     "icon" : "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField4",
-                    "module": "LIST",
+                    "id": "id4",
+                    "semantic": "LIST",
                     "label": {
                         "EN": "LIST"
                     } ,
                     "icon" : "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField5",
-                    "module": "TREE",
+                    "id": "id5",
+                    "semantic": "TREE",
                     "label": {
                         "EN": "TREE"
                     } ,
                     "icon" : "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField6",
-                    "module": "DROPDOWN",
+                    "id": "id6",
+                    "semantic": "DROPDOWN",
                     "label": {
                         "EN": "DROPDOWN"
                     },
@@ -116,32 +116,32 @@
             },
             "modules": [
                 {
-                    "filterField": "filterField3",
-                    "module": "FREE_FORM",
+                    "id": "id3",
+                    "semantic": "FREE_FORM",
                     "label": {
                         "EN": "FREE_FORM"
                     } ,
                     "icon" : "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField4",
-                    "module": "LIST",
+                    "id": "id4",
+                    "semantic": "LIST",
                     "label": {
                         "EN": "LIST"
                     },
                     "icon" : "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField5",
-                    "module": "TREE",
+                    "id": "id5",
+                    "semantic": "TREE",
                     "label": {
                         "EN": "TREE"
                     },
                     "icon" : "fa fa-code-fork fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField6",
-                    "module": "DROPDOWN",
+                    "id": "id6",
+                    "semantic": "DROPDOWN",
                     "label": {
                         "EN": "DROPDOWN"
                     },
