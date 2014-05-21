@@ -1,23 +1,27 @@
-define(["jquery", "isotope"], function ($) {
+define([
+    'jquery',
+    'widgets/Fx-widgets-commons',
+    "isotope"
+], function ($, W_Commons, Isotope) {
 
     var o = { },
     //Default Catalog Results Grid options Options
         defaultOptions = {
             data_filter_value: "data-filter-value",
             css_filter_active: "catalog-filter-active"
-
         };
 
-    var $container;
+    var isotope, w_Commons;
 
-    function Fx_Filterable_grid() {
-    };
+    function Fx_Filterable_grid(){
+        w_Commons = new W_Commons();
+    }
 
     Fx_Filterable_grid.prototype.initBtns = function () {
 
         // filter items on button click
         $(o.filters).on('click', 'button', function (event) {
-            $container.isotope({ filter: $(this).attr(o.data_filter_value) });
+            this.filterIsotope({ filter: $(this).attr(o.data_filter_value) });
             $(o.filters).find(" button").removeClass(o.css_filter_active);
             $(this).addClass(o.css_filter_active);
         });
@@ -30,30 +34,31 @@ define(["jquery", "isotope"], function ($) {
 
         $("button").removeClass(o.css_filter_active);
         $("button[" + o.data_filter_value + "='" + filterValue + "']").addClass(o.css_filter_active);
-        $container.isotope({ filter: filterValue });
+        this.filterIsotope({ filter: filterValue });
+    };
+
+    Fx_Filterable_grid.prototype.filterIsotope= function (filters){
+        isotope.arrange(filters);
     };
 
     Fx_Filterable_grid.prototype.clear = function () {
-        $container.isotope('remove', $container.isotope('getItemElements'));
+        isotope.remove(isotope.getItemElements());
         this.filter("*");
     };
 
     Fx_Filterable_grid.prototype.addItems = function (items) {
-        $container.isotope('insert', items);
+
+        o.container.appendChild( items );
+        isotope.appended( items );
+        isotope.layout();
     };
 
     Fx_Filterable_grid.prototype.validateOptions = function () {
 
         //Validate HTML Container
-        if ($(o.container).length === 0) {
-            throw new Error('Invalid HTML container for ' + o.name);
+        if (!w_Commons.isElement(o.container)){
+            throw new Error("Filterable Grid: INVALID_CONTAINER.")
         }
-
-        //Required Library
-        if (!jQuery().isotope) {
-            throw new Error("Isotope.js not found");
-        }
-
     };
 
     Fx_Filterable_grid.prototype.render = function (options) {
@@ -62,11 +67,9 @@ define(["jquery", "isotope"], function ($) {
 
         this.validateOptions();
 
-        //Safe because after validateOptions()
-        $container = $(o.container);
-        $container.isotope(o.isotope);
+        isotope = new Isotope(o.container, o.isotope);
 
-        this.initBtns();
+        if (o.filters){  this.initBtns(); }
     };
 
     Fx_Filterable_grid.prototype.init = function (baseOptions) {
@@ -74,6 +77,16 @@ define(["jquery", "isotope"], function ($) {
         //Merge options
         $.extend(o, defaultOptions);
         $.extend(o, baseOptions);
+
+    };
+
+    Fx_Filterable_grid.prototype.clear = function () {
+
+        var elements = isotope.getItemElements();
+
+        for (var i=0; i<elements.length; i++){
+            isotope.remove(elements[i])
+        }
 
     };
 

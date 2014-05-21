@@ -19,16 +19,16 @@ define(["jquery", "text!html/fx_result_fragments.html"], function($, template){
 
     Fx_catalog_result_render_dataset.prototype.initText = function(){
 
-        $result.find( o.s_desc_title ).html(o.source.name);
-        $result.find( o.s_desc_source ).html(o.source.source);
-        $result.find( o.s_desc_geo ).html(o.source.metadata.geographicExtent.title['EN']);
-        $result.find( o.s_desc_period ).html("from " + new Date(o.source.metadata.basePeriod.from).getFullYear() +" to " + new Date(o.source.metadata.basePeriod.to).getFullYear());
+        $result.find( o.s_desc_title ).html(o.name);
+        $result.find( o.s_desc_source ).html(o.source);
+        $result.find( o.s_desc_geo ).html(o.metadata.geographicExtent.title['EN']);
+        //$result.find( o.s_desc_period ).html("from " + new Date(o.metadata.basePeriod.from).getFullYear() +" to " + new Date(o.metadata.basePeriod.to).getFullYear());
 
     };
 
     Fx_catalog_result_render_dataset.prototype.initModal = function(){
 
-        $result.find( "#myModalLabel").html(o.source.name);
+        $result.find( "#myModalLabel").html(o.name);
 
     };
 
@@ -46,9 +46,11 @@ define(["jquery", "text!html/fx_result_fragments.html"], function($, template){
         self.initText();
         self.initModal();
 
+        return $result.get(0)
+
         //Check callback is a function
         if ( callback && typeof callback === "function" ){ callback( $result ); }
-        else { throw new Error( o.error_prefix + "getHtml() #1 param is not a function");}
+        else { /*throw new Error( o.error_prefix + "getHtml() #1 param is not a function");*/}
     };
 
     return Fx_catalog_result_render_dataset;

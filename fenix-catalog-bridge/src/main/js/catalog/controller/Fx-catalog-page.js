@@ -17,16 +17,16 @@ define([], function( ) {
         var self = this;
 
         self.filter.render();
-        //self.results.render();
+        self.results.render();
     };
 
     PageController.prototype.initEventListeners = function(){
 
         var self = this;
 
-        document.body.addEventListener("submit.catalog.fx", function (e) {
+        document.body.addEventListener("submit.catalog.fx", function() {
             console.log("LISTENING submit.catalog.fx");
-            self.bridge.query(self.filter, self.results.addItems)
+            self.bridge.query(self.filter, self.results.addItems, self.results);
         }, false);
 
     };

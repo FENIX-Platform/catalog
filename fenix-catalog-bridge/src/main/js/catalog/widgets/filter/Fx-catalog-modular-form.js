@@ -1,4 +1,8 @@
-define(["jquery", "fenix-ui-creator", "widgets/Fx-widgets-commons"], function ($, UiCreator, W_Commons) {
+define([
+    "jquery",
+    "fenix-ui-creator",
+    "widgets/Fx-widgets-commons"
+], function ($, UiCreator, W_Commons) {
 
     var o = { },
         defaultOptions = {
@@ -23,7 +27,7 @@ define(["jquery", "fenix-ui-creator", "widgets/Fx-widgets-commons"], function ($
     //Form module displayed
     var modules = [],
         types = {
-            TIME_SERIES: "TIME_SERIES",
+            simplerange: "simplerange",
             GEOGRAPHICAL_AREA: "GEOGRAPHICAL_AREA",
             FREE_FORM: "FREE_FORM"
         };
@@ -40,21 +44,22 @@ define(["jquery", "fenix-ui-creator", "widgets/Fx-widgets-commons"], function ($
     Fx_catalog_modular_form.prototype.grid = undefined;
 
     // Ad-hoc module render function
-    Fx_catalog_modular_form.prototype.renderFreeForm = function ($blank) {
+    Fx_catalog_modular_form.prototype.renderFreeForm = function ($blank, module) {
         var c = $blank.find("." + o.css_classes.CONTENT);
 
         var id = "fx-free-form-mod-" + w_Commons.getFenixUniqueId();
         c.attr("id", id);
+        modules.push({id: cache.json[module.module].id, type: module.module});
 
         uiCreator.render({
             cssClass: "form-elements",
             container: "#" + id,
-            elements: JSON.stringify([cache.json[types.FREE_FORM]])
+            elements: JSON.stringify([cache.json[module.module]])
         });
 
     };
 
-    Fx_catalog_modular_form.prototype.renderTimeSeries = function ($blank) {
+    Fx_catalog_modular_form.prototype.renderTimeSeries = function ($blank, module) {
 
         var c = $blank.find("." + o.css_classes.CONTENT);
 
@@ -62,15 +67,17 @@ define(["jquery", "fenix-ui-creator", "widgets/Fx-widgets-commons"], function ($
         c.attr("id", id);
         c.addClass("fx-catalog-mod-timerseries");
 
+        modules.push({id: cache.json[module.module].id, type: module.module});
+
         uiCreator.render({
             cssClass: "form-elements",
             container: "#" + id,
-            elements: JSON.stringify([cache.json[types.TIME_SERIES]])
+            elements: JSON.stringify([cache.json[module.module]])
         });
 
     };
 
-    Fx_catalog_modular_form.prototype.renderGeo = function ($blank) {
+    Fx_catalog_modular_form.prototype.renderGeo = function ($blank, module) {
         var c = $blank.find("." + o.css_classes.CONTENT);
         var id = "fx-geo-mod-" + w_Commons.getFenixUniqueId();
         c.attr("id", id);
@@ -78,12 +85,13 @@ define(["jquery", "fenix-ui-creator", "widgets/Fx-widgets-commons"], function ($
         uiCreator.render({
             cssClass: "form-elements",
             container: "#" + id,
-            elements: JSON.stringify([cache.json[types.GEOGRAPHICAL_AREA]])
+            elements: JSON.stringify([cache.json[module.module]])
         });
+
     };
 
     //TODO cancellare perche' le funzioni devono essere sulla semantica del modulo e non sul tipo di windget
-    Fx_catalog_modular_form.prototype.renderList = function ($blank) {
+    Fx_catalog_modular_form.prototype.renderList = function ($blank, module) {
         var c = $blank.find("." + o.css_classes.CONTENT);
         var id = "fx-geo-mod-" + w_Commons.getFenixUniqueId();
         c.attr("id", id);
@@ -95,7 +103,7 @@ define(["jquery", "fenix-ui-creator", "widgets/Fx-widgets-commons"], function ($
         });
     };
 
-    Fx_catalog_modular_form.prototype.renderTree = function ($blank) {
+    Fx_catalog_modular_form.prototype.renderTree = function ($blank, module) {
         var c = $blank.find("." + o.css_classes.CONTENT);
         var id = "fx-geo-mod-" + w_Commons.getFenixUniqueId();
         c.attr("id", id);
@@ -107,7 +115,7 @@ define(["jquery", "fenix-ui-creator", "widgets/Fx-widgets-commons"], function ($
         });
     };
 
-    Fx_catalog_modular_form.prototype.renderDynamicTree = function ($blank) {
+    Fx_catalog_modular_form.prototype.renderDynamicTree = function ($blank, module) {
         var c = $blank.find("." + o.css_classes.CONTENT);
         var id = "fx-geo-mod-" + w_Commons.getFenixUniqueId();
         c.attr("id", id);
@@ -115,11 +123,11 @@ define(["jquery", "fenix-ui-creator", "widgets/Fx-widgets-commons"], function ($
         uiCreator.render({
             cssClass: "form-elements",
             container: "#" + id,
-            elements: JSON.stringify([cache.json[types.GEOGRAPHICAL_AREA]])
+            elements: JSON.stringify([cache.json[module.module]])
         });
     };
 
-    Fx_catalog_modular_form.prototype.renderDropdown = function ($blank) {
+    Fx_catalog_modular_form.prototype.renderDropdown = function ($blank, module) {
         var c = $blank.find("." + o.css_classes.CONTENT);
         var id = "fx-geo-mod-" + w_Commons.getFenixUniqueId();
         c.attr("id", id);
@@ -138,29 +146,31 @@ define(["jquery", "fenix-ui-creator", "widgets/Fx-widgets-commons"], function ($
         self.grid.removeItem(item)
     };
 
-    Fx_catalog_modular_form.prototype.addItem = function (kind) {
+    Fx_catalog_modular_form.prototype.addItem = function ( module ) {
 
         var self = this;
 
-        if (o.callback_fns.hasOwnProperty(kind)) {
-            var blank = self.getBlankModule(kind);
+
+        if (o.callback_fns.hasOwnProperty(module.module)) {
+            var blank = self.getBlankModule(module);
             self.grid.addItem(blank.get(0));
-            o.callback_fns[kind].render(blank);
+
+            o.callback_fns[module.module].render(blank, module);
         }
 
     };
 
-    Fx_catalog_modular_form.prototype.getBlankModule = function (kind) {
+    Fx_catalog_modular_form.prototype.getBlankModule = function ( module ) {
 
         var self = this;
 
         var $module = $("<div class='"+o.css_classes.MODULE+"'></div>"),
             $header = $("<div class='"+o.css_classes.HEADER+"'></div>");
 
-        $module.attr("data-semantic", kind);
+        $module.attr("data-module", module.module);
         $module.attr("data-size", "half");
         $header.append("<div class='" + o.css_classes.HANDLER + "'></div>");
-        $header.append("<div class='"+o.css_classes.LABEL+"'>"+cache.json[kind]["label"][o.widget.lang]+"</div>");
+        $header.append("<div class='"+o.css_classes.LABEL+"'>"+module["label"][o.widget.lang]+"</div>");
 
         var $resize = $("<div class='" + o.css_classes.RESIZE + "'></div>");
             $resize.on("click", { module: $module.get(0), btn: $resize}, function (e) {
@@ -184,11 +194,11 @@ define(["jquery", "fenix-ui-creator", "widgets/Fx-widgets-commons"], function ($
 
         var $close_btn = $("<div class='" + o.css_classes.CLOSE_BTN + "'></div>")
             .on("click", { o: o }, function () {
-            w_Commons.raiseCustomEvent(document.body, o.events.REMOVE_MODULE, { semantic: kind, module: $module.get(0)});
+            w_Commons.raiseCustomEvent(document.body, o.events.REMOVE_MODULE, { type: module.module, module: $module.get(0)});
 
             for (var i = 0; i < modules.length; i++) {
 
-                if (modules[i]["kind"] === kind) {
+                if (modules[i]["type"] === module.module) {
                     modules.splice(i, 1);
                 }
             }
@@ -200,8 +210,6 @@ define(["jquery", "fenix-ui-creator", "widgets/Fx-widgets-commons"], function ($
         $module.append("<div class='" + o.css_classes.CONTENT + "'></div>");
 
         $(o.container).append($module);
-
-        modules.push({id: cache.json[kind].id, type: cache.json[kind].type, kind: kind});
 
         return $module;
     };
@@ -245,7 +253,10 @@ define(["jquery", "fenix-ui-creator", "widgets/Fx-widgets-commons"], function ($
         $.extend(o, defaultOptions);
         $.extend(o, options);
 
-        o.callback_fns[types.TIME_SERIES] = { render: self.renderTimeSeries};
+        o.callback_fns[types.simplerange] = { render: self.renderTimeSeries};
+
+
+        //TODO -----------------------------------------
         o.callback_fns[types.GEOGRAPHICAL_AREA] = { render: self.renderGeo};
         o.callback_fns[types.FREE_FORM] = { render: self.renderFreeForm};
         //TODO cancellare
@@ -258,6 +269,8 @@ define(["jquery", "fenix-ui-creator", "widgets/Fx-widgets-commons"], function ($
     };
 
     Fx_catalog_modular_form.prototype.getValues = function(boolean) {
+        console.log(modules)
+
         return uiCreator.getValues(boolean, modules);
     };
 

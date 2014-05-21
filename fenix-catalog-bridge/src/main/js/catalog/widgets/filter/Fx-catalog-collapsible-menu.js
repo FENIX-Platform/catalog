@@ -15,7 +15,7 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
 
     function Fx_Catalog_Collapsible_Menu() {
         w_Commons = new W_Commons();
-    };
+    }
 
     Fx_Catalog_Collapsible_Menu.prototype.init = function (options) {
 
@@ -91,7 +91,7 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
         $p.append(self.buildPanelBody(panel, id));
 
         return $p;
-    }
+    };
 
     Fx_Catalog_Collapsible_Menu.prototype.buildPanelHeader = function(panel, id){
 
@@ -129,22 +129,22 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
                 var $module = $("<div></div>"),
                     $btn = $('<button type="button" class="btn btn-default btn-block"></button>');
 
-                $btn.on('click', {semantic : modules[j].semantic },function(e){
+                $btn.on('click', {module : modules[j] }, function(e){
                     var $btn = $(this);
 
                     if ($btn.is(':disabled') === false) {
                         $btn.attr("disabled", "disabled");
-                        w_Commons.raiseCustomEvent(o.container, o.events.SELECT , {semantic : e.data.semantic})
+                        w_Commons.raiseCustomEvent(o.container, o.events.SELECT , e.data.module)
                     }
 
-                })
+                });
 
                 if (modules[j].hasOwnProperty("id")){
                     $btn.attr("id", modules[j].id);
                 }
 
-                if (modules[j].hasOwnProperty("semantic")){
-                    $btn.attr("data-semantic", modules[j].semantic);
+                if (modules[j].hasOwnProperty("module")){
+                    $btn.attr("data-module", modules[j].module);
                 }
 
                 //Keep it before the label to have the icon in its the left side
@@ -169,29 +169,25 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
 
                 }
 
-
-
-
-
                 $module.append($btn);
                 $body.append($module)
             }
 
-        };
+        }
 
         return $bodyContainer.append($body);
-    }
+    };
 
-    Fx_Catalog_Collapsible_Menu.prototype.disable = function (semantic) {
-        $(o.container).find("[data-semantic='" + semantic + "']").attr("disabled", "disabled");
-    }
+    Fx_Catalog_Collapsible_Menu.prototype.disable = function (module) {
+        $(o.container).find("[data-module='" + module + "']").attr("disabled", "disabled");
+    };
 
-    Fx_Catalog_Collapsible_Menu.prototype.activate = function (semantic) {
+    Fx_Catalog_Collapsible_Menu.prototype.activate = function (module) {
 
-        $(o.container).find("[data-semantic='" + semantic + "']").removeAttr("disabled");
+        $(o.container).find("[data-module='" + module + "']").removeAttr("disabled");
 
-    }
+    } ;
 
     return Fx_Catalog_Collapsible_Menu;
 
-})
+});

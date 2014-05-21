@@ -1,6 +1,6 @@
 {
-    "TIME_SERIES": {
-        "id": "time-series",
+    "simplerange": {
+        "id": "fx-time-series-id",
         "type": "simplerange",
         "cssclass" : "daniele",
         "container": "time-series-container",
@@ -28,7 +28,6 @@
         }
     },
     "GEOGRAPHICAL_AREA": {
-        "id": "querystring",
         "type": "freetext",
         "container": "geo-container",
         "cssclass": "geocss",
@@ -53,7 +52,6 @@
         }
     },
     "FREE_FORM": {
-        "id": "querystring",
         "type": "freetext",
         "container": "free-form-container",
         "cssclass": "freetextclass",
@@ -78,7 +76,6 @@
         }
     },
     "LIST" : {
-        "id":"listExample",
         "type":"list",
         "cssclass":"listcssclass",
         "container": "list-container",
@@ -123,7 +120,6 @@
         }
     },
     "TREE": {
-        "id":"treeExample",
         "type":"tree",
         "container": "tree-container",
         "cssclass":"treetcssclass",
@@ -261,7 +257,6 @@
         }
     },
     "DROPDOWN": {
-        "id":"dropdownExample",
         "type":"dropdown",
         "container": "dropdown-container",
         "cssclass":"dropdowncssclass",

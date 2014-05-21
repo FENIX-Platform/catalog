@@ -1,11 +1,14 @@
 /*global define */
-
-define(["plugins/Fx-catalog-brigde-filter-plugin", "widgets/Fx-widgets-commons" ], function( Plugin, W_Commons ) {
+define([
+    "plugins/Fx-catalog-brigde-filter-plugin",
+    "widgets/Fx-widgets-commons"
+], function( Plugin, W_Commons ) {
 
     var w_Commons,
         name = 'fx-catalog-filter';
 
     function FilterController(){
+
       var self = this;
       self.publishFxCatalogBridgePlugin();
 
@@ -42,11 +45,11 @@ define(["plugins/Fx-catalog-brigde-filter-plugin", "widgets/Fx-widgets-commons" 
         var self = this;
 
         document.body.addEventListener("fx.catalog.menu.select", function (e) {
-             self.form.addItem(e.detail.semantic);
+             self.form.addItem(e.detail);
         }, false);
 
         document.body.addEventListener("fx.catalog.menu.remove", function (e) {
-            self.menu.activate(e.detail.semantic);
+            self.menu.activate(e.detail.type);
             self.form.removeItem(e.detail.module);
         }, false);
     };

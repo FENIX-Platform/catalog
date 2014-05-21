@@ -1,8 +1,12 @@
 /*global define */
 
-define([], function() {
+define([
+    'widgets/results/Fx-catalog-results-generator'
+], function(ResultGenerator) {
 
     function ResultsController(){
+
+        this.resultGenerator = new ResultGenerator();
     }
 
     //(injected)
@@ -12,10 +16,7 @@ define([], function() {
     ResultsController.prototype.resultsRenderer = undefined;
 
     ResultsController.prototype.renderComponents = function(){
-        var self = this;
-
-        self.grid.render();
-
+        this.grid.render();
     };
 
     ResultsController.prototype.initEventListeners = function(){};
@@ -32,14 +33,18 @@ define([], function() {
 
         self.preValidation();
         self.initEventListeners();
-
         self.renderComponents();
-
     };
 
-    ResultsController.prototype.addItems = function(items){
-        console.log("ResultsController")
-        console.log(items)
+    ResultsController.prototype.addItems = function( response ){
+
+        this.grid.clear();
+        var items = response.resources;
+
+        for (var i=0; i< items.length; i++) {
+            this.grid.addItems(this.resultGenerator.getInstance(items[i]));
+        }
+
     };
 
     return ResultsController;
