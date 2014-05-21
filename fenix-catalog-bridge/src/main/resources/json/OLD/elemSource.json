@@ -1,398 +1,398 @@
 [
     {
-        "id":"geographicalArea",
-        "type":"DYNAMICTREE",
-        "url":"http://hqlprfenixapp2.hq.un.fao.org:7777/msd/cl/code/GAUL/1.0/",
-        "cssclass":"",
-        "maxlevels":3,
-        "label":{
-            "EN":"Geographical Area",
-            "ES":"Area Geográfica",
-            "FR":"Zone Géographique"
+        "id": "geographicalArea",
+        "type": "DYNAMICTREE",
+        "url": "http://hqlprfenixapp2.hq.un.fao.org:7777/msd/cl/code/GAUL/1.0/",
+        "cssclass": "",
+        "maxlevels": 3,
+        "label": {
+            "EN": "Geographical Area",
+            "ES": "Area Geográfica",
+            "FR": "Zone Géographique"
         },
-        "component":{
-            "source":{
+        "component": {
+            "source": {
 
             },
-            "rendering":{
-                "width":300,
-                "height":250
+            "rendering": {
+                "width": 300,
+                "height": 250
             }
         }
     },
     {
-        "id":"listExample",
-        "type":"list",
-        "cssclass":"listcssclass",
-        "label":{
-            "EN":"EN List",
-            "ES":"ES List",
-            "FR":"FR List"
+        "id": "listExample",
+        "type": "list",
+        "cssclass": "listcssclass",
+        "label": {
+            "EN": "EN List",
+            "ES": "ES List",
+            "FR": "FR List"
         },
-        "component":{
-            "source":{
-                "datafields":[
+        "component": {
+            "source": {
+                "datafields": [
                     {
-                        "name":"label"
+                        "name": "label"
                     },
                     {
-                        "name":"value"
+                        "name": "value"
                     }
                 ],
-                "localdata":[
+                "localdata": [
                     {
-                        "label":"Peppermint Hot Chocolate",
-                        "value":"Ivano"
+                        "label": "Peppermint Hot Chocolate",
+                        "value": "Ivano"
                     },
                     {
-                        "label":"Peppermint Hot Chocolate",
-                        "value":"Daniele"
+                        "label": "Peppermint Hot Chocolate",
+                        "value": "Daniele"
                     },
                     {
-                        "label":"Salted Caramel Hot Chocolate",
-                        "value":"Pinolo"
+                        "label": "Salted Caramel Hot Chocolate",
+                        "value": "Pinolo"
                     }
                 ]
             },
-            "rendering":{
-                "displayMember":"label",
-                "valueMember":"value",
+            "rendering": {
+                "displayMember": "label",
+                "valueMember": "value",
                 "multiple": true,
-                "width":300,
-                "height":250
+                "width": 300,
+                "height": 250
             }
         }
     },
     {
-        "id":"treeExample",
-        "type":"tree",
-        "cssclass":"treetcssclass",
-        "label":{
-            "EN":"EN tree",
-            "ES":"ES tree",
-            "FR":"FR tree"
+        "id": "treeExample",
+        "type": "tree",
+        "cssclass": "treetcssclass",
+        "label": {
+            "EN": "EN tree",
+            "ES": "ES tree",
+            "FR": "FR tree"
         },
-        "component":{
-            "source":{
-                "datafields":[
+        "component": {
+            "source": {
+                "datafields": [
                     {
-                        "name":"id"
+                        "name": "id"
                     },
                     {
-                        "name":"parentid"
+                        "name": "parentid"
                     },
                     {
-                        "name":"text"
+                        "name": "text"
                     },
                     {
-                        "name":"value"
+                        "name": "value"
                     }
                 ],
-                "localdata":[
+                "localdata": [
                     {
-                        "id":"2",
-                        "parentid":"1",
-                        "text":"Hot Chocolate",
-                        "value":"$2.3"
+                        "id": "2",
+                        "parentid": "1",
+                        "text": "Hot Chocolate",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"3",
-                        "parentid":"1",
-                        "text":"Peppermint Hot Chocolate",
-                        "value":"$2.3"
+                        "id": "3",
+                        "parentid": "1",
+                        "text": "Peppermint Hot Chocolate",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"4",
-                        "parentid":"1",
-                        "text":"Salted Caramel Hot Chocolate",
-                        "value":"$2.3"
+                        "id": "4",
+                        "parentid": "1",
+                        "text": "Salted Caramel Hot Chocolate",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"5",
-                        "parentid":"1",
-                        "text":"White Hot Chocolate",
-                        "value":"$2.3"
+                        "id": "5",
+                        "parentid": "1",
+                        "text": "White Hot Chocolate",
+                        "value": "$2.3"
                     },
                     {
-                        "text":"Chocolate Beverage",
-                        "id":"1",
-                        "parentid":"-1",
-                        "value":"$2.3"
+                        "text": "Chocolate Beverage",
+                        "id": "1",
+                        "parentid": "-1",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"6",
-                        "text":"Espresso Beverage",
-                        "parentid":"-1",
-                        "value":"$2.3"
+                        "id": "6",
+                        "text": "Espresso Beverage",
+                        "parentid": "-1",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"7",
-                        "parentid":"6",
-                        "text":"Caffe Americano",
-                        "value":"$2.3"
+                        "id": "7",
+                        "parentid": "6",
+                        "text": "Caffe Americano",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"8",
-                        "text":"Caffe Latte",
-                        "parentid":"6",
-                        "value":"$2.3"
+                        "id": "8",
+                        "text": "Caffe Latte",
+                        "parentid": "6",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"9",
-                        "text":"Caffe Mocha",
-                        "parentid":"6",
-                        "value":"$2.3"
+                        "id": "9",
+                        "text": "Caffe Mocha",
+                        "parentid": "6",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"10",
-                        "text":"Cappuccino",
-                        "parentid":"6",
-                        "value":"$2.3"
+                        "id": "10",
+                        "text": "Cappuccino",
+                        "parentid": "6",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"11",
-                        "text":"Pumpkin Spice Latte",
-                        "parentid":"6",
-                        "value":"$2.3"
+                        "id": "11",
+                        "text": "Pumpkin Spice Latte",
+                        "parentid": "6",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"12",
-                        "text":"Frappuccino",
-                        "parentid":"-1"
+                        "id": "12",
+                        "text": "Frappuccino",
+                        "parentid": "-1"
                     },
                     {
-                        "id":"13",
-                        "text":"Caffe Vanilla Frappuccino",
-                        "parentid":"12",
-                        "value":"$2.3"
+                        "id": "13",
+                        "text": "Caffe Vanilla Frappuccino",
+                        "parentid": "12",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"15",
-                        "text":"450 calories",
-                        "parentid":"13",
-                        "value":"$2.3"
+                        "id": "15",
+                        "text": "450 calories",
+                        "parentid": "13",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"16",
-                        "text":"16g fat",
-                        "parentid":"13",
-                        "value":"$2.3"
+                        "id": "16",
+                        "text": "16g fat",
+                        "parentid": "13",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"17",
-                        "text":"13g protein",
-                        "parentid":"13",
-                        "value":"$2.3"
+                        "id": "17",
+                        "text": "13g protein",
+                        "parentid": "13",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"14",
-                        "text":"Caffe Vanilla Frappuccino Light",
-                        "parentid":"12",
-                        "value":"$2.3"
+                        "id": "14",
+                        "text": "Caffe Vanilla Frappuccino Light",
+                        "parentid": "12",
+                        "value": "$2.3"
                     }
                 ],
-                "id":"id"
+                "id": "id"
             },
-            "rendering":{
-                "width":300,
-                "height":250
+            "rendering": {
+                "width": 300,
+                "height": 250
             }
         }
     },
     {
-        "id":"freetextExample",
-        "type":"freetext",
-        "cssclass":"freetextcssclass",
-        "label":{
-            "EN":"EN freetext",
-            "ES":"ES freetext",
-            "FR":"FR freetext"
+        "id": "freetextExample",
+        "type": "freetext",
+        "cssclass": "freetextcssclass",
+        "label": {
+            "EN": "EN freetext",
+            "ES": "ES freetext",
+            "FR": "FR freetext"
         },
-        "component":{
-            "rendering":{
+        "component": {
+            "rendering": {
                 "placeholder": {
-                    "EN" : "Search",
-                    "DE" : "Suche",
-                    "ES" : "Búsqueda",
-                    "FR" : "Recherchet"
-                    }
+                    "EN": "Search",
+                    "DE": "Suche",
+                    "ES": "Búsqueda",
+                    "FR": "Recherchet"
+                }
             }
         }
     },
     {
-        "id":"dropdownExample",
-        "type":"dropdown",
-        "cssclass":"dropdowncssclass",
-        "label":{
-            "EN":"EN dropdown",
-            "ES":"ES dropdown",
-            "FR":"FR dropdown"
+        "id": "dropdownExample",
+        "type": "dropdown",
+        "cssclass": "dropdowncssclass",
+        "label": {
+            "EN": "EN dropdown",
+            "ES": "ES dropdown",
+            "FR": "FR dropdown"
         },
-        "component":{
-            "source":{
-                "datafields":[
+        "component": {
+            "source": {
+                "datafields": [
                     {
-                        "name":"text"
+                        "name": "text"
                     },
                     {
-                        "name":"value"
+                        "name": "value"
                     }
                 ],
-                "localdata":[
+                "localdata": [
                     {
-                        "id":"2",
-                        "parentid":"1",
-                        "text":"Hot Chocolate",
-                        "value":"$2.3"
+                        "id": "2",
+                        "parentid": "1",
+                        "text": "Hot Chocolate",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"3",
-                        "parentid":"1",
-                        "text":"Peppermint Hot Chocolate",
-                        "value":"$2.3"
+                        "id": "3",
+                        "parentid": "1",
+                        "text": "Peppermint Hot Chocolate",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"4",
-                        "parentid":"1",
-                        "text":"Salted Caramel Hot Chocolate",
-                        "value":"$2.3"
+                        "id": "4",
+                        "parentid": "1",
+                        "text": "Salted Caramel Hot Chocolate",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"5",
-                        "parentid":"1",
-                        "text":"White Hot Chocolate",
-                        "value":"$2.3"
+                        "id": "5",
+                        "parentid": "1",
+                        "text": "White Hot Chocolate",
+                        "value": "$2.3"
                     },
                     {
-                        "text":"Chocolate Beverage",
-                        "id":"1",
-                        "parentid":"-1",
-                        "value":"$2.3"
+                        "text": "Chocolate Beverage",
+                        "id": "1",
+                        "parentid": "-1",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"6",
-                        "text":"Espresso Beverage",
-                        "parentid":"-1",
-                        "value":"$2.3"
+                        "id": "6",
+                        "text": "Espresso Beverage",
+                        "parentid": "-1",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"7",
-                        "parentid":"6",
-                        "text":"Caffe Americano",
-                        "value":"$2.3"
+                        "id": "7",
+                        "parentid": "6",
+                        "text": "Caffe Americano",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"8",
-                        "text":"Caffe Latte",
-                        "parentid":"6",
-                        "value":"$2.3"
+                        "id": "8",
+                        "text": "Caffe Latte",
+                        "parentid": "6",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"9",
-                        "text":"Caffe Mocha",
-                        "parentid":"6",
-                        "value":"$2.3"
+                        "id": "9",
+                        "text": "Caffe Mocha",
+                        "parentid": "6",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"10",
-                        "text":"Cappuccino",
-                        "parentid":"6",
-                        "value":"$2.3"
+                        "id": "10",
+                        "text": "Cappuccino",
+                        "parentid": "6",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"11",
-                        "text":"Pumpkin Spice Latte",
-                        "parentid":"6",
-                        "value":"$2.3"
+                        "id": "11",
+                        "text": "Pumpkin Spice Latte",
+                        "parentid": "6",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"12",
-                        "text":"Frappuccino",
-                        "parentid":"-1"
+                        "id": "12",
+                        "text": "Frappuccino",
+                        "parentid": "-1"
                     },
                     {
-                        "id":"13",
-                        "text":"Caffe Vanilla Frappuccino",
-                        "parentid":"12",
-                        "value":"$2.3"
+                        "id": "13",
+                        "text": "Caffe Vanilla Frappuccino",
+                        "parentid": "12",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"15",
-                        "text":"450 calories",
-                        "parentid":"13",
-                        "value":"$2.3"
+                        "id": "15",
+                        "text": "450 calories",
+                        "parentid": "13",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"16",
-                        "text":"16g fat",
-                        "parentid":"13",
-                        "value":"$2.3"
+                        "id": "16",
+                        "text": "16g fat",
+                        "parentid": "13",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"17",
-                        "text":"13g protein",
-                        "parentid":"13",
-                        "value":"$2.3"
+                        "id": "17",
+                        "text": "13g protein",
+                        "parentid": "13",
+                        "value": "$2.3"
                     },
                     {
-                        "id":"14",
-                        "text":"Caffe Vanilla Frappuccino Light",
-                        "parentid":"12",
-                        "value":"$2.3"
+                        "id": "14",
+                        "text": "Caffe Vanilla Frappuccino Light",
+                        "parentid": "12",
+                        "value": "$2.3"
                     }
                 ],
-                "id":"id"
+                "id": "id"
             },
-            "rendering":{
-                "displayMember":"text",
-                "valueMember":"value",
-                "width":200,
-                "height":25
+            "rendering": {
+                "displayMember": "text",
+                "valueMember": "value",
+                "width": 200,
+                "height": 25
             }
         }
     },
     {
-        "id":"rangeExample",
-        "type":"range",
-        "cssclass":"rangecssclass",
-        "label":{
-            "EN":"EN range",
-            "ES":"ES range",
-            "FR":"FR range"
+        "id": "rangeExample",
+        "type": "range",
+        "cssclass": "rangecssclass",
+        "label": {
+            "EN": "EN range",
+            "ES": "ES range",
+            "FR": "FR range"
         },
-        "component":{
-            "source":{
-                "min":{
-                    "year":2014,
-                    "month":0,
-                    "day":1
+        "component": {
+            "source": {
+                "min": {
+                    "year": 2014,
+                    "month": 0,
+                    "day": 1
                 },
-                "max":{
-                    "year":2014,
-                    "month":6,
-                    "day":1
+                "max": {
+                    "year": 2014,
+                    "month": 6,
+                    "day": 1
                 }
             },
-            "rendering":{
-                "range":{
-                    "from":{
-                        "year":2014,
-                        "month":2,
-                        "day":1
+            "rendering": {
+                "range": {
+                    "from": {
+                        "year": 2014,
+                        "month": 2,
+                        "day": 1
                     },
-                    "to":{
-                        "year":2014,
-                        "month":4,
-                        "day":15
+                    "to": {
+                        "year": 2014,
+                        "month": 4,
+                        "day": 15
                     }
                 },
-                "majorTicksInterval":"month",
-                "minorTicksInterval":"day",
-                "labelsFormat":"MMM",
-                "labelsOnTicks" : false,
-                "markersFormat":"d",
-                "width":500,
-                "height":100
+                "majorTicksInterval": "month",
+                "minorTicksInterval": "day",
+                "labelsFormat": "MMM",
+                "labelsOnTicks": false,
+                "markersFormat": "d",
+                "width": 500,
+                "height": 100
             }
         }
     }

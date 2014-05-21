@@ -1,20 +1,20 @@
 {
-    "filter":{
-        "types":["dataset","codelist", "layer" ],
-        "querystring":{
+    "filter": {
+        "types": ["dataset", "codelist", "layer" ],
+        "querystring": {
             "lang": "lang",
-            "query":"querystring"
+            "query": "querystring"
         },
-        "metadata":{
+        "metadata": {
             "geographicExtent": "geographicExtent",
-            "basePeriod" : "basePeriod",
-            "owner" : "owner"
+            "basePeriod": "basePeriod",
+            "owner": "owner"
         },
-        "data" : { },
-        "business" : { },
-        "require" : {
-            "index" : true,
-            "metadata" : true
+        "data": { },
+        "business": { },
+        "require": {
+            "index": true,
+            "metadata": true
         }
     }
 }
