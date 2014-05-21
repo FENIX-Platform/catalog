@@ -1,6 +1,7 @@
 {
     "items": [
-        {   "id" : "id1",
+        {
+            "id": "id1",
             "semantic": "TIME_SERIES",
             "style": {
                 "label": "css 1",
@@ -11,7 +12,7 @@
             }
         },
         {
-            "id" : "id2",
+            "id": "id2",
             "semantic": "GEOGRAPHICAL_AREA",
             "style": {
                 "label": "css 1",
@@ -21,7 +22,8 @@
                 "EN": "GEOGRAPHICAL_AREA"
             }
         },
-        {   "id" : "id3",
+        {
+            "id": "id3",
             "semantic": "FREE_FORM",
             "style": {
                 "label": "css 1",
@@ -31,7 +33,8 @@
                 "EN": "FREE_FORM"
             }
         },
-        {   "id" : "id4",
+        {
+            "id": "id4",
             "semantic": "LIST",
             "style": {
                 "label": "css 1",
@@ -41,7 +44,8 @@
                 "EN": "LIST"
             }
         },
-        {   "id" : "id5",
+        {
+            "id": "id5",
             "semantic": "TREE",
             "style": {
                 "label": "css 1",
@@ -51,7 +55,8 @@
                 "EN": "TREE"
             }
         },
-        {   "id" : "id6",
+        {
+            "id": "id6",
             "semantic": "DROPDOWN",
             "style": {
                 "label": "css 1",

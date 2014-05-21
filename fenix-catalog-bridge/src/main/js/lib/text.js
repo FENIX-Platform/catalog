@@ -62,7 +62,8 @@ define(['module'], function (module) {
                     progId = progIds[i];
                     try {
                         xhr = new ActiveXObject(progId);
-                    } catch (e) {}
+                    } catch (e) {
+                    }
 
                     if (xhr) {
                         progIds = [progId];  // so faster next time
@@ -242,9 +243,7 @@ define(['module'], function (module) {
 
     if (masterConfig.env === 'node' || (!masterConfig.env &&
         typeof process !== "undefined" &&
-        process.versions &&
-        !!process.versions.node &&
-        !process.versions['node-webkit'])) {
+        process.versions && !!process.versions.node && !process.versions['node-webkit'])) {
         //Using special require.nodeRequire, something added by r.js.
         fs = require.nodeRequire('fs');
 

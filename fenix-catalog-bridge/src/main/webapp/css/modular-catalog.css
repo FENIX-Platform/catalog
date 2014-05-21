@@ -43,7 +43,7 @@ body {
     font-size: 10px;
 }
 
-.fenix-result{
+.fenix-result {
     width: 100%;
     background-color: white;
     border: 1px solid #E3E3E3;
@@ -80,7 +80,7 @@ body {
     width: 15px;
     background: url("icons/fenix-catalog-sprite-small.png") no-repeat -105px 0;
     cursor: pointer;
-    top:3px;
+    top: 3px;
 }
 
 .fx-catalog-header-btn-settings:after {
@@ -90,34 +90,34 @@ body {
     width: 15px;
     background: url("icons/fenix-catalog-sprite-small.png") no-repeat -120px 0;
     cursor: pointer;
-    top:3px;
+    top: 3px;
 }
 
 /*========= FILTER CONTAINER =========*/
-.fx-catalog-modular-filter-container{
+.fx-catalog-modular-filter-container {
     background-color: white;
     min-height: 250px;
     overflow: hidden;
 }
 
 /*========= MODULAR MENU =========*/
-.fx-catalog-modular-menu-container{
+.fx-catalog-modular-menu-container {
     background-color: white;
     padding: 0;
     min-height: 250px;
 }
 
-.fx-catalog-modular-menu-container:after{
+.fx-catalog-modular-menu-container:after {
     position: absolute;
     content: "";
     height: 900px;
     width: 20px;
     background-color: #f3f3f3;
-    top:0;
+    top: 0;
     right: -14px;
 }
 
-.fx-catalog-modular-menu-container .btn-default:hover{
+.fx-catalog-modular-menu-container .btn-default:hover {
     background-color: #e1dfda;
 }
 
@@ -147,17 +147,17 @@ body {
     border-bottom: 1px solid #e5e5e5;
 }
 
-.fx-menu-category-title{
+.fx-menu-category-title {
     position: relative;
 }
 
-.fx-menu-category-title a{
+.fx-menu-category-title a {
     padding-left: 35px;
     text-transform: uppercase;
     text-decoration: none;
 }
 
-.fx-catalog-modular-menu-category-plus{
+.fx-catalog-modular-menu-category-plus {
     position: absolute;
     top: 0;
     height: 15px;
@@ -165,7 +165,8 @@ body {
     background: url("icons/fenix-catalog-sprite-small.png") no-repeat -90px 0;
 
 }
-.fx-catalog-modular-menu-category-info{
+
+.fx-catalog-modular-menu-category-info {
     position: absolute;
     top: 0;
     right: 0;
@@ -174,42 +175,42 @@ body {
     background: url("icons/fenix-catalog-sprite-small.png") no-repeat 0 0;
 }
 
-#fx-catalog-modular-menu .panel-body, #fx-catalog-modular-menu button{
+#fx-catalog-modular-menu .panel-body, #fx-catalog-modular-menu button {
     color: #6e6e6e;
 }
 
-#fx-catalog-modular-menu button{
+#fx-catalog-modular-menu button {
     border-color: white;
     text-align: left;
 }
 
-#fx-catalog-modular-menu button span{
+#fx-catalog-modular-menu button span {
     margin-right: 10px;
 }
 
 /*========= FORM =========*/
-.fx-catalog-modular-form-wrapper{
+.fx-catalog-modular-form-wrapper {
     padding-right: 0;
     overflow: hidden;
 }
 
-.fx-catalog-modular-form-container{
+.fx-catalog-modular-form-container {
     background-color: white;
 }
 
-.fx-catalog-form-module{
+.fx-catalog-form-module {
     padding: 7px;
     border: 0;
     height: 150px;
 }
 
-.fx-catalog-modular-form-header{
+.fx-catalog-modular-form-header {
     position: relative;
     background-color: #ffd865;
     height: 30px;
 }
 
-.fx-catalog-modular-form-handler{
+.fx-catalog-modular-form-handler {
     position: absolute;
     left: 7px;
     top: 7px;
@@ -219,7 +220,7 @@ body {
     cursor: pointer;
 }
 
-.fx-catalog-modular-form-close-btn{
+.fx-catalog-modular-form-close-btn {
     position: absolute;
     top: 7px;
     right: 7px;
@@ -229,7 +230,7 @@ body {
     cursor: pointer;
 }
 
-.fx-catalog-modular-form-resize-btn{
+.fx-catalog-modular-form-resize-btn {
     position: absolute;
     top: 7px;
     right: 28px;
@@ -239,7 +240,7 @@ body {
     cursor: pointer;
 }
 
-.fx-catalog-modular-form-label{
+.fx-catalog-modular-form-label {
     position: absolute;
     top: 4px;
     left: 30px;
@@ -247,22 +248,22 @@ body {
     font-weight: 100;
 }
 
-.fx-catalog-modular-form-content{
+.fx-catalog-modular-form-content {
     padding: 10px 10px 10px 10px;
     height: 170px;
 }
 
-.fx-catalog-mod-timerseries{
+.fx-catalog-mod-timerseries {
     padding-top: 30px;
 }
 
 /*========= RESUME BAR =========*/
-.fx-catalog-resume-bar{
+.fx-catalog-resume-bar {
     background-color: #e1dfda;
     height: 38px;
 }
 
-#fx-catalog-submit-btn{
+#fx-catalog-submit-btn {
     color: #f3f3f3;
     text-transform: uppercase;
     background-color: #6e6e6e;
@@ -280,11 +281,13 @@ body {
     top: 7px;
     background: url("icons/fenix-catalog-sprite.png") no-repeat -0px 0;
 }
+
 .fx-catalog-resume-bar-text {
     position: absolute;
     top: 9px;
     left: 215px; /* Sistemare questo */
 }
+
 .fx-catalog-resume-bar-arrow {
     position: absolute;
     height: 25px;
