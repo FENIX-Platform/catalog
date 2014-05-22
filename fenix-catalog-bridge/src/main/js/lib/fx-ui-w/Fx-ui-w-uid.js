@@ -37,8 +37,7 @@ define(["jquery"], function ($) {
     };
 
     Fx_ui_w_Name.prototype.getValue = function (e) {
-        var result = $("#" + e.id + " > input").val();
-        return result.split(",")
+        return [{ enumeration :  $("#" + e.id + " > input").val()}];
     };
 
     return Fx_ui_w_Name;

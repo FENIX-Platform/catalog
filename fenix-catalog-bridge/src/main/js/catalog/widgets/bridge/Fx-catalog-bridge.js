@@ -51,14 +51,13 @@ define([
                 type: 'post',
                 contentType: 'application/json',
                 dataType: 'json',
-                success: function (response) {
+                success: function (response, textStatus, jqXHR ) {
 
                     if (context) {
                         $.proxy(callback, context, response)();
                     } else {
                         callback(response)
                     }
-
                 },
                 data: JSON.stringify(plugin.getFilter())
             });

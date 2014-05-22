@@ -40,10 +40,15 @@ define([
     ResultsController.prototype.addItems = function (response) {
 
         this.grid.clear();
-        var items = response.resources;
 
-        for (var i = 0; i < items.length; i++) {
-            this.grid.addItems(this.resultGenerator.getInstance(items[i]));
+        if (response) {
+            var items = response.resources;
+
+            for (var i = 0; i < items.length; i++) {
+                this.grid.addItems(this.resultGenerator.getInstance(items[i]));
+            }
+
+
         }
 
     };

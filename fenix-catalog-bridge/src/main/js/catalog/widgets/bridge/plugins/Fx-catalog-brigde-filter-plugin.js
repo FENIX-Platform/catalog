@@ -1,9 +1,8 @@
 define([
     "jquery",
     "text!json/fx-catalog-filter-mapping.json",
-    "text!json/fx-catalog-blank-filter.json",
-    "text!json/request.json"
-], function ($, map, blank, req) {
+    "text!json/fx-catalog-blank-filter.json"
+], function ($, map, blank) {
 
     var o = { };
 
@@ -64,9 +63,8 @@ define([
                 }
             }
         }
-        console.log(request)
-        return  JSON.parse(req);
-        //return JSON.stringify( request );
+
+        return request;
     };
 
     FilterPlugin.prototype.convertValue = function(value, rules ){

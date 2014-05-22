@@ -1,10 +1,6 @@
 { "filter": {
     "types": [],
-    "metadata": { },
-    "data": { },
+    "metadata": { }
+},
     "business": []
-}, "require": {
-    "index": true,
-    "metadata": true
-}
 }

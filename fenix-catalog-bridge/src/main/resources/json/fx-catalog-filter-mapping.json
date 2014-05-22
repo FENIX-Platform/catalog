@@ -1,13 +1,6 @@
 {
-    "simplerange": {
-        "path" : "filter.metadata.simplerange",
-        "conversion" : {
-            "min" : "from",
-            "max" : "to"
-        }
-    },
     "resourceType": {
-        "path" : "filter.resourceType"
+        "path" : "filter.types"
     },
     "uid": {
         "path" : "filter.metadata.uid"
