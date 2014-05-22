@@ -1,9 +1,47 @@
 {
     "simplerange": {
-        "path" : "filter.metadata.testfield",
+        "path" : "filter.metadata.simplerange",
         "conversion" : {
             "min" : "from",
             "max" : "to"
         }
+    },
+    "resourceType": {
+        "path" : "filter.resourceType"
+    },
+    "uid": {
+        "path" : "filter.metadata.uid"
+    },
+    "geographicExtent": {
+        "path" : "filter.metadata.geographicExtent"
+    },
+    "referencePeriod": {
+        "path" : "filter.metadata.referencePeriod",
+        "conversion" : {
+            "min" : "from",
+            "max" : "to"
+        }
+    },
+    "basePeriod": {
+        "path" : "filter.metadata.basePeriod" ,
+        "conversion" : {
+            "min" : "from",
+            "max" : "to"
+        }
+    },
+    "unitOfMeasure": {
+        "path" : "filter.metadata.unitOfMeasure"
+    },
+    "updatePeriodicity": {
+        "path" : "filter.metadata.updatePeriodicity"
+    },
+    "sources": {
+        "path" : "filter.metadata.sources"
+    },
+    "owner": {
+        "path" : "filter.metadata.owner"
+    },
+    "provider": {
+        "path" : "filter.metadata.provider"
     }
 }

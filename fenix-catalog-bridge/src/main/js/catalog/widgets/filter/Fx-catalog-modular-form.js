@@ -53,7 +53,6 @@ define([
 
         var id = "fx-catalog-module-" + w_Commons.getFenixUniqueId();
         c.attr("id", id);
-        c.addClass("fx-catalog-mod-timerseries");
 
         modules.push({id: cache.json[module.module].id, type: module.module});
 

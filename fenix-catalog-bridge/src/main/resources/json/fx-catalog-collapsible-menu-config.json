@@ -14,19 +14,74 @@
             },
             "modules": [
                 {
-                    "module": "simplerange",
+                    "module": "resourceType",
                     "label": {
-                        "EN": "Time Series"
+                        "EN": "Resource Type"
+                    },
+                    "icon": "fa fa-globe fa-lg fa-fw"
+                },
+                {
+                    "module": "uid",
+                    "label": {
+                        "EN": "Uid"
                     },
                     "icon": "fa fa-clock-o fa-lg fa-fw"
                 },
                 {
-                    "filterField": "filterField2",
-                    "module": "GEOGRAPHICAL_AREA",
+                    "module": "geographicExtent",
                     "label": {
-                        "EN": "Geographical Area"
+                        "EN": "Geo Extent"
                     },
-                    "icon": "fa fa-globe fa-lg fa-fw"
+                    "icon": "fa fa-clock-o fa-lg fa-fw"
+                },
+                {
+                    "module": "referencePeriod",
+                    "label": {
+                        "EN": "Reference Period"
+                    },
+                    "icon": "fa fa-clock-o fa-lg fa-fw"
+                },
+                {
+                    "module": "basePeriod",
+                    "label": {
+                        "EN": "Base Period"
+                    },
+                    "icon": "fa fa-clock-o fa-lg fa-fw"
+                },
+                {
+                    "module": "unitOfMeasure",
+                    "label": {
+                        "EN": "Unit of Measure"
+                    },
+                    "icon": "fa fa-clock-o fa-lg fa-fw"
+                },
+                {
+                    "module": "updatePeriodicity",
+                    "label": {
+                        "EN": "Update Periodicity"
+                    },
+                    "icon": "fa fa-clock-o fa-lg fa-fw"
+                },
+                {
+                    "module": "sources",
+                    "label": {
+                        "EN": "Source"
+                    },
+                    "icon": "fa fa-clock-o fa-lg fa-fw"
+                },
+                {
+                    "module": "owner",
+                    "label": {
+                        "EN": "Owner"
+                    },
+                    "icon": "fa fa-clock-o fa-lg fa-fw"
+                },
+                {
+                    "module": "provider",
+                    "label": {
+                        "EN": "Provider"
+                    },
+                    "icon": "fa fa-clock-o fa-lg fa-fw"
                 }
             ]
         },

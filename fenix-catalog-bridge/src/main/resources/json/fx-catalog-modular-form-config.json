@@ -1,11 +1,110 @@
 {
-    "simplerange": {
-        "id": "fx-time-series-id",
-        "type": "simplerange",
-        "cssclass": "daniele",
-        "container": "time-series-container",
+    "resourceType": {
+        "id": "fx-resourcestype-id",
+        "type": "resourceType",
+        "container": "resourcestype-container",
+        "cssclass": "resourcestype",
         "label": {
-            "EN": "Time Range",
+            "EN": "Resources Type",
+            "DE": "Suche",
+            "ES": "Búsqueda",
+            "FR": "Recherchet"
+        },
+        "component": {
+            "name" : "resources-radio",
+            "choices": [
+                {
+                    "label": {
+                        "EN": "Data-sets",
+                        "DE": "Suche",
+                        "ES": "Búsqueda",
+                        "FR": "Recherchet"
+                    },
+                    "value": "dataset"
+                },
+                {
+                    "label": {
+                        "EN": "Codelists",
+                        "DE": "Suche",
+                        "ES": "Búsqueda",
+                        "FR": "Recherchet"
+                    },
+                    "value": "codelist"
+                },
+                {
+                    "label": {
+                        "EN": "Both",
+                        "DE": "Suche",
+                        "ES": "Búsqueda",
+                        "FR": "Recherchet"
+                    },
+                    "value": "dataset,codelist"
+                }
+            ]
+        }
+    },
+    "uid": {
+        "type": "uid",
+        "container": "name-container",
+        "cssclass": "name-class",
+        "label": {
+            "EN": "Uid",
+            "DE": "Suche",
+            "ES": "Búsqueda",
+            "FR": "Recherchet"
+        },
+        "component": {
+            "rendering": {
+                "placeholder": {
+                    "EN": "Name",
+                    "DE": "Suche",
+                    "ES": "Búsqueda",
+                    "FR": "Recherchet"
+                },
+                "htmlattributes": {
+                    "className": "form-control"
+                }
+            }
+        }
+    },
+    "geographicExtent": {
+        "type": "geographicExtent",
+        "cssclass": "geographicExtent-css",
+        "container": "geographicExtent-container",
+        "label": {
+            "EN": "Geographical Extents",
+            "ES": "ES List",
+            "FR": "FR List"
+        },
+        "component": {
+            "source": {
+                "datafields": [
+                    {
+                        "name": "label", "map" : "title>EN"
+                    },
+                    {
+                        "name": "value", "map" : "code"
+                    }
+                ],
+                "id" : "code",
+                "url": "http://faostat3.fao.org:7777/msd/cl/code/GAUL/1.0"
+            },
+            "rendering": {
+                "displayMember": "label",
+                "valueMember": "value",
+                "multiple": true,
+                "width": "100%",
+                "autoHeight": true
+            }
+        }
+    },
+    "referencePeriod": {
+        "id": "fx-referencePeriod-id",
+        "type": "referencePeriod",
+        "cssclass": "fx-catalog-mod-timerseries",
+        "container": "referencePeriod-container",
+        "label": {
+            "EN": "Reference Range",
             "ES": "Intervalo de tiempo",
             "DE": "Zeitbereich",
             "FR": "Intervalle de temps"
@@ -27,60 +126,40 @@
             }
         }
     },
-    "GEOGRAPHICAL_AREA": {
-        "type": "freetext",
-        "container": "geo-container",
-        "cssclass": "geocss",
+    "basePeriod": {
+        "id": "fx-basePeriod-id",
+        "type": "basePeriod",
+        "cssclass": "fx-catalog-mod-timerseries",
+        "container": "basePeriod-container",
         "label": {
-            "EN": "Search",
-            "DE": "Suche",
-            "ES": "Búsqueda",
-            "FR": "Recherchet"
+            "EN": "Base Period",
+            "ES": "Intervalo de tiempo",
+            "DE": "Zeitbereich",
+            "FR": "Intervalle de temps"
         },
         "component": {
+            "source": {
+                "step": 1,
+                "bounds": {
+                    "min": 1980,
+                    "max": 2014
+                }
+            },
             "rendering": {
-                "placeholder": {
-                    "EN": "Search",
-                    "DE": "Suche",
-                    "ES": "Búsqueda",
-                    "FR": "Recherchet"
-                },
-                "htmlattributes": {
-                    "className": "form-control"
+                "arrows": true,
+                "defaultValues": {
+                    "min": 1980,
+                    "max": 2014
                 }
             }
         }
     },
-    "FREE_FORM": {
-        "type": "freetext",
-        "container": "free-form-container",
-        "cssclass": "freetextclass",
+    "unitOfMeasure": {
+        "type": "unitOfMeasure",
+        "cssclass": "unitOfMeasure-css",
+        "container": "unitOfMeasure-container",
         "label": {
-            "EN": "Search",
-            "DE": "Suche",
-            "ES": "Búsqueda",
-            "FR": "Recherchet"
-        },
-        "component": {
-            "rendering": {
-                "placeholder": {
-                    "EN": "Search",
-                    "DE": "Suche",
-                    "ES": "Búsqueda",
-                    "FR": "Recherchet"
-                },
-                "htmlattributes": {
-                    "className": "form-control"
-                }
-            }
-        }
-    },
-    "LIST": {
-        "type": "list",
-        "cssclass": "listcssclass",
-        "container": "list-container",
-        "label": {
-            "EN": "EN List",
+            "EN": "UNIT OF MEASURE",
             "ES": "ES List",
             "FR": "FR List"
         },
@@ -88,27 +167,14 @@
             "source": {
                 "datafields": [
                     {
-                        "name": "label"
+                        "name": "label", "map" : "title>EN"
                     },
                     {
-                        "name": "value"
+                        "name": "value", "map" : "code"
                     }
                 ],
-                "localdata": [
-                    {
-                        "label": "Peppermint Hot Chocolate",
-                        "value": "Ivano"
-                    },
-                    {
-                        "label": "Peppermint Hot Chocolate",
-                        "value": "Daniele"
-                    },
-                    {
-                        "label": "Salted Caramel Hot Chocolate",
-                        "value": "Pinolo"
-                    }
-
-                ]
+                "id" : "code",
+                "url": "http://faostat3.fao.org:7777/msd/cl/code/CS_Units/1.0"
             },
             "rendering": {
                 "displayMember": "label",
@@ -119,271 +185,127 @@
             }
         }
     },
-    "TREE": {
-        "type": "tree",
-        "container": "tree-container",
-        "cssclass": "treetcssclass",
+    "updatePeriodicity": {
+        "type": "updatePeriodicity",
+        "cssclass": "updatePeriodicity-css",
+        "container": "updatePeriodicity-container",
         "label": {
-            "EN": "EN tree",
-            "ES": "ES tree",
-            "FR": "FR tree"
+            "EN": "Update Periodicity",
+            "ES": "ES List",
+            "FR": "FR List"
         },
         "component": {
             "source": {
                 "datafields": [
                     {
-                        "name": "id"
+                        "name": "label", "map" : "title>EN"
                     },
                     {
-                        "name": "parentid"
-                    },
-                    {
-                        "name": "text"
-                    },
-                    {
-                        "name": "value"
+                        "name": "value", "map" : "code"
                     }
                 ],
-                "localdata": [
-                    {
-                        "id": "2",
-                        "parentid": "1",
-                        "text": "Hot Chocolate",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "3",
-                        "parentid": "1",
-                        "text": "Peppermint Hot Chocolate",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "4",
-                        "parentid": "1",
-                        "text": "Salted Caramel Hot Chocolate",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "5",
-                        "parentid": "1",
-                        "text": "White Hot Chocolate",
-                        "value": "$2.3"
-                    },
-                    {
-                        "text": "Chocolate Beverage",
-                        "id": "1",
-                        "parentid": "-1",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "6",
-                        "text": "Espresso Beverage",
-                        "parentid": "-1",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "7",
-                        "parentid": "6",
-                        "text": "Caffe Americano",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "8",
-                        "text": "Caffe Latte",
-                        "parentid": "6",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "9",
-                        "text": "Caffe Mocha",
-                        "parentid": "6",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "10",
-                        "text": "Cappuccino",
-                        "parentid": "6",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "11",
-                        "text": "Pumpkin Spice Latte",
-                        "parentid": "6",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "12",
-                        "text": "Frappuccino",
-                        "parentid": "-1"
-                    },
-                    {
-                        "id": "13",
-                        "text": "Caffe Vanilla Frappuccino",
-                        "parentid": "12",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "15",
-                        "text": "450 calories",
-                        "parentid": "13",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "16",
-                        "text": "16g fat",
-                        "parentid": "13",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "17",
-                        "text": "13g protein",
-                        "parentid": "13",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "14",
-                        "text": "Caffe Vanilla Frappuccino Light",
-                        "parentid": "12",
-                        "value": "$2.3"
-                    }
-                ],
-                "id": "id"
+                "id" : "code",
+                "url": "http://faostat3.fao.org:7777/msd/cl/code/FAOSTAT_Periodicity/1.0"
             },
             "rendering": {
-                "allowDrag": false,
-                "allowDrop": false,
-                "width": "100%"
+                "displayMember": "label",
+                "valueMember": "value",
+                "multiple": true,
+                "width": "100%",
+                "autoHeight": true
             }
         }
     },
-    "DROPDOWN": {
-        "type": "dropdown",
-        "container": "dropdown-container",
-        "cssclass": "dropdowncssclass",
+    "sources": {
+        "type": "sources",
+        "cssclass": "sources-css",
+        "container": "sources-container",
         "label": {
-            "EN": "EN dropdown",
-            "ES": "ES dropdown",
-            "FR": "FR dropdown"
+            "EN": "Sources",
+            "ES": "ES List",
+            "FR": "FR List"
         },
         "component": {
             "source": {
                 "datafields": [
                     {
-                        "name": "text"
+                        "name": "label", "map" : "title>EN"
                     },
                     {
-                        "name": "value"
+                        "name": "value", "map" : "code"
                     }
                 ],
-                "localdata": [
-                    {
-                        "id": "2",
-                        "parentid": "1",
-                        "text": "Hot Chocolate",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "3",
-                        "parentid": "1",
-                        "text": "Peppermint Hot Chocolate",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "4",
-                        "parentid": "1",
-                        "text": "Salted Caramel Hot Chocolate",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "5",
-                        "parentid": "1",
-                        "text": "White Hot Chocolate",
-                        "value": "$2.3"
-                    },
-                    {
-                        "text": "Chocolate Beverage",
-                        "id": "1",
-                        "parentid": "-1",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "6",
-                        "text": "Espresso Beverage",
-                        "parentid": "-1",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "7",
-                        "parentid": "6",
-                        "text": "Caffe Americano",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "8",
-                        "text": "Caffe Latte",
-                        "parentid": "6",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "9",
-                        "text": "Caffe Mocha",
-                        "parentid": "6",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "10",
-                        "text": "Cappuccino",
-                        "parentid": "6",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "11",
-                        "text": "Pumpkin Spice Latte",
-                        "parentid": "6",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "12",
-                        "text": "Frappuccino",
-                        "parentid": "-1"
-                    },
-                    {
-                        "id": "13",
-                        "text": "Caffe Vanilla Frappuccino",
-                        "parentid": "12",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "15",
-                        "text": "450 calories",
-                        "parentid": "13",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "16",
-                        "text": "16g fat",
-                        "parentid": "13",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "17",
-                        "text": "13g protein",
-                        "parentid": "13",
-                        "value": "$2.3"
-                    },
-                    {
-                        "id": "14",
-                        "text": "Caffe Vanilla Frappuccino Light",
-                        "parentid": "12",
-                        "value": "$2.3"
-                    }
-                ],
-                "id": "id"
+                "id" : "code",
+                "url": "http://faostat3.fao.org:7777/msd/cm/contact/byFields?institution=FAO"
             },
             "rendering": {
-                "displayMember": "text",
+                "displayMember": "label",
                 "valueMember": "value",
-                "width": "100%"
+                "multiple": true,
+                "width": "100%",
+                "autoHeight": true
+            }
+        }
+    },
+    "owner": {
+        "type": "owner",
+        "cssclass": "owner-css",
+        "container": "owner-container",
+        "label": {
+            "EN": "Owner",
+            "ES": "ES List",
+            "FR": "FR List"
+        },
+        "component": {
+            "source": {
+                "datafields": [
+                    {
+                        "name": "label", "map" : "title>EN"
+                    },
+                    {
+                        "name": "value", "map" : "code"
+                    }
+                ],
+                "id" : "code",
+                "url": "http://faostat3.fao.org:7777/msd/cm/contact/byFields?institution=FAO"
+            },
+            "rendering": {
+                "displayMember": "label",
+                "valueMember": "value",
+                "multiple": true,
+                "width": "100%",
+                "autoHeight": true
+            }
+        }
+    },
+    "provider": {
+        "type": "provider",
+        "cssclass": "provider-css",
+        "container": "provider-container",
+        "label": {
+            "EN": "Provider",
+            "ES": "ES List",
+            "FR": "FR List"
+        },
+        "component": {
+            "source": {
+                "datafields": [
+                    {
+                        "name": "label", "map" : "title>EN"
+                    },
+                    {
+                        "name": "value", "map" : "code"
+                    }
+                ],
+                "id" : "code",
+                "url": "http://faostat3.fao.org:7777/msd/cm/contact/byFields?institution=FAO"
+            },
+            "rendering": {
+                "displayMember": "label",
+                "valueMember": "value",
+                "multiple": true,
+                "width": "100%",
+                "autoHeight": true
             }
         }
     }

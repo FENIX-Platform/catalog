@@ -60,6 +60,7 @@ define([
                     for (var j = 0; j < path.length - 1; j++) { position = position[path[j]]; }
 
                     position[path[ path.length - 1 ]] = values[keys[i]];
+                    position = request;
                 }
             }
         }
