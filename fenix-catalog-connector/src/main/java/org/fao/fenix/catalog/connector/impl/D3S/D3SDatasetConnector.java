@@ -71,10 +71,11 @@ public class D3SDatasetConnector extends D3SClient implements Connector {
             if (types.contains("dataset") || types.contains("layer")) {
                 fillSearchFilter(filter,types,codes);
                 Response d3sResponse = getProxy(Search.class,D3SServices.searchDataset.getPath()).getMetadataBasicAlgorithm(filter);
-                if (d3sResponse!=null && d3sResponse.getCount()>0)
+                if (d3sResponse!=null && d3sResponse.getCount()>0) {
                     for (Resource dataset : d3sResponse.getResources())
                         fillD3SDatasetResource(dataset);
-                resources.addAll(d3sResponse.getResources());
+                    resources.addAll(d3sResponse.getResources());
+                }
             }
         }
 
