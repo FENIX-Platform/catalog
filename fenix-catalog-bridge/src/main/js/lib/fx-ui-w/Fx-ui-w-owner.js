@@ -3,7 +3,7 @@ define([
     "jqwidgets"], function ($) {
 
     function Fx_ui_w_geographicExtent() {
-    };
+    }
 
     Fx_ui_w_geographicExtent.prototype.validate = function (e) {
         if (!e.hasOwnProperty("source")) {
@@ -19,6 +19,8 @@ define([
 
     Fx_ui_w_geographicExtent.prototype.render = function (e, container) {
 
+        console.log($(container))
+
         var source, dataAdapter;
 
         // prepare the data
@@ -33,8 +35,15 @@ define([
     };
 
     Fx_ui_w_geographicExtent.prototype.getValue = function (e) {
-        var result = $("#" + e.id).jqxListBox('val');
-        return result.split(',');
+
+        var ids = $("#" + e.id).jqxListBox('val').split(','),
+            result = [];
+
+        for (var i = 0; i<ids.length; i++ ){
+            result.push({id: ids[i]});
+        }
+
+        return result;
     };
 
     return Fx_ui_w_geographicExtent;

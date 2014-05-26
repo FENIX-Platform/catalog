@@ -1,7 +1,7 @@
 define(["jquery", "jqwidgets"], function ($) {
 
     function Fx_ui_w_List() {
-    };
+    }
 
     Fx_ui_w_List.prototype.validate = function (e) {
         if (!e.hasOwnProperty("source")) {

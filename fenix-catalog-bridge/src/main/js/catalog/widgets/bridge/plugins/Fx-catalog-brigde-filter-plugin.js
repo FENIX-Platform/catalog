@@ -67,20 +67,23 @@ define([
         return request;
     };
 
-    FilterPlugin.prototype.convertValue = function(value, rules ){
+    FilterPlugin.prototype.convertValue = function(values, rules ){
 
         var rulesKeys = Object.keys(rules);
 
-        for (var i = 0; i < rulesKeys.length; i++){
-            if (rules.hasOwnProperty(rulesKeys[i])){
-                if (value.hasOwnProperty(rulesKeys[i])){
-                    value[rules[rulesKeys[i]]] =  value[rulesKeys[i]];
-                    delete value[rulesKeys[i]];
+        for (var j=0; j < values.length; j ++){
+
+            for (var i = 0; i < rulesKeys.length; i++){
+                if (rules.hasOwnProperty(rulesKeys[i])){
+                    if (values[j].hasOwnProperty(rulesKeys[i])){
+                        values[j][rules[rulesKeys[i]]] =  values[j][rulesKeys[i]];
+                        delete values[j][rulesKeys[i]];
+                    }
                 }
             }
         }
 
-        return value;
+        return values;
 
     };
 

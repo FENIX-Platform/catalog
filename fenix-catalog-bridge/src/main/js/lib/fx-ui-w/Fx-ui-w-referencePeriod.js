@@ -16,7 +16,7 @@ define(["jquery", "jqrangeslider"], function ($) {
 
     Fx_ui_w_SimpleRange.prototype.getValue = function (e) {
 
-        return $("#" + e.id).rangeSlider("values");
+        return [$("#" + e.id).rangeSlider("values")];
     };
 
     return Fx_ui_w_SimpleRange;

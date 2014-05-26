@@ -6,7 +6,6 @@
  * to do not duplicate the same validation fns
  * */
 
-
 define(["require", "jquery"], function (require, $) {
 
     var errors = {
@@ -70,6 +69,11 @@ define(["require", "jquery"], function (require, $) {
     function validateElement(e, widget) {
 
         //Valid component
+        if (!e.hasOwnProperty("id")) {
+            handleError("ELEM_NOT_ID");
+        }
+
+        //Valid component
         if (!e.hasOwnProperty("component")) {
             handleError("ELEM_NOT_COMP");
         }
@@ -129,7 +133,7 @@ define(["require", "jquery"], function (require, $) {
 
     //Public Component
     function Fenix_ui_creator() {
-    };
+    }
 
     Fenix_ui_creator.prototype.getValidation = function (values) {
 
@@ -262,8 +266,7 @@ define(["require", "jquery"], function (require, $) {
         }
     };
 
-    Fenix_ui_creator.prototype.init = function () {
-    };
+    Fenix_ui_creator.prototype.init = function () { };
 
     //Public API
     return Fenix_ui_creator;

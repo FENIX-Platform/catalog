@@ -33,8 +33,16 @@ define([
     };
 
     Fx_ui_w_geographicExtent.prototype.getValue = function (e) {
-        var result = $("#" + e.id).jqxListBox('val');
-        return result.split(',');
+        var codes = $("#" + e.id).jqxListBox('val').split(','),
+            system = e.details.cl.system,
+            version = e.details.cl.version,
+            results = [];
+
+        for (var i = 0 ; i < codes.length; i++){
+            results.push({code: {code : codes[i], systemKey : system, systemVersion:version}});
+        }
+
+        return results;
     };
 
     return Fx_ui_w_geographicExtent;

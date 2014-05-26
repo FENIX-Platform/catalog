@@ -2,10 +2,10 @@ define([
     "jquery",
     "jqwidgets"], function ($) {
 
-    function Fx_ui_w_geographicExtent() {
+    function Fx_ui_w_updatePeriodicity() {
     };
 
-    Fx_ui_w_geographicExtent.prototype.validate = function (e) {
+    Fx_ui_w_updatePeriodicity.prototype.validate = function (e) {
         if (!e.hasOwnProperty("source")) {
             throw new Error("ELEM_NOT_SOURCE");
         } else {
@@ -17,7 +17,7 @@ define([
         return true;
     };
 
-    Fx_ui_w_geographicExtent.prototype.render = function (e, container) {
+    Fx_ui_w_updatePeriodicity.prototype.render = function (e, container) {
 
         var source, dataAdapter;
 
@@ -32,10 +32,19 @@ define([
         $(container).jqxListBox($.extend({ source: dataAdapter}, e.component.rendering));
     };
 
-    Fx_ui_w_geographicExtent.prototype.getValue = function (e) {
-        var result = $("#" + e.id).jqxListBox('val');
-        return result.split(',');
+    Fx_ui_w_updatePeriodicity.prototype.getValue = function (e) {
+
+        var codes = $("#" + e.id).jqxListBox('val').split(','),
+            system = e.details.cl.system,
+            version = e.details.cl.version,
+            results = [];
+
+        for (var i = 0 ; i < codes.length; i++){
+            results.push({code: {code : codes[i], systemKey : system, systemVersion:version}});
+        }
+
+        return results;
     };
 
-    return Fx_ui_w_geographicExtent;
+    return Fx_ui_w_updatePeriodicity;
 });

@@ -51,10 +51,15 @@ define([
 
         var c = $blank.find("." + o.css_classes.CONTENT);
 
-        var id = "fx-catalog-module-" + w_Commons.getFenixUniqueId();
+        var id = "fx-catalog-module-" + w_Commons.getFenixUniqueId(),
+            m = {id: cache.json[module.module].id, type: module.module};
         c.attr("id", id);
 
-        modules.push({id: cache.json[module.module].id, type: module.module});
+        console.log(cache.json[module.module])
+
+        if (cache.json[module.module].hasOwnProperty("details")){ m.details = cache.json[module.module].details; }
+
+        modules.push(m);
 
         uiCreator.render({
             cssClass: "form-elements",
