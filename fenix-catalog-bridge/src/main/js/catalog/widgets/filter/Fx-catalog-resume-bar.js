@@ -63,7 +63,6 @@ define([
         }, false);
 
         document.body.addEventListener(o.events.REMOVE, function (e) {
-            console.log(e.detail.type)
             that.removeItem(e.detail.type)
         }, false);
 

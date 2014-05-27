@@ -108,7 +108,7 @@
             },
             "modules": [
                 {
-                    "module": "sources",
+                    "module": "source",
                     "label": {
                         "EN": "Source"
                     },

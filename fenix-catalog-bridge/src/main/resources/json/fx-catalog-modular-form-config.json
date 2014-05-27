@@ -238,9 +238,9 @@
             }
         }
     },
-    "sources": {
+    "source": {
         "id": "fx-sources-id",
-        "type": "sources",
+        "type": "source",
         "cssclass": "sources-css",
         "container": "sources-container",
         "label": {

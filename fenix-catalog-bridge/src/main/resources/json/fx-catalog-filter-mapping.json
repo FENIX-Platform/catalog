@@ -28,8 +28,8 @@
     "updatePeriodicity": {
         "path" : "filter.metadata.updatePeriodicity"
     },
-    "sources": {
-        "path" : "filter.metadata.sources"
+    "source": {
+        "path" : "filter.metadata.source"
     },
     "owner": {
         "path" : "filter.metadata.owner"
