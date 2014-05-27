@@ -6,7 +6,13 @@ define([
 ], function (Plugin, W_Commons) {
 
     var w_Commons,
-        name = 'fx-catalog-filter';
+        o = {
+            name : 'fx-catalog-filter',
+            events: {
+                SELECT : "fx.catalog.module.select",
+                REMOVE: "fx.catalog.module.remove"
+            }
+        };
 
     function FilterController() {
 
@@ -23,6 +29,9 @@ define([
     FilterController.prototype.form = undefined;
 
     //(injected)
+    FilterController.prototype.resume = undefined;
+
+    //(injected)
     FilterController.prototype.submit = undefined;
 
     FilterController.prototype.initSubmit = function () {
@@ -37,17 +46,18 @@ define([
 
         this.menu.render();
         this.form.render();
+        this.resume.render();
     };
 
     FilterController.prototype.initEventListeners = function () {
 
         var self = this;
 
-        document.body.addEventListener("fx.catalog.menu.select", function (e) {
+        document.body.addEventListener(o.events.SELECT, function (e) {
             self.form.addItem(e.detail);
         }, false);
 
-        document.body.addEventListener("fx.catalog.menu.remove", function (e) {
+        document.body.addEventListener(o.events.REMOVE, function (e) {
             self.menu.activate(e.detail.type);
             self.form.removeItem(e.detail.module);
         }, false);
@@ -87,7 +97,7 @@ define([
         if (!window.Fx_catalog_bridge_plugins) {
             window.Fx_catalog_bridge_plugins = {};
         }
-        window.Fx_catalog_bridge_plugins[name] = new Plugin();
+        window.Fx_catalog_bridge_plugins[o.name] = new Plugin();
 
     };
 
@@ -96,7 +106,7 @@ define([
     };
 
     FilterController.prototype.getName = function () {
-        return name;
+        return o.name;
     };
 
     return FilterController;

@@ -172,6 +172,12 @@
             "ES": "ES List",
             "FR": "FR List"
         },
+        "details": {
+            "cl" : {
+                "system" : "CS_Units",
+                "version" : "1.0"
+            }
+        },
         "component": {
             "source": {
                 "datafields": [

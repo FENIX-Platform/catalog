@@ -19,7 +19,7 @@ define([
                 LABEL: "fx-catalog-modular-form-label"
             },
             events: {
-                REMOVE_MODULE: "fx.catalog.menu.remove"
+                REMOVE_MODULE: "fx.catalog.module.remove"
             }
         }, uiCreator, w_Commons, cache = {}, modules = [];
 
@@ -54,8 +54,6 @@ define([
         var id = "fx-catalog-module-" + w_Commons.getFenixUniqueId(),
             m = {id: cache.json[module.module].id, type: module.module};
         c.attr("id", id);
-
-        console.log(cache.json[module.module])
 
         if (cache.json[module.module].hasOwnProperty("details")){ m.details = cache.json[module.module].details; }
 

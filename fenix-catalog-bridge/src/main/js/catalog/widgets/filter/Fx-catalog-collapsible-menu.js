@@ -1,4 +1,8 @@
-define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Commons) {
+define([
+    "jquery",
+    "widgets/Fx-widgets-commons",
+    "bootstrap"
+], function ($, W_Commons) {
 
     var o = { },
         defaultOptions = {
@@ -6,7 +10,7 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
                 lang: 'EN'
             },
             events: {
-                SELECT: 'fx.catalog.menu.select'
+                SELECT: 'fx.catalog.module.select'
             }
         };
 
@@ -172,7 +176,6 @@ define(["jquery", "widgets/Fx-widgets-commons", "bootstrap"], function ($, W_Com
                 $module.append($btn);
                 $body.append($module)
             }
-
         }
 
         return $bodyContainer.append($body);
