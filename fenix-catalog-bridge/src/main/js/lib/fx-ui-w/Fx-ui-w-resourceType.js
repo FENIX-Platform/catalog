@@ -1,16 +1,33 @@
 define([
-    "jquery"
-], function ($) {
+    "jquery",
+    "widgets/Fx-widgets-commons"
+], function ($, W_Commons) {
 
-    var lang = 'EN';
+    var o = { },
+        defaultOptions = {
+            widget: {
+                lang: 'EN'
+            },
+            events: {
+                READY: 'fx.catalog.module.ready',
+                REMOVE: 'fx.catalog.module.remove'
+            }
+        }, w_commons;
 
-    function Fx_ui_w_ResourcesType() { }
+    function Fx_ui_w_ResourcesType() {
+        w_commons = new W_Commons();}
 
     Fx_ui_w_ResourcesType.prototype.validate = function () {
         return true;
     };
 
     Fx_ui_w_ResourcesType.prototype.render = function (e, container) {
+
+        //Merge options
+        $.extend(o, defaultOptions);
+
+        o.container = container;
+        o.module = e;
 
         if (e.hasOwnProperty("component")){
             if (e.component.hasOwnProperty("choices")){
@@ -20,10 +37,21 @@ define([
                 for (var i = 0; i<choices.length; i++){
 
                     var id = Math.random(),
-                        $label = $('<label for="fx-radio-'+id+'">'+ choices[i].label[lang]+'</label>'),
+                        $label = $('<label for="fx-radio-'+id+'">'+ choices[i].label[o.widget.lang]+'</label>'),
                         $radio = $('<input id="fx-radio-'+id+'" type="radio" name="'+ e.component.name+'" value="'+choices[i].value+'"/>');
                     $form.append($label).append($radio);
                 }
+
+                $form.find('input[ name="'+ e.component.name+'" ]:radio').change(function(e) {
+
+                    w_commons.raiseCustomEvent(
+                        o.container,
+                        o.events.READY,
+                        { value : $('label[for="'+e.currentTarget.id+'"]').html(),
+                            module:   o.module.type }
+                    );
+
+                });
 
                 $(container).append($form);
             }

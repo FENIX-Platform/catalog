@@ -1,9 +1,18 @@
-define(["jquery"], function ($) {
+define([
+    "jquery",
+    "widgets/Fx-widgets-commons"
+], function ($, W_Commons) {
 
-    var lang = 'EN';
+    var o = {
+     lang : 'EN',
+        events: {
+            READY : "fx.catalog.module.ready"
+        }
+    }, w_commons;
 
     function Fx_ui_w_Name() {
-    };
+        w_commons = new W_Commons();
+    }
 
     Fx_ui_w_Name.prototype.validate = function (e) {
         return true;
@@ -11,14 +20,17 @@ define(["jquery"], function ($) {
 
     Fx_ui_w_Name.prototype.render = function (e, container) {
 
+        o.container = container;
+        o.module = e;
+
         var text = document.createElement('INPUT');
         text.setAttribute("type", "TEXT");
 
         if (e.component.hasOwnProperty("rendering")) {
             if (e.component.rendering.hasOwnProperty("placeholder")) {
 
-                if (e.component.rendering.placeholder.hasOwnProperty(lang)) {
-                    text.setAttribute("placeholder", e.component.rendering.placeholder[lang]);
+                if (e.component.rendering.placeholder.hasOwnProperty(o.lang)) {
+                    text.setAttribute("placeholder", e.component.rendering.placeholder[o.lang]);
                 } else {
                     text.setAttribute("placeholder", e.component.rendering.placeholder['EN']);
                 }
@@ -32,6 +44,16 @@ define(["jquery"], function ($) {
             });
 
         }
+
+        $(text).focusout( {w_commons : w_commons, type: o.module.type }, function(e){
+
+            e.data.w_commons.raiseCustomEvent(
+                o.container,
+                o.events.READY,
+                { value : $(o.container).find("input").val(),
+                  module:  e.data.type }
+            );
+        });
 
         $(container).append(text);
     };

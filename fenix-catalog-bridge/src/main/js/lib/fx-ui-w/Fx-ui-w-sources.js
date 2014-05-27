@@ -1,11 +1,21 @@
 define([
     "jquery",
-    "jqwidgets"], function ($) {
+    "widgets/Fx-widgets-commons",
+    "jqwidgets"
+], function ($, W_Commons) {
 
-    function Fx_ui_w_geographicExtent() {
-    };
+    var o = {
+        lang : 'EN',
+        events: {
+            READY : "fx.catalog.module.ready"
+        }
+    }, w_commons;
 
-    Fx_ui_w_geographicExtent.prototype.validate = function (e) {
+    function Fx_ui_w_Sources() {
+        w_commons = new W_Commons();
+    }
+
+    Fx_ui_w_Sources.prototype.validate = function (e) {
         if (!e.hasOwnProperty("source")) {
             throw new Error("ELEM_NOT_SOURCE");
         } else {
@@ -17,7 +27,10 @@ define([
         return true;
     };
 
-    Fx_ui_w_geographicExtent.prototype.render = function (e, container) {
+    Fx_ui_w_Sources.prototype.render = function (e, container) {
+
+        o.container = container;
+        o.module = e;
 
         var source, dataAdapter;
 
@@ -29,10 +42,25 @@ define([
             }
         });
         // Create a jqxListBox
-        $(container).jqxListBox($.extend({ source: dataAdapter}, e.component.rendering));
+        $(container).jqxListBox($.extend({ source: dataAdapter}, e.component.rendering))
+            .on('change', {container: container }, function (event) {
+                var selected = $(event.data.container).jqxListBox("getSelectedItems");
+                var payload = '';
+
+                for (var i = 0; i < selected.length; i++) {
+                    payload += selected[i].label + ", ";
+                }
+
+                w_commons.raiseCustomEvent(
+                    o.container,
+                    o.events.READY,
+                    { value: payload.substring(0, payload.length - 2),
+                        module: o.module.type }
+                );
+            });
     };
 
-    Fx_ui_w_geographicExtent.prototype.getValue = function (e) {
+    Fx_ui_w_Sources.prototype.getValue = function (e) {
         var ids = $("#" + e.id).jqxListBox('val').split(','),
             result = [];
 
@@ -43,5 +71,5 @@ define([
         return result;
     };
 
-    return Fx_ui_w_geographicExtent;
+    return Fx_ui_w_Sources;
 });

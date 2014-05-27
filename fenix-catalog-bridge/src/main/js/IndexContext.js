@@ -4,18 +4,21 @@ define(["catalog/controller/Fx-catalog-page",
         "controller/Fx-catalog-filter",
         "widgets/filter/Fx-catalog-collapsible-menu",
         "widgets/filter/Fx-catalog-modular-form",
+        "widgets/filter/Fx-catalog-resume-bar",
         "structures/Fx-fluid-grid",
         "widgets/bridge/Fx-catalog-bridge",
         "controller/Fx-catalog-results",
         "widgets/results/Fx-catalog-results-generator",
-        "structures/Fx-filterable-grid"],
-    function (Controller, FilterController, Menu, Form, FluidForm, Bridge, ResultController, ResultsRenderer, FilterableGrid) {
+        "structures/Fx-filterable-grid"
+    ],
+    function (Controller, FilterController, Menu, Form, Resume, FluidForm, Bridge, ResultController, ResultsRenderer, FilterableGrid) {
 
         var html_ids = {
             MENU: "fx-catalog-modular-menu",
             FORM: "fx-catalog-modular-form",
             SUBMIT: "fx-catalog-submit-btn",
-            RESULT: "fx-catalog-results"
+            RESULT: "fx-catalog-results",
+            RESUME: "fx-catalog-resume"
         };
 
         function IndexContext() {
@@ -40,7 +43,8 @@ define(["catalog/controller/Fx-catalog-page",
 
             var filterController = new FilterController(),
                 menu = new Menu(),
-                form = new Form();
+                form = new Form(),
+                resume = new Resume();
 
             menu.init({
                 container: document.querySelector("#" + html_ids.MENU),
@@ -66,10 +70,15 @@ define(["catalog/controller/Fx-catalog-page",
                 grid: new FluidForm()
             });
 
+            resume.init({
+                container: document.querySelector("#" + html_ids.RESUME)
+            });
+
             // Perform dependency injection by extending objects
             $.extend(filterController, {
                 menu: menu,
                 form: form,
+                resume: resume,
                 submit: document.querySelector("#" + html_ids.SUBMIT)
             });
 
