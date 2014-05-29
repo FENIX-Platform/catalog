@@ -57,7 +57,7 @@
         "component": {
             "rendering": {
                 "placeholder": {
-                    "EN": "uid",
+                    "EN": "Uid",
                     "DE": "uid",
                     "ES": "uid",
                     "FR": "uid"
@@ -102,7 +102,7 @@
                 "valueMember": "value",
                 "multiple": true,
                 "width": "100%",
-                "autoHeight": true
+                "height" : 100
             }
         }
     },
@@ -168,7 +168,7 @@
         "cssclass": "unitOfMeasure-css",
         "container": "unitOfMeasure-container",
         "label": {
-            "EN": "UNIT OF MEASURE",
+            "EN": "Unit od Measure",
             "ES": "ES List",
             "FR": "FR List"
         },
@@ -196,7 +196,121 @@
                 "valueMember": "value",
                 "multiple": true,
                 "width": "100%",
-                "autoHeight": true
+                "height":100
+            }
+        }
+    },
+    "coverageSector": {
+        "id": "fx-coverageSector-id",
+        "type": "coverageSector",
+        "cssclass": "coverageSector-css",
+        "container": "coverageSector-container",
+        "label": {
+            "EN": "Coverage Sector",
+            "ES": "ES List",
+            "FR": "FR List"
+        },
+        "details": {
+            "cl" : {
+                "system" : "FAOSTAT_CoveregeSectors",
+                "version" : "1.0"
+            }
+        },
+        "component": {
+            "source": {
+                "datafields": [
+                    {
+                        "name": "label", "map" : "title>EN"
+                    },
+                    {
+                        "name": "value", "map" : "code"
+                    }
+                ],
+                "id" : "code",
+                "url": "http://faostat3.fao.org:7777/msd/cl/code/FAOSTAT_CoveregeSectors/1.0"
+            },
+            "rendering": {
+                "displayMember": "label",
+                "valueMember": "value",
+                "multiple": true,
+                "width": "100%",
+                "height": 100
+            }
+        }
+    },
+    "indicator": {
+        "id": "fx-indicator-id",
+        "type": "indicator",
+        "cssclass": "indicator-css",
+        "container": "indicator-container",
+        "label": {
+            "EN": "Domain",
+            "ES": "ES List",
+            "FR": "FR List"
+        },
+        "details": {
+            "cl" : {
+                "system" : "CS_Indicator",
+                "version" : "1.0"
+            }
+        },
+        "component": {
+            "source": {
+                "datafields": [
+                    {
+                        "name": "label", "map" : "title>EN"
+                    },
+                    {
+                        "name": "value", "map" : "code"
+                    }
+                ],
+                "id" : "code",
+                "url": "http://faostat3.fao.org:7777/msd/cl/code/CS_Indicator/1.0"
+            },
+            "rendering": {
+                "displayMember": "label",
+                "valueMember": "value",
+                "multiple": true,
+                "width": "100%",
+                "height" : 100
+            }
+        }
+    },
+    "item": {
+        "id": "fx-item-id",
+        "type": "item",
+        "cssclass": "item-css",
+        "container": "item-container",
+        "label": {
+            "EN": "Commodity",
+            "ES": "ES List",
+            "FR": "FR List"
+        },
+        "details": {
+            "cl" : {
+                "system" : "CS_Prod_Trade",
+                "version" : "1.0"
+            }
+        },
+        "component": {
+            "source": {
+                "datafields": [
+                    {
+                        "name": "label", "map" : "title>EN"
+                    },
+                    {
+                        "name": "value", "map" : "code"
+                    }
+                ],
+                "id" : "code",
+                "url": "http://faostat3.fao.org:7777/msd/cl/code/CS_Prod_Trade/1.0"
+            },
+            "rendering": {
+                "displayMember": "label",
+                "valueMember": "value",
+                "multiple": true,
+                "width": "100%",
+                "height" : 100
             }
         }
     },
@@ -234,7 +348,7 @@
                 "valueMember": "value",
                 "multiple": true,
                 "width": "100%",
-                "autoHeight": true
+                "height": 100
             }
         }
     },
@@ -266,7 +380,7 @@
                 "valueMember": "id",
                 "multiple": true,
                 "width": "100%",
-                "autoHeight": true
+                "height": 100
             }
         }
     },
@@ -298,7 +412,7 @@
                 "valueMember": "id",
                 "multiple": true,
                 "width": "100%",
-                "autoHeight": true
+                "height": 100
             }
         }
     },
@@ -330,9 +444,8 @@
                 "valueMember": "id",
                 "multiple": true,
                 "width": "100%",
-                "autoHeight": true
+                "height": 100
             }
         }
     }
-
 }

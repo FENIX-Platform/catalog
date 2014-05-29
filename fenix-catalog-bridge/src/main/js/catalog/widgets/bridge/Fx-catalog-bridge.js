@@ -1,16 +1,22 @@
 /*global define */
 
 define([
-    "jquery"
-], function ($) {
+    "jquery",
+    "widgets/Fx-widgets-commons"
+], function ($, W_Commons) {
 
     var o = { },
         defaultOptions = {
             error_prefix: "Fx_catalog_bridge ERROR: ",
-            url: 'http://hqlprfenixapp2.hq.un.fao.org:4242/catalog/search'
-        };
+            url: 'http://hqlprfenixapp2.hq.un.fao.org:4242/catalog/search',
+            events: {
+                END : "end.query.catalog.fx",
+                EMPTY_RESPONSE: "empty_response.query.catalog.fx"
+            }
+        }, w_commons;
 
-    function Fx_catalog_bridge(options) {
+    function Fx_catalog_bridge() {
+        w_commons = new W_Commons();
     }
 
     Fx_catalog_bridge.prototype.init = function (options) {
@@ -53,13 +59,31 @@ define([
                 dataType: 'json',
                 success: function (response, textStatus, jqXHR ) {
 
-                    if (context) {
-                        $.proxy(callback, context, response)();
+                    if(jqXHR.status !== 204){
+
+                        if (context) {
+                            $.proxy(callback, context, response)();
+                        } else {
+                            callback(response)
+                        }
+
                     } else {
-                        callback(response)
+                        w_commons.raiseCustomEvent(
+                            document.body,
+                            o.events.EMPTY_RESPONSE,
+                            { }
+                        );
                     }
+
                 },
-                data: JSON.stringify(plugin.getFilter())
+                data: JSON.stringify(plugin.getFilter()),
+                complete: function(){
+                    w_commons.raiseCustomEvent(
+                        document.body,
+                        o.events.END,
+                        { }
+                    );
+                }
             });
         }
     };

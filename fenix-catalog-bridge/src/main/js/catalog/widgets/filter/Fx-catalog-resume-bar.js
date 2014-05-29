@@ -49,7 +49,10 @@ define([
 
         var module = this.findResumeItem(item.module);
 
-        if (module.length !== 0) { module.html(item.value);
+        if (module.length !== 0) {
+            var i = module.find("i"),
+                text = $("<span>"+item.value+"</span>");
+            module.empty().append(i).append(text);
         } else {  $(o.container).append(this.createResumeItem(item)); }
 
     };
@@ -73,7 +76,25 @@ define([
     };
 
     Fx_Catalog_Resume_Bar.prototype.createResumeItem = function ( item ) {
-        return  $('<div data-module="' + item.module + '">' + item.value + '</div>');
+        var icon;
+
+        switch (item.module){
+            case "resourceType" : icon="fa fa-database fa-fw"; break;
+            case "uid" : icon="fa fa-slack fa-fw"; break;
+            case "unitOfMeasure" : icon="fa fa-arrows-h fa-fw"; break;
+            case "indicator" : icon="fa fa-archive fa-fw"; break;
+            case "item" : icon="fa fa-dot-circle-o fa-fw"; break;
+            case "coverageSector" : icon="fa fa-book fa-fw"; break;
+            case "referencePeriod" : icon="fa fa-clock-o fa-fw"; break;
+            case "basePeriod" : icon="fa fa-clock-o fa-fw"; break;
+            case "updatePeriodicity" : icon="fa fa-calendar fa-fw"; break;
+            case "geographicExtent" : icon="fa fa-globe fa-fw"; break;
+            case "source" : icon="fa fa-user fa-fw"; break;
+            case "owner" : icon="fa fa-user fa-fw"; break;
+            case "provider" : icon="fa fa-user fa-fw"; break;
+        }
+
+        return  $('<div class="fx-resume-item-selected" data-module="' + item.module + '"><i class=" ' + icon + '"></i>' + item.value + '</div>');
     };
 
     return Fx_Catalog_Resume_Bar;

@@ -32,7 +32,28 @@
                     "label": {
                         "EN": "Unit of Measure"
                     },
-                    "icon": "fa fa-sliders fa-lg fa-fw"
+                    "icon": "fa fa-arrows-h fa-lg fa-fw"
+                },
+                {
+                    "module": "indicator",
+                    "label": {
+                        "EN": "Domain"
+                    },
+                    "icon": "fa fa-archive fa-lg fa-fw"
+                },
+                {
+                    "module": "item",
+                    "label": {
+                        "EN": "Commodity"
+                    },
+                    "icon": "fa fa-dot-circle-o fa-lg fa-fw"
+                },
+                {
+                    "module": "coverageSector",
+                    "label": {
+                        "EN": "Coverage Sector"
+                    },
+                    "icon": "fa fa-book fa-lg fa-fw"
                 }
             ]
         },

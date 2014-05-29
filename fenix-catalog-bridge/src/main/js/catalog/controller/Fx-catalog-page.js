@@ -1,6 +1,6 @@
 /*global define */
 
-define(function () {
+define(['nprogress', 'pnotify', 'pnotify.nonblock'], function (NProgress, PNotify) {
 
     function PageController() {
     }
@@ -26,7 +26,24 @@ define(function () {
         var self = this;
 
         document.body.addEventListener("submit.catalog.fx", function () {
+            NProgress.start();
             self.bridge.query(self.filter, self.results.addItems, self.results);
+        }, false);
+
+        document.body.addEventListener("end.query.catalog.fx", function () {
+            NProgress.done();
+        }, false);
+
+
+        document.body.addEventListener("empty_response.query.catalog.fx", function () {
+            new PNotify({
+                title: 'No Result Notice',
+                text: 'The request has no results',
+                type: 'error',
+                nonblock: {
+                    nonblock: true
+                }
+            });
         }, false);
 
     };

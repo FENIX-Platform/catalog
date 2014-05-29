@@ -47,8 +47,6 @@ define([
             for (var i = 0; i < items.length; i++) {
                 this.grid.addItems(this.resultGenerator.getInstance(items[i]));
             }
-
-
         }
 
     };

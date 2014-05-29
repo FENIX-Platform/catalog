@@ -48,14 +48,14 @@ define(["jquery", "text!html/fx_result_fragments.html"], function ($, template) 
         self.initText();
         self.initModal();
 
-        return $result.get(0)
+        return $result.get(0);
 
-        //Check callback is a function
+/*        //Check callback is a function
         if (callback && typeof callback === "function") {
             callback($result);
         }
-        else { /*throw new Error( o.error_prefix + "getHtml() #1 param is not a function");*/
-        }
+        else { *//*throw new Error( o.error_prefix + "getHtml() #1 param is not a function");*//*
+        }*/
     };
 
     return Fx_catalog_result_render_dataset;

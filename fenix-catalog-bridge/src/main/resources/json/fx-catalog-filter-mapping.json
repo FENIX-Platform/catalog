@@ -6,7 +6,7 @@
         "path" : "filter.metadata.uid"
     },
     "geographicExtent": {
-        "path" : "filter.metadata.geographicExtent"
+        "path" : "filter.metadata.region"
     },
     "referencePeriod": {
         "path" : "filter.metadata.referencePeriod",
@@ -24,6 +24,12 @@
     },
     "unitOfMeasure": {
         "path" : "filter.metadata.unitOfMeasure"
+    },
+    "indicator": {
+        "path" : "filter.data.INDICATOR"
+    },
+    "item": {
+        "path" : "filter.data.ITEM"
     },
     "updatePeriodicity": {
         "path" : "filter.metadata.updatePeriodicity"
