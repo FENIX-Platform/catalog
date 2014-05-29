@@ -11,11 +11,11 @@ define([
         }
     }, w_commons;
 
-    function Fx_ui_w_geographicExtent() {
+    function Fx_ui_w_unitOfMeasure() {
         w_commons = new W_Commons();
     }
 
-    Fx_ui_w_geographicExtent.prototype.validate = function (e) {
+    Fx_ui_w_unitOfMeasure.prototype.validate = function (e) {
         if (!e.hasOwnProperty("source")) {
             throw new Error("ELEM_NOT_SOURCE");
         } else {
@@ -27,7 +27,7 @@ define([
         return true;
     };
 
-    Fx_ui_w_geographicExtent.prototype.render = function (e, container) {
+    Fx_ui_w_unitOfMeasure.prototype.render = function (e, container) {
 
         o.container = container;
         o.module = e;
@@ -60,7 +60,7 @@ define([
             });
     };
 
-    Fx_ui_w_geographicExtent.prototype.getValue = function (e) {
+    Fx_ui_w_unitOfMeasure.prototype.getValue = function (e) {
         var codes = $("#" + e.id).jqxListBox('val').split(','),
             system = e.details.cl.system,
             version = e.details.cl.version,
@@ -73,5 +73,5 @@ define([
         return results;
     };
 
-    return Fx_ui_w_geographicExtent;
+    return Fx_ui_w_unitOfMeasure;
 });

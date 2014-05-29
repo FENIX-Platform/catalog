@@ -244,8 +244,7 @@ body {
     position: absolute;
     top: 4px;
     left: 30px;
-    text-transform: uppercase;
-    font-weight: 100;
+    font-weight: 300;
 }
 
 .fx-catalog-modular-form-content {
@@ -254,13 +253,19 @@ body {
 }
 
 .fx-catalog-mod-timerseries {
-    padding-top: 30px;
+    top: 25px;
 }
 
 /*========= RESUME BAR =========*/
 .fx-catalog-resume-bar {
     background-color: #e1dfda;
-    height: 38px;
+    min-height: 38px;
+}
+
+#fx-catalog-resume {
+    margin-left: 300px;
+    margin-right: 80px;
+    padding-bottom: 5px;
 }
 
 #fx-catalog-submit-btn {
@@ -269,9 +274,10 @@ body {
     background-color: #6e6e6e;
     position: absolute;
     right: 0;
-    height: 38px;
+    height: 100%;
     -webkit-border-radius: 0;
-    border-radius: 0;
+    -moz-border-radius:0;
+    border-radius:0;
 }
 
 .fx-catalog-resume-bar-help {
@@ -296,6 +302,27 @@ body {
     top: 12px;
     left: 288px; /* Sistemare questo */
 }
+
+.fx-resume-item-selected{
+    display: inline-block;
+    background-color: #f1f0ed;
+    min-height: 24px;
+    margin: 5px 5px 3px 5px;
+    padding: 0 10px 2px 30px;
+    border: 1px solid #6E6E6E;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    position: relative;
+}
+
+.fx-resume-item-selected i{
+    margin-right: 3px;
+    position: absolute;
+    left: 3px;
+    top: 4px;
+}
+
 
 /*========= COMMONS =========*/
 .fx-typo-black {
