@@ -29,7 +29,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 fx-catalog-header">
-            <em class="fx-typo-black">CATALOG</em> | <em class="fx-catalog-header-btn-close">Collapse this panel</em>
+            <em class="fx-typo-black">CATALOG</em> | <em class="fx-catalog-header-btn-close">Open Filter</em>
             <em class="fx-catalog-header-btn-settings pull-right">SETTINGS</em>
         </div>
     </div>
@@ -54,8 +54,44 @@
 </div>
 
 <div class="container">
-    <div class="row">
+    <div class="row crazy-row">
         <div id="fx-catalog-results" class="col-lg-12">
+            <ul class="wave" id="crazy-scroll"> </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p><strong>Placeholder</strong> for extended information about selected result<br>
+
+                <p>
+                <dl class="dl-horizontal">
+                    <dt>Title</dt>
+                    <dd>Production quantity of primary Crops</dd>
+                    <dt>Source</dt>
+                    <dd>D3S</dd>
+                    <dt>Region</dt>
+                    <dd>Kenya</dd>
+                    <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+                    <dt>Felis euismod semper eget lacinia</dt>
+                    <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                        fermentum massa justo sit amet risus.
+                    </dd>
+                </dl>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>
@@ -63,6 +99,7 @@
 <!-- Javascript
 ================================================== -->
 <script data-main="js/index" src="js/lib/require.js"></script>
+<!--<script src="js/catalog.min.js"></script>-->
 
 </body>
 </html>

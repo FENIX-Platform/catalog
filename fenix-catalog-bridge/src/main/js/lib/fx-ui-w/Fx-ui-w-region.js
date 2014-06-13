@@ -2,7 +2,7 @@ define([
     "jquery",
     "widgets/Fx-widgets-commons",
     "jqwidgets"
-], function ($, W_Commons ) {
+], function ($, W_Commons) {
 
     var o = {
         lang : 'EN',
@@ -34,6 +34,7 @@ define([
 
         var source, dataAdapter;
 
+
         $.get( e.component.source.url, function( data ){
 
             // prepare the data
@@ -48,13 +49,11 @@ define([
                 return 0;
             });
 
-            // prepare the data
             dataAdapter = new $.jqx.dataAdapter(source, {
                 loadError: function (jqXHR, status, error) {
                     throw new Error("CONNECTION_FAIL");
                 }
             });
-
             // Create a jqxListBox
             $(container).jqxListBox($.extend({ source: dataAdapter}, e.component.rendering))
                 .on('change', {container: container }, function (event) {
@@ -73,10 +72,7 @@ define([
                     );
                 });
 
-
-
-        }) ; // end GET
-
+        });
 
     };
 

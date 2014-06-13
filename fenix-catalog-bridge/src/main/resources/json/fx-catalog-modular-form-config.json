@@ -68,13 +68,13 @@
             }
         }
     },
-    "geographicExtent": {
-        "id": "fx-geographicExtent-id",
-        "type": "geographicExtent",
-        "cssclass": "geographicExtent-css",
-        "container": "geographicExtent-container",
+    "region": {
+        "id": "fx-region-id",
+        "type": "region",
+        "cssclass": "region-css",
+        "container": "region-container",
         "label": {
-            "EN": "Geographical Extents",
+            "EN": "Region",
             "ES": "ES List",
             "FR": "FR List"
         },

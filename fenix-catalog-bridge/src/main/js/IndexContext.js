@@ -9,9 +9,10 @@ define(["catalog/controller/Fx-catalog-page",
         "widgets/bridge/Fx-catalog-bridge",
         "controller/Fx-catalog-results",
         "widgets/results/Fx-catalog-results-generator",
-        "structures/Fx-filterable-grid"
+        "structures/Fx-filterable-grid",
+        "structures/Fx-crazy-grid"
     ],
-    function (Controller, FilterController, Menu, Form, Resume, FluidForm, Bridge, ResultController, ResultsRenderer, FilterableGrid) {
+    function (Controller, FilterController, Menu, Form, Resume, FluidForm, Bridge, ResultController, ResultsRenderer, FilterableGrid, CrazyGrid) {
 
         var html_ids = {
             MENU: "fx-catalog-modular-menu",
@@ -44,7 +45,8 @@ define(["catalog/controller/Fx-catalog-page",
             var filterController = new FilterController(),
                 menu = new Menu(),
                 form = new Form(),
-                resume = new Resume();
+                resume = new Resume(),
+                grid =  new FluidForm();
 
             menu.init({
                 container: document.querySelector("#" + html_ids.MENU),
@@ -52,22 +54,24 @@ define(["catalog/controller/Fx-catalog-page",
             });
             form.init({
                 container: document.querySelector("#" + html_ids.FORM),
-                config: "json/fx-catalog-modular-form-config.json",
-                grid: {
-                    drag: {
-                        handle: '.fx-catalog-modular-form-handler',
-                        containment: "#" + html_ids.FORM
-                    },
-                    config: {
-                        itemSelector: '.fx-catalog-form-module',
-                        columnWidth: '.fx-catalog-form-module',
-                        rowHeight: '.fx-catalog-form-module'
-                    }
+                config: "json/fx-catalog-modular-form-config.json"
+            });
+
+            grid.init({
+                container: document.querySelector("#" + html_ids.FORM),
+                drag: {
+                    handle: '.fx-catalog-modular-form-handler',
+                    containment: "#" + html_ids.FORM
+                },
+                config: {
+                    itemSelector: '.fx-catalog-form-module',
+                    columnWidth: '.fx-catalog-form-module',
+                    rowHeight: '.fx-catalog-form-module'
                 }
             });
 
             $.extend(form, {
-                grid: new FluidForm()
+                grid: grid
             });
 
             resume.init({
@@ -96,6 +100,7 @@ define(["catalog/controller/Fx-catalog-page",
 
             var resultsController = new ResultController(),
                 grid = new FilterableGrid(),
+                //grid = new CrazyGrid();
                 renderer = new ResultsRenderer();
 
             grid.init({
@@ -104,7 +109,7 @@ define(["catalog/controller/Fx-catalog-page",
                     itemSelector: '.fenix-result',
                     layoutMode: 'fitRows'
                 }
-            })
+            });
 
             $.extend(resultsController, {
                 resultsRenderer: renderer,

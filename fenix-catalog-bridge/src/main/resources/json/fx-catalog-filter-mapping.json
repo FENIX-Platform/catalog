@@ -5,7 +5,7 @@
     "uid": {
         "path" : "filter.metadata.uid"
     },
-    "geographicExtent": {
+    "region": {
         "path" : "filter.metadata.region"
     },
     "referencePeriod": {

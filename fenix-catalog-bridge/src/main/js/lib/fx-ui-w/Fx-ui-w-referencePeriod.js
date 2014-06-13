@@ -11,7 +11,7 @@ define([
     }, w_commons;
 
     function Fx_ui_w_SimpleRange() {
-        w_commons = new W_Commons()
+        w_commons = new W_Commons();
     }
 
     Fx_ui_w_SimpleRange.prototype.validate = function () {

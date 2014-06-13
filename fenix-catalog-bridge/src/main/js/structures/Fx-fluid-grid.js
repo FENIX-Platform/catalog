@@ -94,12 +94,16 @@ define([
 
     };
 
+    Fx_Fluid_Grid.prototype.clear = function () {
+        pckry.remove(pckry.getItemElements());
+    };
+
     Fx_Fluid_Grid.prototype.render = function (options) {
-        var self = this;
+
         $.extend(o, options);
 
-        self.preValidation();
-        self.initStructure();
+        this.preValidation();
+        this.initStructure();
 
     };
 

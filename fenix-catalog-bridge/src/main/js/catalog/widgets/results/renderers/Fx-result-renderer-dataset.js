@@ -15,11 +15,12 @@ define(["jquery", "text!html/fx_result_fragments.html"], function ($, template) 
 
     function Fx_catalog_result_render_dataset(options) {
         $.extend(o, options);
+        console.log(o)
     }
 
     Fx_catalog_result_render_dataset.prototype.initText = function () {
 
-        $result.find(o.s_desc_title).html(o.name);
+        $result.find(o.s_desc_title).html(o.metadata.title["EN"]);
         $result.find(o.s_desc_source).html(o.source);
         $result.find(o.s_desc_geo).html(o.metadata.geographicExtent.title['EN']);
         //$result.find( o.s_desc_period ).html("from " + new Date(o.metadata.basePeriod.from).getFullYear() +" to " + new Date(o.metadata.basePeriod.to).getFullYear());
@@ -32,7 +33,15 @@ define(["jquery", "text!html/fx_result_fragments.html"], function ($, template) 
 
     };
 
-    Fx_catalog_result_render_dataset.prototype.getHtml = function (callback) {
+    Fx_catalog_result_render_dataset.prototype.initBtns = function () {
+
+        $result.find(".btn-to-analyze").on('click', function () {
+            document.location.href = "http://fenixapps.fao.org/repository/fenix/analysis.html?lang=EN&horegon=true";
+        });
+
+    };
+
+    Fx_catalog_result_render_dataset.prototype.getHtml = function () {
 
         var self = this;
 
@@ -47,6 +56,7 @@ define(["jquery", "text!html/fx_result_fragments.html"], function ($, template) 
 
         self.initText();
         self.initModal();
+        self.initBtns();
 
         return $result.get(0);
 

@@ -107,9 +107,9 @@
             },
             "modules": [
                 {
-                    "module": "geographicExtent",
+                    "module": "region",
                     "label": {
-                        "EN": "Geographical Extent"
+                        "EN": "Region"
                     },
                     "icon": "fa fa-globe fa-lg fa-fw"
                 }

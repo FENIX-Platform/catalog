@@ -14,6 +14,11 @@ define([
             }
         };
 
+    var selectors = {
+        CONTAINER : ".fx-catalog-modular-filter-container",
+        TOGGLE_BTN: ".fx-catalog-header-btn-close"
+    };
+
     function FilterController() {
 
         this.publishFxCatalogBridgePlugin();
@@ -61,6 +66,15 @@ define([
             self.menu.activate(e.detail.type);
             self.form.removeItem(e.detail.module);
         }, false);
+
+        $(selectors.TOGGLE_BTN).on('click', {self: this},function(e){
+
+            if ( $(selectors.CONTAINER).is(":visible") ) {
+                e.data.self.collapseFilter();
+            } else {
+                e.data.self.openFilter();
+            }
+        })
     };
 
     FilterController.prototype.preValidation = function () {
@@ -107,6 +121,16 @@ define([
 
     FilterController.prototype.getName = function () {
         return o.name;
+    };
+
+    FilterController.prototype.collapseFilter = function () {
+
+        $(selectors.CONTAINER).hide();
+    };
+
+    FilterController.prototype.openFilter = function () {
+
+        $(selectors.CONTAINER).show();
     };
 
     return FilterController;

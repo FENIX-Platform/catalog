@@ -51,6 +51,10 @@ define([
 
     };
 
+    ResultsController.prototype.clear = function () {
+        this.grid.clear();
+    };
+
     return ResultsController;
 
 });

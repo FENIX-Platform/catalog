@@ -28,6 +28,7 @@ define(['nprogress', 'pnotify', 'pnotify.nonblock'], function (NProgress, PNotif
         document.body.addEventListener("submit.catalog.fx", function () {
             NProgress.start();
             self.bridge.query(self.filter, self.results.addItems, self.results);
+            //self.filter.collapseFilter();
         }, false);
 
         document.body.addEventListener("end.query.catalog.fx", function () {
@@ -36,6 +37,9 @@ define(['nprogress', 'pnotify', 'pnotify.nonblock'], function (NProgress, PNotif
 
 
         document.body.addEventListener("empty_response.query.catalog.fx", function () {
+
+            self.results.clear();
+
             new PNotify({
                 title: 'No Result Notice',
                 text: 'The request has no results',
@@ -45,6 +49,8 @@ define(['nprogress', 'pnotify', 'pnotify.nonblock'], function (NProgress, PNotif
                 }
             });
         }, false);
+
+        //$(".fx-catalog-header-btn-close").on('click', self.filter.openFilter)
 
     };
 
@@ -57,13 +63,11 @@ define(['nprogress', 'pnotify', 'pnotify.nonblock'], function (NProgress, PNotif
     };
 
     PageController.prototype.render = function () {
-        var self = this;
 
-        self.preValidation();
-        self.initEventListeners();
+        this.preValidation();
+        this.initEventListeners();
 
-        self.renderComponents();
-
+        this.renderComponents();
     };
 
     return PageController;

@@ -88,7 +88,7 @@ define([
             case "referencePeriod" : icon="fa fa-clock-o fa-fw"; break;
             case "basePeriod" : icon="fa fa-clock-o fa-fw"; break;
             case "updatePeriodicity" : icon="fa fa-calendar fa-fw"; break;
-            case "geographicExtent" : icon="fa fa-globe fa-fw"; break;
+            case "region" : icon="fa fa-globe fa-fw"; break;
             case "source" : icon="fa fa-user fa-fw"; break;
             case "owner" : icon="fa fa-user fa-fw"; break;
             case "provider" : icon="fa fa-user fa-fw"; break;

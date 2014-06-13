@@ -128,14 +128,7 @@ define([
 
     Fx_catalog_modular_form.prototype.initStructure = function () {
 
-        var self = this;
-
-        self.grid.init({
-            container: o.container,
-            config: o.grid.config,
-            drag: o.grid.drag
-        });
-        self.grid.render();
+        this.grid.render();
 
     };
 

@@ -3,8 +3,8 @@
 define([
     'jquery',
     'widgets/Fx-widgets-commons',
-    "isotope"
-], function ($, W_Commons, Isotope) {
+    "stroll"
+], function ($, W_Commons, Stroll) {
 
     var o = { },
         defaultOptions = {
@@ -13,6 +13,14 @@ define([
         };
 
     var isotope, w_Commons;
+
+    function loadCss(url) {
+        var link = document.createElement("link");
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        link.href = url;
+        document.getElementsByTagName("head")[0].appendChild(link);
+    }
 
     function Fx_Filterable_grid() {
         w_Commons = new W_Commons();
@@ -31,22 +39,16 @@ define([
 
     };
 
-    Fx_Filterable_grid.prototype.filter = function (filterValue) {
-
-        $("button").removeClass(o.css_filter_active);
-        $("button[" + o.data_filter_value + "='" + filterValue + "']").addClass(o.css_filter_active);
-        this.filterIsotope({ filter: filterValue });
-    };
-
-    Fx_Filterable_grid.prototype.filterIsotope = function (filters) {
-        isotope.arrange(filters);
+    Fx_Filterable_grid.prototype.clear = function () {
+        //TODO
     };
 
     Fx_Filterable_grid.prototype.addItems = function (items) {
 
-        o.container.appendChild(items);
-        isotope.appended(items);
-        isotope.layout();
+        var li = document.createElement("LI");
+            li.appendChild(items);
+        document.querySelector("#crazy-scroll").appendChild(li);
+
     };
 
     Fx_Filterable_grid.prototype.validateOptions = function () {
@@ -63,7 +65,9 @@ define([
 
         this.validateOptions();
 
-        isotope = new Isotope(o.container, o.grid);
+        // Makes stroll.js monitor changes to the DOM (like adding or resizing items).
+        // This is taxing on performance, so use scarcely. Defaults to false.
+        stroll.bind( "#crazy-scroll" , { live: true } );
 
         if (o.filters) {
             this.initBtns();
@@ -75,13 +79,15 @@ define([
         //Merge options
         $.extend(o, defaultOptions);
         $.extend(o, baseOptions);
+        loadCss("css/stroll.css");
+        loadCss("css/strollexample.css");
+
 
     };
 
     Fx_Filterable_grid.prototype.clear = function () {
 
-        isotope.remove(isotope.getItemElements());
-        this.filter("*");
+
 
     };
 

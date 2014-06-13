@@ -34,8 +34,20 @@ define([
 
         var source, dataAdapter;
 
-        // prepare the data
-        source = $.extend({datatype: "json"}, e.component.source);
+        $.get( e.component.source.url, function( data ){
+
+            // prepare the data
+            source = {datatype: "array"};
+            source["datafields"] = e.component.source["datafields"];
+            source["id"] = e.component.source["id"];
+            source["localdata"] = data.sort(function(a, b){
+                if ( a.title.EN < b.title.EN )
+                    return -1;
+                if ( a.title.EN > b.title.EN )
+                    return 1;
+                return 0;
+            });
+
         dataAdapter = new $.jqx.dataAdapter(source, {
             loadError: function (jqXHR, status, error) {
                 throw new Error("CONNECTION_FAIL");
@@ -58,6 +70,7 @@ define([
                         module: o.module.type }
                 );
             });
+        });
     };
 
     Fx_ui_w_item.prototype.getValue = function (e) {

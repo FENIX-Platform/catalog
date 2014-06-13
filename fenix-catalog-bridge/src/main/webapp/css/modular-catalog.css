@@ -8,7 +8,7 @@ body {
 .fx-catalog-form-module {
     width: 50%;
     background-color: white;
-    border: 1px solid #E3E3E3;
+    border: 10px solid #E3E3E3;
     border-radius: 4px;
     /*margin-bottom: 20px;*/
     min-height: 20px;
@@ -50,7 +50,7 @@ body {
     border-radius: 4px;
     margin-bottom: 20px;
     min-height: 20px;
-    padding: 19px;
+    padding: 19px 0 16px 19px;
 
 }
 
@@ -95,7 +95,7 @@ body {
 
 /*========= FILTER CONTAINER =========*/
 .fx-catalog-modular-filter-container {
-    background-color: white;
+    background-color: #E3E3E3;
     min-height: 250px;
     overflow: hidden;
 }
@@ -195,13 +195,13 @@ body {
 }
 
 .fx-catalog-modular-form-container {
-    background-color: white;
+    background-color: #E3E3E3;
 }
 
 .fx-catalog-form-module {
-    padding: 7px;
-    border: 0;
-    height: 150px;
+    /*padding: 7px;  */
+    /*border: 0;   */
+    height: 170px;
 }
 
 .fx-catalog-modular-form-header {
@@ -249,7 +249,7 @@ body {
 
 .fx-catalog-modular-form-content {
     padding: 10px 10px 10px 10px;
-    height: 170px;
+    height: 100px;
 }
 
 .fx-catalog-mod-timerseries {
@@ -324,7 +324,20 @@ body {
 }
 
 
+/*========= CRAZY */
+.crazy-row{
+    margin-top: 15px;
+}
+
 /*========= COMMONS =========*/
 .fx-typo-black {
     font-weight: 900;
+}
+
+.fx_horegon {
+  display: inline;
+}
+
+.fx_result_icon_img{
+    width: 42px;
 }

@@ -3,58 +3,21 @@
     <div class="fenix-result row">
 
         <div class="fx_result_icon col-lg-1">
-            <img id="fx_result_icon_img" src='css/img/database60.png' class="img-responsive img-rounded"
+            <img class="fx_result_icon_img" src='css/img/database60.png' class="img-responsive img-rounded"
                  alt="Result icon">
         </div>
 
-        <div class="fx_result_description col-lg-9">
+        <div class="fx_result_description col-lg-8">
             <div class="fx_result_description_title"> HI I am the title</div>
-            <div class="fx_result_description_source"> CountrySTAT</div>
-            <div class="fx_result_description_geograficalarea"> Guimea-Bissau</div>
-            <div class="fx_result_description_baseperiod"> from 2010 to 2013</div>
+            <div class="fx_result_description_source"> CountrySTAT</div>  <br>
+            <div class="fx_result_description_geograficalarea fx_horegon"> Country </div>
+            <div class="fx_result_description_baseperiod fx_horegon"> from 2010 to 2013</div>
         </div>
 
-        <div class="col-lg-2">
-            <!-- Modal launcher -->
-            <button class="btn btn-default btn-block" data-toggle="modal" data-target="#myModal">
-                Extended Metadata
-            </button>
-            <button class="btn btn-default btn-block" data-toggle="modal" data-target="#myModal">
-                Analyze
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p><strong>Placeholder</strong> for extended information about selected result<br>
+        <div class="col-lg-3">
 
-                            <p>
-                            <dl class="dl-horizontal">
-                                <dt>Description lists</dt>
-                                <dd>A description list is perfect for defining terms.</dd>
-                                <dt>Euismod</dt>
-                                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-                                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-                                <dt>Malesuada porta</dt>
-                                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-                                <dt>Felis euismod semper eget lacinia</dt>
-                                <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-                                    fermentum massa justo sit amet risus.
-                                </dd>
-                            </dl>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal"> Open Metadata</button>
+            <button type="button" class="btn btn-default  btn-to-analyze">Open Data</button>
 
         </div>
 
