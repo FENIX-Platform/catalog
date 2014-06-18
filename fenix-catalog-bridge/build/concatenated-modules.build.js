@@ -5,7 +5,7 @@
         html: "../../resources/html",
         requireLib: "require"
     },
-    mainConfigFile: '../src/main/js/index.js',
+    mainConfigFile: '../src/main/js/main.js',
     name: '../index',
     out: '../src/main/js/catalog.min.js',
     preserveLicenseComments: false,

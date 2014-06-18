@@ -1,8 +1,8 @@
 /*global define */
 
 define([
-    "plugins/Fx-catalog-brigde-filter-plugin",
-    "widgets/Fx-widgets-commons"
+    "fx-cat-br/plugins/Fx-catalog-brigde-filter-plugin",
+    "fx-cat-br/widgets/Fx-widgets-commons"
 ], function (Plugin, W_Commons) {
 
     var w_Commons,

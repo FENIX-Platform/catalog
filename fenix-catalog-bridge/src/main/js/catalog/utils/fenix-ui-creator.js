@@ -6,7 +6,10 @@
  * to do not duplicate the same validation fns
  * */
 
-define(["require", "jquery"], function (require, $) {
+define([
+    "require",
+    "jquery"
+], function (require, $) {
 
     var errors = {
             UNKNOWN_TYPE: {EN: "FENIX UI Creator: Unknown widget type"},
@@ -129,7 +132,7 @@ define(["require", "jquery"], function (require, $) {
 
         widget.render(e, div);
 
-    };
+    }
 
     //Public Component
     function Fenix_ui_creator() {
@@ -190,7 +193,7 @@ define(["require", "jquery"], function (require, $) {
 
                 //Synch call of require
                 try {
-                    var module = require("fx-ui-w/Fx-ui-w-" + element.type),
+                    var module = require("fx-cat-br/utils/fx-ui-w/Fx-ui-w-" + element.type),
                         widget = new module();
                     result[element.type] = widget.getValue(element);
 
@@ -212,8 +215,9 @@ define(["require", "jquery"], function (require, $) {
 
                 //Synch call of require
                 try {
-                    var module = require("fx-ui-w/Fx-ui-w-" + element.type),
+                    var module = require("fx-cat-br/utils/fx-ui-w/Fx-ui-w-" + element.type),
                         widget = new module();
+
                     result[element.id] = widget.getValue(element);
                 } catch (e) {
                     console.log(e)
@@ -247,7 +251,7 @@ define(["require", "jquery"], function (require, $) {
 
             $(elems).each(function (index, element) {
 
-                var widgetCreator = "fx-ui-w/Fx-ui-w-" + element.type;
+                var widgetCreator = "fx-cat-br/utils/fx-ui-w/Fx-ui-w-" + element.type;
 
                 require([widgetCreator], function (Widget) {
                     valid = true;

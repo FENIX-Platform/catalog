@@ -1,7 +1,7 @@
 define([
     "jquery",
-    "text!json/fx-catalog-filter-mapping.json",
-    "text!json/fx-catalog-blank-filter.json"
+    "text!fx-cat-br/json/fx-catalog-filter-mapping.json",
+    "text!fx-cat-br/json/fx-catalog-blank-filter.json"
 ], function ($, map, blank) {
 
     var o = { };

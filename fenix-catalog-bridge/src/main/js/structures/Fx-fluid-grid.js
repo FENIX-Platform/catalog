@@ -2,9 +2,9 @@
 
 define([
     'jquery',
-    'widgets/Fx-widgets-commons',
-    'packery',
-    'draggabilly'
+    'fx-cat-br/widgets/Fx-widgets-commons',
+    'lib/packery',
+    'lib/draggabilly'
 ], function ($, W_Commons, Packery, Draggabilly) {
 
     var o = { },

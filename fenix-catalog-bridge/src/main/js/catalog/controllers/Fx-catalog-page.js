@@ -1,6 +1,10 @@
 /*global define */
 
-define(['nprogress', 'pnotify', 'pnotify.nonblock'], function (NProgress, PNotify) {
+define([
+    'lib/nprogress',
+    'lib/pnotify',
+    'lib/pnotify.nonblock'
+], function (NProgress, PNotify) {
 
     function PageController() {
     }
@@ -15,10 +19,8 @@ define(['nprogress', 'pnotify', 'pnotify.nonblock'], function (NProgress, PNotif
     PageController.prototype.results = undefined;
 
     PageController.prototype.renderComponents = function () {
-        var self = this;
-
-        self.filter.render();
-        self.results.render();
+        this.filter.render();
+        this.results.render();
     };
 
     PageController.prototype.initEventListeners = function () {

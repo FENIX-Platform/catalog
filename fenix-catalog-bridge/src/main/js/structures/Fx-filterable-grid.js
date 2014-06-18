@@ -2,8 +2,8 @@
 
 define([
     'jquery',
-    'widgets/Fx-widgets-commons',
-    "isotope"
+    'fx-cat-br/widgets/Fx-widgets-commons',
+    "lib/isotope"
 ], function ($, W_Commons, Isotope) {
 
     var o = { },

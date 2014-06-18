@@ -1,5 +1,7 @@
-define(["widgets/results/renderers/Fx-result-renderer-dataset",
-    "widgets/results/renderers/Fx-result-renderer-layer"], function (Dataset, Layer) {
+define([
+    "fx-cat-br/widgets/results/renderers/Fx-result-renderer-dataset",
+    "fx-cat-br/widgets/results/renderers/Fx-result-renderer-layer"
+], function (Dataset, Layer) {
 
     function Fx_catalog_results_generator() {
     }

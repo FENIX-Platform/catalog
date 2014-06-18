@@ -1,7 +1,7 @@
 define([
     "jquery",
-    "fenix-ui-creator",
-    "widgets/Fx-widgets-commons"
+    "fx-cat-br/utils/fenix-ui-creator",
+    "fx-cat-br/widgets/Fx-widgets-commons"
 ], function ($, UiCreator, W_Commons) {
 
     var o = { },

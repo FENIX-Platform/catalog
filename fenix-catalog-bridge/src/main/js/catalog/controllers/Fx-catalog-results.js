@@ -1,7 +1,7 @@
 /*global define */
 
 define([
-    'widgets/results/Fx-catalog-results-generator'
+    'fx-cat-br/widgets/results/Fx-catalog-results-generator'
 ], function (ResultGenerator) {
 
     function ResultsController() {

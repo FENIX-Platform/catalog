@@ -2,7 +2,7 @@
 
 define([
     "jquery",
-    "widgets/Fx-widgets-commons"
+    "fx-cat-br/widgets/Fx-widgets-commons"
 ], function ($, W_Commons) {
 
     var o = { },

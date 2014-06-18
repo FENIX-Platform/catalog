@@ -1,7 +1,7 @@
 define([
     "jquery",
-    "widgets/Fx-widgets-commons",
-    "bootstrap"
+    "fx-cat-br/widgets/Fx-widgets-commons",
+    "lib/bootstrap"
 ], function ($, W_Commons) {
 
     var o = { },

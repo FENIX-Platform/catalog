@@ -2,8 +2,8 @@
 
 define([
     'jquery',
-    'widgets/Fx-widgets-commons',
-    "stroll"
+    'fx-cat-br/widgets/Fx-widgets-commons',
+    "lib/stroll"
 ], function ($, W_Commons, Stroll) {
 
     var o = { },
