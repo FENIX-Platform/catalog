@@ -1,7 +1,8 @@
 define([
     "jquery",
-    "widgets/Fx-widgets-commons",
-    "jqrangeslider"], function ($, W_Commons) {
+    "fx-cat-br/widgets/Fx-widgets-commons",
+    "lib/jqrangeslider"
+], function ($, W_Commons) {
 
     var o = {
         lang : 'EN',
@@ -11,7 +12,7 @@ define([
     }, w_commons;
 
     function Fx_ui_w_SimpleRange() {
-        w_commons = new W_Commons();
+        w_commons = new W_Commons()
     }
 
     Fx_ui_w_SimpleRange.prototype.validate = function () {
@@ -28,12 +29,12 @@ define([
         $(container).rangeSlider($.extend(e.component.rendering, e.component.source))
             .on("valuesChanged", {w_commons : w_commons, type: o.module.type}, function(e, data){
 
-            e.data.w_commons.raiseCustomEvent(
-                o.container,
-                o.events.READY,
-                {   value : data.values.min +" - "+ data.values.max,
-                    module: e.data.type }
-            );
+                e.data.w_commons.raiseCustomEvent(
+                    o.container,
+                    o.events.READY,
+                    {   value : data.values.min + " - "+ data.values.max,
+                        module: e.data.type }
+                );
         });
 
         //Default initialization
@@ -48,7 +49,6 @@ define([
                     module: o.module.type }
             );
         }, 100);
-
     };
 
     Fx_ui_w_SimpleRange.prototype.getValue = function (e) {

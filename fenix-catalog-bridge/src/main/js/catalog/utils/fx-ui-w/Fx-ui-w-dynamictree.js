@@ -1,7 +1,9 @@
-define(["jquery", "jqwidgets"], function ($) {
+define([
+    "jquery",
+    "lib/jqwidgets"], function ($) {
 
     function Fx_ui_w_DynamicTree() {
-    };
+    }
 
     Fx_ui_w_DynamicTree.prototype.validate = function (e) {
         return true;

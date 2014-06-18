@@ -1,7 +1,9 @@
-define(["jquery", "jqrangeslider"], function ($) {
+define([
+    "jquery",
+    "lib/jqrangeslider"], function ($) {
 
     function Fx_ui_w_DateRange() {
-    };
+    }
 
     Fx_ui_w_DateRange.prototype.validate = function (e) {
 

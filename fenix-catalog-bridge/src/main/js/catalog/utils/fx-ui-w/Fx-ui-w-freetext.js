@@ -3,7 +3,7 @@ define(["jquery"], function ($) {
     var lang = 'EN';
 
     function Fx_ui_w_FreeText() {
-    };
+    }
 
     Fx_ui_w_FreeText.prototype.validate = function (e) {
         return true;

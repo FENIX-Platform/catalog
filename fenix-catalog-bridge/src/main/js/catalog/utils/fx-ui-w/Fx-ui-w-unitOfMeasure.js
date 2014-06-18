@@ -1,8 +1,8 @@
 define([
     "jquery",
-    "widgets/Fx-widgets-commons",
+    "fx-cat-br/widgets/Fx-widgets-commons",
     "jqwidgets"
-], function ($, W_Commons) {
+], function ($, W_Commons ) {
 
     var o = {
         lang : 'EN',
@@ -11,11 +11,11 @@ define([
         }
     }, w_commons;
 
-    function Fx_ui_w_Provider() {
+    function Fx_ui_w_unitOfMeasure() {
         w_commons = new W_Commons();
     }
 
-    Fx_ui_w_Provider.prototype.validate = function (e) {
+    Fx_ui_w_unitOfMeasure.prototype.validate = function (e) {
         if (!e.hasOwnProperty("source")) {
             throw new Error("ELEM_NOT_SOURCE");
         } else {
@@ -27,10 +27,12 @@ define([
         return true;
     };
 
-    Fx_ui_w_Provider.prototype.render = function (e, container) {
+    Fx_ui_w_unitOfMeasure.prototype.render = function (e, container) {
 
         o.container = container;
         o.module = e;
+
+        var source, dataAdapter;
 
         // prepare the data
         source = $.extend({datatype: "json"}, e.component.source);
@@ -58,16 +60,18 @@ define([
             });
     };
 
-    Fx_ui_w_Provider.prototype.getValue = function (e) {
-        var ids = $("#" + e.id).jqxListBox('val').split(','),
-            result = [];
+    Fx_ui_w_unitOfMeasure.prototype.getValue = function (e) {
+        var codes = $("#" + e.id).jqxListBox('val').split(','),
+            system = e.details.cl.system,
+            version = e.details.cl.version,
+            results = [];
 
-        for (var i = 0; i<ids.length; i++ ){
-            result.push({id: ids[i]});
+        for (var i = 0 ; i < codes.length; i++){
+            results.push({code: {code : codes[i], systemKey : system, systemVersion:version}});
         }
 
-        return result;
+        return results;
     };
 
-    return Fx_ui_w_Provider;
+    return Fx_ui_w_unitOfMeasure;
 });

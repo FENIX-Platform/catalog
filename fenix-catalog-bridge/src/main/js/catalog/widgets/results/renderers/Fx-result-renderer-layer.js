@@ -1,4 +1,7 @@
-define(["jquery", "text!html/fx_result_fragments.html"], function ($, template) {
+define([
+    "jquery",
+    "text!fx-cat-br/html/fx_result_fragments.html"
+], function ($, template) {
 
     var o = { };
     //Default Result options

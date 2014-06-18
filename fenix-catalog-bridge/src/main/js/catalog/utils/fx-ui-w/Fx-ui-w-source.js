@@ -1,8 +1,8 @@
 define([
     "jquery",
-    "widgets/Fx-widgets-commons",
+    "fx-cat-br/widgets/Fx-widgets-commons",
     "jqwidgets"
-], function ($, W_Commons ) {
+], function ($, W_Commons) {
 
     var o = {
         lang : 'EN',
@@ -11,11 +11,11 @@ define([
         }
     }, w_commons;
 
-    function Fx_ui_w_unitOfMeasure() {
+    function Fx_ui_w_Sources() {
         w_commons = new W_Commons();
     }
 
-    Fx_ui_w_unitOfMeasure.prototype.validate = function (e) {
+    Fx_ui_w_Sources.prototype.validate = function (e) {
         if (!e.hasOwnProperty("source")) {
             throw new Error("ELEM_NOT_SOURCE");
         } else {
@@ -27,7 +27,7 @@ define([
         return true;
     };
 
-    Fx_ui_w_unitOfMeasure.prototype.render = function (e, container) {
+    Fx_ui_w_Sources.prototype.render = function (e, container) {
 
         o.container = container;
         o.module = e;
@@ -60,18 +60,16 @@ define([
             });
     };
 
-    Fx_ui_w_unitOfMeasure.prototype.getValue = function (e) {
-        var codes = $("#" + e.id).jqxListBox('val').split(','),
-            system = e.details.cl.system,
-            version = e.details.cl.version,
-            results = [];
+    Fx_ui_w_Sources.prototype.getValue = function (e) {
+        var ids = $("#" + e.id).jqxListBox('val').split(','),
+            result = [];
 
-        for (var i = 0 ; i < codes.length; i++){
-            results.push({code: {code : codes[i], systemKey : system, systemVersion:version}});
+        for (var i = 0; i<ids.length; i++ ){
+            result.push({id: ids[i]});
         }
 
-        return results;
+        return result;
     };
 
-    return Fx_ui_w_unitOfMeasure;
+    return Fx_ui_w_Sources;
 });

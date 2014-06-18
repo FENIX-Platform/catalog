@@ -1,7 +1,9 @@
-define(["jquery", "jqwidgets"], function ($) {
+define([
+    "jquery",
+    "lib/jqwidgets"], function ($) {
 
     function Fx_ui_w_Dropdown() {
-    };
+    }
 
     Fx_ui_w_Dropdown.prototype.validate = function (e) {
 

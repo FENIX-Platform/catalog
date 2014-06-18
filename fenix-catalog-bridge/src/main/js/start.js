@@ -1,20 +1,22 @@
 /*global define */
 
-define(["catalog/controller/Fx-catalog-page",
-        "controller/Fx-catalog-filter",
-        "widgets/filter/Fx-catalog-collapsible-menu",
-        "widgets/filter/Fx-catalog-modular-form",
-        "widgets/filter/Fx-catalog-resume-bar",
-        "structures/Fx-fluid-grid",
-        "widgets/bridge/Fx-catalog-bridge",
-        "controller/Fx-catalog-results",
-        "widgets/results/Fx-catalog-results-generator",
-        "structures/Fx-filterable-grid",
-        "structures/Fx-crazy-grid"
+define(["fx-cat-br/controllers/Fx-catalog-page",
+        "fx-cat-br/controllers/Fx-catalog-filter",
+        "fx-cat-br/widgets/filter/Fx-catalog-collapsible-menu",
+        "fx-cat-br/widgets/filter/Fx-catalog-modular-form",
+        "fx-cat-br/widgets/filter/Fx-catalog-resume-bar",
+        "fx-cat-br/structures/Fx-fluid-grid",
+        "fx-cat-br/widgets/bridge/Fx-catalog-bridge",
+        "fx-cat-br/controllers/Fx-catalog-results",
+        "fx-cat-br/widgets/results/Fx-catalog-results-generator",
+        "fx-cat-br/structures/Fx-filterable-grid",
+        "fx-cat-br/structures/Fx-crazy-grid",
+        "text!fx-cat-br/html/fx_catalog_structure.html"
     ],
-    function (Controller, FilterController, Menu, Form, Resume, FluidForm, Bridge, ResultController, ResultsRenderer, FilterableGrid, CrazyGrid) {
+    function (Controller, FilterController, Menu, Form, Resume, FluidForm, Bridge, ResultController, ResultsRenderer, FilterableGrid, CrazyGrid, structure) {
 
         var html_ids = {
+            MAIN_CONTAINER: "#catalogContainer",
             MENU: "fx-catalog-modular-menu",
             FORM: "fx-catalog-modular-form",
             SUBMIT: "fx-catalog-submit-btn",
@@ -22,25 +24,31 @@ define(["catalog/controller/Fx-catalog-page",
             RESUME: "fx-catalog-resume"
         };
 
-        function IndexContext() {
+        function Start() {
         }
 
-        IndexContext.prototype.init = function () {
-            var self = this,
-                pageController = new Controller();
+        Start.prototype.init = function (options) {
+
+            if (!options.hasOwnProperty('container')){
+                throw 'Catalog needs a container!'
+            }
+
+           $(options.container).html(structure);
+
+            var pageController = new Controller();
 
             // Perform dependency injection by extending objects
             $.extend(pageController, {
-                filter: self.initFilter(),
-                bridge: self.initBridge(),
-                results: self.initResults()
+                filter: this.initFilter(),
+                bridge: this.initBridge(),
+                results: this.initResults()
             });
 
             pageController.render();
 
         };
 
-        IndexContext.prototype.initFilter = function () {
+        Start.prototype.initFilter = function () {
 
             var filterController = new FilterController(),
                 menu = new Menu(),
@@ -90,13 +98,13 @@ define(["catalog/controller/Fx-catalog-page",
 
         };
 
-        IndexContext.prototype.initBridge = function () {
+        Start.prototype.initBridge = function () {
             var bridge = new Bridge();
             bridge.init();
             return bridge;
         };
 
-        IndexContext.prototype.initResults = function () {
+        Start.prototype.initResults = function () {
 
             var resultsController = new ResultController(),
                 grid = new FilterableGrid(),
@@ -119,6 +127,6 @@ define(["catalog/controller/Fx-catalog-page",
             return resultsController;
         };
 
-        return IndexContext;
+        return Start;
 
     });

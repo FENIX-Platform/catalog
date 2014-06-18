@@ -1,4 +1,4 @@
-define(["jquery", "jqrangeslider"], function ($) {
+define(["jquery", "fx-cat-br/jqrangeslider"], function ($) {
 
     function Fx_ui_w_SimpleRange() {
     };

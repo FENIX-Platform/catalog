@@ -1,6 +1,6 @@
 define([
     "jquery",
-    "widgets/Fx-widgets-commons",
+    "fx-cat-br/widgets/Fx-widgets-commons",
     "jqwidgets"
 ], function ($, W_Commons) {
 
