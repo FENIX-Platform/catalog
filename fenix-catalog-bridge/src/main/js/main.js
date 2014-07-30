@@ -1,18 +1,5 @@
-require.config({
-    baseUrl: "js",
-    paths: { },
-    shim: {
-        "lib/jqrangeslider": {
-            deps: ["jquery", "jqueryui"]
-        },
-        "lib/bootstrap": {
-            deps: ["jquery"]
-        }
-    }
-});
-
 // relative or absolute path of Components' main.js
-require(['./paths'], function( Catalog ) {
+require(['./paths'], function (Catalog) {
 
 
     // NOTE: This setTimeout() call is used because, for whatever reason, if you make
@@ -20,25 +7,27 @@ require(['./paths'], function( Catalog ) {
     //       and never actually go fetch the files in the browser. There's probably a
     //       better way to handle this, but I don't know what it is.
 
-    setTimeout(function() {
-
+    setTimeout(function () {
 
         /*
          @param: prefix of Components paths to reference them also in absolute mode
          @param: paths to override
          @param: callback function
          */
+        Catalog.initialize('./', null, function () {
 
-        Catalog.initialize('./', null, function() {
+            require(['jquery', 'fx-cat-br/start' ], function ($, Starter) {
 
-            require(['./start' ], function( Starter ){
+                //Simulation of Host event handling
+                $('body').on( 'analyze', function (e, payload) {
 
-               new Starter().init({
-                   container: document.querySelector('#catalogContainer')
-               });
+                    window.location= '../analysis';
+                });
 
+                new Starter().init({
+                    container: document.querySelector('#catalogContainer')
+                });
             });
         });
-
     }, 0);
 });

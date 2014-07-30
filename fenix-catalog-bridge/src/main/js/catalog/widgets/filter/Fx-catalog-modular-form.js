@@ -1,8 +1,9 @@
 define([
     "jquery",
     "fx-cat-br/utils/fenix-ui-creator",
+    'text!fx-cat-br/json/fx-catalog-modular-form-config.json',
     "fx-cat-br/widgets/Fx-widgets-commons"
-], function ($, UiCreator, W_Commons) {
+], function ($, UiCreator, config, W_Commons) {
 
     var o = { },
         defaultOptions = {
@@ -129,34 +130,20 @@ define([
     Fx_catalog_modular_form.prototype.initStructure = function () {
 
         this.grid.render();
-
     };
 
     Fx_catalog_modular_form.prototype.render = function (options) {
-        var self = this;
 
         $.extend(o, options);
 
-        if (!cache.json) {
-
-            if (o.hasOwnProperty("config")) {
-                $.getJSON(o.config, function (json) {
-                    cache.json = json;
-                    self.initStructure();
-                }).error(function () {
-                    throw new Error("fx-modular-form: impossible to load config JSON.");
-                });
-            }
-        } else {
-            this.initStructure();
-        }
+        cache.json = JSON.parse(config);
+        this.initStructure();
     };
 
     Fx_catalog_modular_form.prototype.init = function (options) {
 
         $.extend(o, defaultOptions);
         $.extend(o, options);
-
     };
 
     return Fx_catalog_modular_form;

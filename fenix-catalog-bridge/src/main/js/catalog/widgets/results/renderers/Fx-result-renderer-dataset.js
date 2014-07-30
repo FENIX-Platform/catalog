@@ -3,74 +3,94 @@ define([
     "text!fx-cat-br/html/fx_result_fragments.html"
 ], function ($, template) {
 
-    var o = { };
     //Default Result options
     var defaultOptions = {
+        error_prefix: "FENIX Result dataset creation error: "
+    }, selectors = {
         s_result: ".fenix-result",
         s_desc_title: ".fx_result_description_title",
         s_desc_source: ".fx_result_description_source",
         s_desc_geo: ".fx_result_description_geograficalarea",
-        s_desc_period: ".fx_result_description_baseperiod",
-        error_prefix: "FENIX Result dataset creation error: "
-
-    };
-    var $result;
+        s_desc_period: ".fx_result_description_baseperiod"
+    }, $result;
 
     function Fx_catalog_result_render_dataset(options) {
-        $.extend(o, options);
-        console.log(o)
+        this.o = {};
+        $.extend(this.o, options);
     }
 
     Fx_catalog_result_render_dataset.prototype.initText = function () {
 
-        $result.find(o.s_desc_title).html(o.metadata.title["EN"]);
-        $result.find(o.s_desc_source).html(o.source);
-        $result.find(o.s_desc_geo).html(o.metadata.geographicExtent.title['EN']);
-        //$result.find( o.s_desc_period ).html("from " + new Date(o.metadata.basePeriod.from).getFullYear() +" to " + new Date(o.metadata.basePeriod.to).getFullYear());
+        if (this.o.metadata.hasOwnProperty('title') && this.o.metadata.title !== null) {
 
+            if (this.o.metadata.title.hasOwnProperty('EN')) {
+                $result.find(selectors.s_desc_title).html(this.o.metadata.title['EN']);
+            } else {
+
+                var keys = Object.keys(this.o.metadata.title);
+
+                if (keys.length > 0) {
+                    $result.find(selectors.s_desc_title).html(this.o.metadata.title[ keys[0] ]);
+                }
+            }
+        }
+
+        $result.find(this.o.s_desc_source).html(this.o.source);
+
+        if (this.o.metadata.hasOwnProperty('geographicExtent') && this.o.metadata.geographicExtent !== null) {
+
+            if (this.o.metadata.geographicExtent.hasOwnProperty('title') && this.o.metadata.geographicExtent.title !== null) {
+                if (this.o.metadata.geographicExtent.title.hasOwnProperty('EN')) {
+                    $result.find(selectors.s_desc_geo).html(this.o.metadata.geographicExtent.title['EN']);
+                } else {
+
+                    var keys = Object.keys(this.o.metadata.geographicExtent.title);
+
+                    if (keys.length > 0) {
+                        $result.find(selectors.s_desc_geo).html(this.o.metadata.geographicExtent.title[ keys[0] ]);
+                    }
+                }
+            }
+        }
+
+        if (this.o.metadata.hasOwnProperty('basePeriod') && this.o.metadata.basePeriod !== null) {
+            if (this.o.metadata.basePeriod.hasOwnProperty('from') && this.o.metadata.basePeriod.hasOwnProperty('to')) {
+                $result.find(selectors.s_desc_period).html("from " + new Date(this.o.metadata.basePeriod.from).getFullYear() + " to " + new Date(this.o.metadata.basePeriod.to).getFullYear());
+            }
+        }
     };
 
     Fx_catalog_result_render_dataset.prototype.initModal = function () {
 
-        $result.find("#myModalLabel").html(o.name);
-
+        $result.find("#myModalLabel").html(this.o.name);
     };
 
     Fx_catalog_result_render_dataset.prototype.initBtns = function () {
 
-        $result.find(".btn-to-analyze").on('click', function () {
-            document.location.href = "http://fenixapps.fao.org/repository/fenix/analysis.html?lang=EN&horegon=true";
+        $result.find(".btn-to-analyze").on('click', {o: this.o}, function (e) {
+            //Listen to it within Fx-catalog-results-generator
+            $(e.currentTarget).trigger("clickResultAnalyzeBtn", [e.data.o]);
         });
-
     };
 
     Fx_catalog_result_render_dataset.prototype.getHtml = function () {
 
-        var self = this;
+        $.extend(this.o, defaultOptions);
 
-        //Merge options
-        $.extend(o, defaultOptions);
+        $result = $(template).find(selectors.s_result).clone();
 
-        $result = $(template).find(o.s_result);
         if ($result.length === 0) {
-            throw new Error(o.error_prefix + "HTML fragment not found");
+            throw new Error(o.error_prefix + " HTML fragment not found");
         }
+
         $result.addClass("dataset");
 
-        self.initText();
-        self.initModal();
-        self.initBtns();
+        this.initText();
+        this.initModal();
+        this.initBtns();
 
         return $result.get(0);
-
-/*        //Check callback is a function
-        if (callback && typeof callback === "function") {
-            callback($result);
-        }
-        else { *//*throw new Error( o.error_prefix + "getHtml() #1 param is not a function");*//*
-        }*/
     };
 
     return Fx_catalog_result_render_dataset;
-
 });

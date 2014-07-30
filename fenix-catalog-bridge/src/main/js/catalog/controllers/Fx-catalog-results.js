@@ -1,12 +1,17 @@
 /*global define */
 
 define([
-    'fx-cat-br/widgets/results/Fx-catalog-results-generator'
-], function (ResultGenerator) {
+    'jquery'
+], function ($) {
+
+    var o = {
+        events : {
+            ANALYZE_SUB : 'clickResultAnalyze',
+            ANALYZE: 'resultAnalyze'
+        }
+    };
 
     function ResultsController() {
-
-        this.resultGenerator = new ResultGenerator();
     }
 
     //(injected)
@@ -20,21 +25,19 @@ define([
     };
 
     ResultsController.prototype.preValidation = function () {
-        var self = this;
 
-        if (!self.grid) {
+        if (!this.grid) {
             throw new Error("ResultsController: INVALID GRID ITEM.")
         }
-        if (!self.resultsRenderer) {
+        if (!this.resultsRenderer) {
             throw new Error("ResultsController: INVALID RENDER ITEM.")
         }
     };
 
     ResultsController.prototype.render = function () {
-        var self = this;
-
-        self.preValidation();
-        self.renderComponents();
+        this.preValidation();
+        this.initEventListeners();
+        this.renderComponents();
     };
 
     ResultsController.prototype.addItems = function (response) {
@@ -45,14 +48,21 @@ define([
             var items = response.resources;
 
             for (var i = 0; i < items.length; i++) {
-                this.grid.addItems(this.resultGenerator.getInstance(items[i]));
+                this.grid.addItems(this.resultsRenderer.getInstance(items[i]));
             }
         }
-
     };
 
     ResultsController.prototype.clear = function () {
         this.grid.clear();
+    };
+
+    ResultsController.prototype.initEventListeners = function(){
+
+        $('body').on(o.events.ANALYZE_SUB, function (e, payload) {
+            //Listen to it on Fx-catalog-page
+            $(e.currentTarget).trigger(o.events.ANALYZE, [payload]);
+        });
     };
 
     return ResultsController;

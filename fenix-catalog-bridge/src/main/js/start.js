@@ -11,9 +11,10 @@ define(["fx-cat-br/controllers/Fx-catalog-page",
         "fx-cat-br/widgets/results/Fx-catalog-results-generator",
         "fx-cat-br/structures/Fx-filterable-grid",
         "fx-cat-br/structures/Fx-crazy-grid",
+        'fx-cat-br/widgets/storage/SessionStorage',
         "text!fx-cat-br/html/fx_catalog_structure.html"
     ],
-    function (Controller, FilterController, Menu, Form, Resume, FluidForm, Bridge, ResultController, ResultsRenderer, FilterableGrid, CrazyGrid, structure) {
+    function (Controller, FilterController, Menu, Form, Resume, FluidForm, Bridge, ResultController, ResultsRenderer, FilterableGrid, CrazyGrid, Storage, structure) {
 
         var html_ids = {
             MAIN_CONTAINER: "#catalogContainer",
@@ -41,12 +42,16 @@ define(["fx-cat-br/controllers/Fx-catalog-page",
             $.extend(pageController, {
                 filter: this.initFilter(),
                 bridge: this.initBridge(),
-                results: this.initResults()
+                results: this.initResults(),
+                storage : new Storage()
             });
 
-            pageController.render();
+            if ( options.manualRender !== true){
+                 pageController.render();
+            }
 
-        };
+            return pageController;
+         };
 
         Start.prototype.initFilter = function () {
 
@@ -57,8 +62,7 @@ define(["fx-cat-br/controllers/Fx-catalog-page",
                 grid =  new FluidForm();
 
             menu.init({
-                container: document.querySelector("#" + html_ids.MENU),
-                config: "json/fx-catalog-collapsible-menu-config.json"
+                container: document.querySelector("#" + html_ids.MENU)
             });
             form.init({
                 container: document.querySelector("#" + html_ids.FORM),

@@ -12,7 +12,9 @@ define(function() {
         'fx-cat-br/plugins': "catalog/widgets/bridge/plugins",
         'fx-cat-br/structures': "structures",
         'fx-cat-br/html': "../html",
+        'fx-cat-br/start' : './start',
         'jquery': 'lib/jquery',
+        'pnotify' : 'lib/pnotify',
         'jqwidgets': "http://fenixapps.fao.org/repository/js/jqwidgets/3.1/jqx-all",
         'jqueryui': "http://code.jquery.com/ui/1.10.3/jquery-ui.min"
     };
@@ -41,7 +43,19 @@ define(function() {
             }
         }
 
-        var config = { paths: fullpaths };
+
+        var config = {
+            baseUrl: "js",
+                paths: fullpaths,
+            shim: {
+                "lib/jqrangeslider": {
+                    deps: ["jquery", "jqueryui"]
+                },
+                "lib/bootstrap": {
+                    deps: ["jquery"]
+                }
+            }
+        };
 
         for(var pathName in overridePaths) {
             config.paths[pathName] = overridePaths[pathName];

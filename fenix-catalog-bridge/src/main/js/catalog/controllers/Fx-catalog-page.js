@@ -1,13 +1,27 @@
 /*global define */
 
 define([
+    'jquery',
     'lib/nprogress',
-    'lib/pnotify',
+    'pnotify',
     'lib/pnotify.nonblock'
-], function (NProgress, PNotify) {
+], function ($, NProgress, PNotify) {
+
+    var o = {
+        events: {
+            ANALYZE_SUB: 'resultAnalyze',
+            ANALYZE: 'analyze'
+        },
+        storage: {
+            CATALOG: 'fx.catalog'
+        }
+    };
 
     function PageController() {
     }
+
+    //(injected)
+    PageController.prototype.storage = undefined;
 
     //(injected)
     PageController.prototype.filter = undefined;
@@ -37,7 +51,6 @@ define([
             NProgress.done();
         }, false);
 
-
         document.body.addEventListener("empty_response.query.catalog.fx", function () {
 
             self.results.clear();
@@ -52,14 +65,19 @@ define([
             });
         }, false);
 
-        //$(".fx-catalog-header-btn-close").on('click', self.filter.openFilter)
+        $('body').on(o.events.ANALYZE_SUB, function (e, payload) {
 
+            self.storage.getItem(o.storage.CATALOG, function (item) {
+                var a = JSON.parse(item) || [];
+                a.push(payload.metadata.uid);
+                self.storage.setItem(o.storage.CATALOG, JSON.stringify(a));
+                $(e.currentTarget).trigger(o.events.ANALYZE, [payload.metadata.uid]);
+            });
+        });
     };
 
     PageController.prototype.preValidation = function () {
-        var self = this;
-
-        if (!self.filter) {
+        if (!this.filter) {
             throw new Error("PAGE CONTROLLER: INVALID FILTER ITEM.")
         }
     };
@@ -68,7 +86,6 @@ define([
 
         this.preValidation();
         this.initEventListeners();
-
         this.renderComponents();
     };
 

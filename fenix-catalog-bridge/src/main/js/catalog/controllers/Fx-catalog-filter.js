@@ -78,18 +78,17 @@ define([
     };
 
     FilterController.prototype.preValidation = function () {
-        var self = this;
 
-        if (!self.menu) {
+        if (!this.menu) {
             throw new Error("FilterController: INVALID MENU ITEM.")
         }
-        if (!self.form) {
+        if (!this.form) {
             throw new Error("FilterController: INVALID FORM ITEM.")
         }
-        if (!self.submit) {
+        if (!this.submit) {
             throw new Error("FilterController: INVALID SUBMIT ITEM.")
         }
-        if (!w_Commons.isNode(self.submit)) {
+        if (!w_Commons.isNode(this.submit)) {
             throw new Error("FilterController: SUBMIT NOT DOM NODE.")
         }
 
@@ -102,7 +101,6 @@ define([
         this.initSubmit();
 
         this.renderComponents();
-
     };
 
     FilterController.prototype.publishFxCatalogBridgePlugin = function () {

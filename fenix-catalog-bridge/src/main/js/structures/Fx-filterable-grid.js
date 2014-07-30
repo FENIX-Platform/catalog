@@ -10,9 +10,7 @@ define([
         defaultOptions = {
             data_filter_value: "data-filter-value",
             css_filter_active: "catalog-filter-active"
-        };
-
-    var isotope, w_Commons;
+        }, w_Commons;
 
     function Fx_Filterable_grid() {
         w_Commons = new W_Commons();
@@ -39,14 +37,14 @@ define([
     };
 
     Fx_Filterable_grid.prototype.filterIsotope = function (filters) {
-        isotope.arrange(filters);
+        this.isotope.arrange(filters);
     };
 
     Fx_Filterable_grid.prototype.addItems = function (items) {
 
         o.container.appendChild(items);
-        isotope.appended(items);
-        isotope.layout();
+        this.isotope.appended(items);
+        this.isotope.layout();
     };
 
     Fx_Filterable_grid.prototype.validateOptions = function () {
@@ -63,7 +61,7 @@ define([
 
         this.validateOptions();
 
-        isotope = new Isotope(o.container, o.grid);
+        this.isotope = new Isotope(o.container, o.grid);
 
         if (o.filters) {
             this.initBtns();
@@ -80,7 +78,7 @@ define([
 
     Fx_Filterable_grid.prototype.clear = function () {
 
-        isotope.remove(isotope.getItemElements());
+        this.isotope.remove(this.isotope.getItemElements());
         this.filter("*");
 
     };

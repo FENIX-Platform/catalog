@@ -1,8 +1,9 @@
 define([
     "jquery",
     "fx-cat-br/widgets/Fx-widgets-commons",
+    'text!fx-cat-br/json/fx-catalog-collapsible-menu-config.json',
     "lib/bootstrap"
-], function ($, W_Commons) {
+], function ($, W_Commons, conf) {
 
     var o = { },
         defaultOptions = {
@@ -30,25 +31,12 @@ define([
     };
 
     Fx_Catalog_Collapsible_Menu.prototype.render = function (options) {
-        var self = this;
         $.extend(o, options);
 
-        if (!cache.json) {
+        cache.json = JSON.parse(conf);
+        this.initStructure();
+        this.renderMenu(cache.json);
 
-            if (o.hasOwnProperty("config")) {
-
-                $.getJSON(o.config, function (data) {
-                    cache.json = data;
-                    self.initStructure();
-                    self.renderMenu(data);
-                }).error(function () {
-                    throw new Error("Fx_Catalog_Collapsible_Menu: impossible to load config JSON.");
-                });
-            }
-        } else {
-            self.initStructure();
-            self.renderMenu(cache.json);
-        }
     };
 
     Fx_Catalog_Collapsible_Menu.prototype.initStructure = function () {
